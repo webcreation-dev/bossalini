@@ -86,8 +86,10 @@
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
                 <div class="py-[14px] px-[14px] bg-answer">
-                  <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p><a
+                  {{-- <p class="pb-[14px] text-xs text-white">
+                    <span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
+                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
+                      <a
                     href="https://bossalini.funcodes.bj/overview"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
@@ -150,8 +152,9 @@
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
                 <div class="py-[14px] px-[14px] bg-answer">
-                  <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p><a
+                  {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
+                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
+                      <a
                     href="https://bossalini.funcodes.bj/overview"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
@@ -214,8 +217,9 @@
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
                 <div class="py-[14px] px-[14px] bg-answer">
-                  <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p><a
+                  {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
+                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
+                      <a
                     href="https://bossalini.funcodes.bj/overview"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
@@ -278,8 +282,9 @@
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
                 <div class="py-[14px] px-[14px] bg-answer">
-                  <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p><a
+                  {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
+                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
+                      <a
                     href="https://bossalini.funcodes.bj/overview"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
@@ -298,100 +303,110 @@
         #KEEPITFLY TO BE FEATURED </p>
     </div>
     <section class="carousel" dir="ltr" aria-label="Gallery" tabindex="0">
-      <div class="carousel__viewport">
-        <ol class="carousel__track"
-          style="transform: translateX(0px); transition: all 0ms ease 0s; width: 100%;">
-          <li class="carousel__slide carousel__slide--visible carousel__slide--active" aria-hidden="false"
-            style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home1.0d99ea0b.jpg')}}"></div>
-          </li>
-          <li class="carousel__slide carousel__slide--visible carousel__slide--next" aria-hidden="false"
-            style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home02.d1ca89ee.png')}}"></div>
-          </li>
-          <li class="carousel__slide carousel__slide--visible" aria-hidden="false" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home03.8407ddd7.png')}}"></div>
-          </li>
-          <li class="carousel__slide carousel__slide--visible" aria-hidden="false" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home05.cf86fc3b.png')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home1.0d99ea0b.jpg')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home02.d1ca89ee.png')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home03.8407ddd7.png')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home05.cf86fc3b.png')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home1.0d99ea0b.jpg')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home02.d1ca89ee.png')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home03.8407ddd7.png')}}"></div>
-          </li>
-          <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
-            <div
-              v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
-              class="carousel__item"><img class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
-                src="{{asset('files/IGpost_home05.cf86fc3b.png')}}"></div>
-          </li>
-        </ol>
-      </div>
-      <div class="carousel__liveregion carousel__sr-only" aria-live="polite" aria-atomic="true">Item 1 of 12
-      </div>
+        <div class="carousel__viewport ">
+
+            <ol class="carousel__track owl-carousel"
+                style=" transform: translateX(0px); transition: all 0ms ease 0s; width: 100%;">
+
+                <li class="carousel__slide item carousel__slide--visible carousel__slide--active"
+                    aria-hidden="false" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home1.0d99ea0b.jpg') }}"></div>
+                </li>
+                <li class="carousel__slide item carousel__slide--visible carousel__slide--next"
+                    aria-hidden="false" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home02.d1ca89ee.png') }}"></div>
+                </li>
+                <li class="carousel__slide item carousel__slide--visible" aria-hidden="false"
+                    style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home03.8407ddd7.png') }}"></div>
+                </li>
+                <li class="carousel__slide item carousel__slide--visible" aria-hidden="false"
+                    style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home05.cf86fc3b.png') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home1.0d99ea0b.jpg') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home02.d1ca89ee.png') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home03.8407ddd7.png') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home05.cf86fc3b.png') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home1.0d99ea0b.jpg') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home02.d1ca89ee.png') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home03.8407ddd7.png') }}"></div>
+                </li>
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
+                    <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+                        class="carousel__item"><img
+                            class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
+                            src="{{ asset('files/IGpost_home05.cf86fc3b.png') }}"></div>
+                </li>
+            </ol>
+        </div>
+        <div class="carousel__liveregion carousel__sr-only" aria-live="polite"
+            aria-atomic="true">Item 1 of 12
+        </div>
     </section>
-    <div class="pt-7 flex justify-between items-center"><button class="span"><svg width="43" height="43"
-          fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path stroke="#000" d="M42.5 42.5H.5V.5h42z"></path>
-          <path d="M25 27.538 23.583 29l-7.004-7.218 7.004-7.218L25 16.026l-5.583 5.756L25 27.538Z" fill="#000">
-          </path>
-        </svg></button>
-      <div><button class="text-xs f-700 bg-black py-4 px-9 text-white"> VIEW MORE </button></div><button
-        class="span"><svg width="43" height="43" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path stroke="#000" d="M.5.5h42v42H.5z"></path>
-          <path d="M18 15.462 19.417 14l7.004 7.218-7.004 7.218L18 26.974l5.583-5.756L18 15.462Z" fill="#000">
-          </path>
-        </svg></button>
+    <div class="pt-7 flex justify-between items-center"><button class="span customPreviousBtn"><svg
+                width="43" height="43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path stroke="#000" d="M42.5 42.5H.5V.5h42z"></path>
+                <path
+                    d="M25 27.538 23.583 29l-7.004-7.218 7.004-7.218L25 16.026l-5.583 5.756L25 27.538Z"
+                    fill="#000">
+                </path>
+            </svg></button>
+        <div><button class="text-xs f-700 bg-black py-4 px-9 text-white"> VIEW MORE </button></div>
+        <button class="span customNextBtn "><svg width="43" height="43" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke="#000" d="M.5.5h42v42H.5z"></path>
+                <path
+                    d="M18 15.462 19.417 14l7.004 7.218-7.004 7.218L18 26.974l5.583-5.756L18 15.462Z"
+                    fill="#000">
+                </path>
+            </svg></button>
     </div>
     <div class="hidden">
       <div class="lg:flex hidden items-center justify-center space-x-3">

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->mediumText('color')->nullable();
             $table->longText('description')->nullable();
             $table->integer('original_price');// Prix d'achat
+            $table->integer('quantity')->nullable();
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

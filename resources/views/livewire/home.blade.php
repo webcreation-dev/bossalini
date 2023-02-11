@@ -1,5 +1,6 @@
 
-<section class="hidden lg:flex items-center justify-center">
+<div>
+<section class="hidden lg:flex items-center justify-center section1">
     <div class="relative text-center"><img class="w-screen bg-cover md:block hidden"
             src="{{ asset('files/slide_fine.b2a895d1.png') }}" alt="Product title">
         <div class="absolute top-1/2 w-full text-white text-sm">
@@ -10,7 +11,7 @@
         </div>
     </div>
 </section>
-<section class="w-full lg:hidden pt-2.5">
+<section class="w-full lg:hidden pt-2.5 section2">
     <div class="pt-40 flex items-center justify-center">
         <div class="mt-2 relative"><img class="w-full"
                 src="{{ asset('files/format.bad97007.png') }}" alt="Product title">
@@ -22,7 +23,7 @@
         </div>
     </div>
 </section>
-<section class="hidden lg:flex py-5 items-center justify-center space-x-5">
+<section class="hidden lg:flex py-5 items-center justify-center space-x-5 section3">
     <a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}"
         class="cursor-pointer relative text-center"><img
             class="h-[600px] w-screen bg-cover md:block hidden"
@@ -51,7 +52,7 @@
     </a>
 </section>
 
-<section class="lg:hidden py-4 items-center justify-center space-y-4">
+<section class="lg:hidden py-4 items-center justify-center space-y-4 section4">
     <div class="flex gap-x-4">
         <div><img class="" src="{{ asset('files/hoodie.9d6d5b9c.png') }}" alt="Product title">
         </div>
@@ -62,7 +63,8 @@
     </div>
 </section>
 
-<section class="flex items-center relative  justify-center">
+
+<section class="flex items-center relative  justify-center section5">
     <img
         class="object-cover w-full min-h-[560px] max-h-[659px]"
         src="{{ asset('files/slid2.bd8542ed.png') }}" alt="Product title">
@@ -72,9 +74,9 @@
             <p class="font-bold italic text-center text-[53px] leading-normal">TEE-SHIRTS</p>
         </a>
         </div>
-    </section>
+</section>
 
-<section class="lg:pt-11 pt-[36px]">
+<section class="lg:pt-11 pt-[36px] section6" >
     <div class="justify-center text-center">
         <p class="antialiased text-sm">GET THE FULL LOOK</p>
         <p class="mt-4 mb-[22px] text-sm font-bold"> KEEP*IT*FLY ESSENTIALS COLLECTION </p>
@@ -86,15 +88,20 @@
                 <div class="">
                     <div class="relative mb-3">
                         <div class="absolute flex flex-col top-0 right-0 p-3">
+
                             <button wire:click="wishlist({{ $product->id }})"
                                 class="transition ease-in duration-300 hover:text-purple-500 w-8 h-8 text-center p-1"><svg
-                                    xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="{{App\Models\Product::getStatusWishlist($product->id)  }}"
+                                    xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="{{App\Models\Product::getStatusWishlist($product->id)}}"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="1"
                                         d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
                                     </path>
-                                </svg></button></div>
+                                </svg>
+                            </button>
+
+
+                        </div>
                         <div id="id" class="group w-full">
                             <div class="group-hover:hidden">
                                 <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
@@ -116,99 +123,20 @@
                     </div>
                     <div class="flex-auto justify-evenly">
                         <p class="text-xs font-bold">{{ $product->name }}</p>
-                        <p class="antialiased text-xs mt-0.5">CHF {{ $product->original_price }}</p>
+                        <p class="antialiased text-xs mt-0.5">
+                            @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif
+
+                            {{ $product->original_price }}</p>
                     </div>
                 </div>
             @endforeach
-
-            {{-- <div class="">
-                <div class="relative mb-3">
-                    <div class="absolute flex flex-col top-0 right-0 p-3"><button
-                            class="transition ease-in duration-300 hover:text-purple-500 w-8 h-8 text-center p-1"><svg
-                                xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg></button></div>
-                    <div id="id" class="group w-full">
-                        <div class="group-hover:hidden"><img
-                                class="transition ease-in duration-300 hover:bg-gray-900"
-                                src="{{ asset('files/slider_home01-3.fcf28f1c.png') }}"
-                                alt="Product title"></div>
-                        <div class="hidden group-hover:flex"><img
-                                class="transition ease-in duration-300 hover:bg-gray-900"
-                                src="{{ asset('files/slider_home01-4.74a08d5b.png') }}"
-                                alt="Product title"></div>
-                    </div>
-                </div>
-                <div class="flex-auto justify-evenly">
-                    <p class="text-xs font-bold">BOSSALINI FLY SWEATPANT</p>
-                    <p class="antialiased text-xs mt-0.5">CHF 112.00</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="relative mb-3">
-                    <div class="absolute flex flex-col top-0 right-0 p-3"><button
-                            class="transition ease-in duration-300 hover:text-purple-500 w-8 h-8 text-center p-1"><svg
-                                xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg></button></div>
-                    <div id="id" class="group w-full">
-                        <div class="group-hover:hidden"><img
-                                class="transition ease-in duration-300 hover:bg-gray-900"
-                                src="{{ asset('files/slider_home01-1.60fa60c3.png') }}"
-                                alt="Product title"></div>
-                        <div class="hidden group-hover:flex"><img
-                                class="transition ease-in duration-300 hover:bg-gray-900"
-                                src="{{ asset('files/slider_home01-2.a3f63785.png') }}"
-                                alt="Product title"></div>
-                    </div>
-                </div>
-                <div class="flex-auto justify-evenly">
-                    <p class="text-xs font-bold">BOSSALINI FLY TEE - BLACKCHF</p>
-                    <p class="antialiased text-xs mt-0.5">CHF 59.00</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="relative mb-3">
-                    <div class="absolute flex flex-col top-0 right-0 p-3"><button
-                            class="transition ease-in duration-300 hover:text-purple-500 w-8 h-8 text-center p-1"><svg
-                                xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg></button></div>
-                    <div id="id" class="group w-full">
-                        <div class="group-hover:hidden"><img
-                                class="transition ease-in duration-300 hover:bg-gray-900"
-                                src="{{ asset('files/slider_home01-2.a3f63785.png') }}"
-                                alt="Product title"></div>
-                        <div class="hidden group-hover:flex"><img
-                                class="transition ease-in duration-300 hover:bg-gray-900"
-                                src="{{ asset('files/slider_home01-3.fcf28f1c.png') }}"
-                                alt="Product title"></div>
-                    </div>
-                </div>
-                <div class="flex-auto justify-evenly">
-                    <p class="text-xs font-bold">BOSSALINI FLY CAP - BLACKCHF</p>
-                    <p class="antialiased text-xs mt-0.5">CHF 69.00</p>
-                </div>
-            </div> --}}
         </div>
 
     </div>
 </section>
 
 
-<section class="lg:pt-20 pt-14">
+<section class="lg:pt-20 pt-14 section7">
     <div class="justify-center text-center">
         <p class="antialiased lg:text-sm text-xs">SHOP INSTAGRAM</p>
         <p class="lg:mx-5.5 mt-4 pb-5 md:text-sm text-xs font-bold"> TAG YOUR POST WITH
@@ -216,80 +144,82 @@
             #KEEPITFLY TO BE FEATURED </p>
     </div>
     <section class="carousel" dir="ltr" aria-label="Gallery" tabindex="0">
-        <div class="carousel__viewport">
-            <ol class="carousel__track"
-                style="transform: translateX(0px); transition: all 0ms ease 0s; width: 100%;">
-                <li class="carousel__slide carousel__slide--visible carousel__slide--active"
+        <div class="carousel__viewport ">
+
+            <ol class="carousel__track owl-carousel"
+                style=" transform: translateX(0px); transition: all 0ms ease 0s; width: 100%;">
+
+                <li class="carousel__slide item carousel__slide--visible carousel__slide--active"
                     aria-hidden="false" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home1.0d99ea0b.jpg') }}"></div>
                 </li>
-                <li class="carousel__slide carousel__slide--visible carousel__slide--next"
+                <li class="carousel__slide item carousel__slide--visible carousel__slide--next"
                     aria-hidden="false" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home02.d1ca89ee.png') }}"></div>
                 </li>
-                <li class="carousel__slide carousel__slide--visible" aria-hidden="false"
+                <li class="carousel__slide item carousel__slide--visible" aria-hidden="false"
                     style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home03.8407ddd7.png') }}"></div>
                 </li>
-                <li class="carousel__slide carousel__slide--visible" aria-hidden="false"
+                <li class="carousel__slide item carousel__slide--visible" aria-hidden="false"
                     style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home05.cf86fc3b.png') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home1.0d99ea0b.jpg') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home02.d1ca89ee.png') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home03.8407ddd7.png') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home05.cf86fc3b.png') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home1.0d99ea0b.jpg') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home02.d1ca89ee.png') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
                             src="{{ asset('files/IGpost_home03.8407ddd7.png') }}"></div>
                 </li>
-                <li class="carousel__slide" aria-hidden="true" style="width: 319.25px;">
+                <li class="carousel__slide item" aria-hidden="true" style="width: 319.25px;">
                     <div v-model="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                         class="carousel__item"><img
                             class="object-cover md:w-screen lg:h-[23vw] md:h-[48.5vw] h-[44vw]"
@@ -301,7 +231,7 @@
             aria-atomic="true">Item 1 of 12
         </div>
     </section>
-    <div class="pt-7 flex justify-between items-center"><button class="span"><svg
+    <div class="pt-7 flex justify-between items-center"><button class="span customPreviousBtn"><svg
                 width="43" height="43" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path stroke="#000" d="M42.5 42.5H.5V.5h42z"></path>
                 <path
@@ -310,7 +240,7 @@
                 </path>
             </svg></button>
         <div><button class="text-xs f-700 bg-black py-4 px-9 text-white"> VIEW MORE </button></div>
-        <button class="span"><svg width="43" height="43" fill="none"
+        <button class="span customNextBtn "><svg width="43" height="43" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path stroke="#000" d="M.5.5h42v42H.5z"></path>
                 <path
@@ -364,4 +294,7 @@
         </div>
     </div>
 </section>
+
+
+</div>
 

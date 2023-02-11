@@ -63,11 +63,11 @@
       <div class="border-t border-tiret"></div>
     </div>
     <div class="md:mx-9 mx-4 pb-9 flex mt-3 gap-x-1.5">
-      <div class="md:w-8 w-6"><img src="{{asset('Group113.d5c0ac58.svg')}}" alt=""></div>
-      <div class="md:w-8 w-6"><img src="{{asset('Group109.9d330e5a.svg')}}" alt=""></div>
-      <div class="md:w-8 w-6"><img src="{{asset('Group114.a44c0855.svg')}}" alt=""></div>
-      <div class="md:w-8 w-6"><img src="{{asset('Group110.c883b260.svg')}}" alt=""></div>
-      <div class="md:w-8 w-6"><img src="{{asset('Group112.15bd811e.svg')}}" alt=""></div>
-      <div class="md:w-8 w-6"><img src="{{asset('Group111.12e98874.svg')}}" alt=""></div>
+      <div class="md:w-8 w-6"><img src="{{asset('files/Group113.d5c0ac58.svg')}}" alt=""></div>
+      <div class="md:w-8 w-6"><img src="{{asset('files/Group109.9d330e5a.svg')}}" alt=""></div>
+      <div class="md:w-8 w-6"><img src="{{asset('files/Group114.a44c0855.svg')}}" alt=""></div>
+      <div class="md:w-8 w-6"><img src="{{asset('files/Group110.c883b260.svg')}}" alt=""></div>
+      <div class="md:w-8 w-6"><img src="{{asset('files/Group112.15bd811e.svg')}}" alt=""></div>
+      <div class="md:w-8 w-6"><img src="{{asset('files/Group111.12e98874.svg')}}" alt=""></div>
     </div>
   </footer>

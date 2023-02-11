@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Livewire\AddCart;
-use App\Http\Livewire\Home;
-use GuzzleHttp\Psr7\Request;
+use App\Http\Livewire\Checkout;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Livewire\Account;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\AddCart;
+use App\Http\Livewire\Addresse;
+use App\Http\Livewire\Home;
 use App\Http\Livewire\ProductsByCategory;
+use App\Http\Livewire\Shop;
 use App\Http\Livewire\SingleProduct;
 use App\Http\Livewire\Wishlist;
-use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,21 +23,22 @@ use App\Models\Product;
 |
 */
 
-Route::get('/', function () {
-    $product_id = [];
-    for ($i = 0; $i < 4; $i++) {
-        $product_id[] = rand(1, 9);
-    }
 
-    $products = Product::whereIn('id', $product_id)->get();
-    return view('home', compact('products'));
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/lookbook', function () {
+    return view('lookbook');
 });
 
-
-
-Route::get('/shop_all', function () {
-    return view('shop_all');
+Route::get('/overview', function () {
+    return view('overview');
 });
+
+require __DIR__.'/auth.php';
 
 
 Route::get('/', Home::class)->name('home');
@@ -42,3 +46,12 @@ Route::get('/get_products_by_categories', ProductsByCategory::class)->name('get_
 Route::get('/wishlists', Wishlist::class)->name('wishlists');
 Route::get('/single_product', SingleProduct::class)->name('single_product');
 Route::get('/add_cart', AddCart::class)->name('add_cart');
+Route::get('/shop', Shop::class)->name('shop');
+Route::get('/account', Account::class)->name('account');
+Route::get('/profile', Addresse::class)->name('addresse');
+
+
+Route::get('/change_currency', [CurrencyController::class, 'index'])->name('change_currency');
+Route::post('/get_data_cart', [CurrencyController::class, 'getDataCart'])->name('get_data_cart');
+Route::get('/remove_item_checkout', [CurrencyController::class, 'removeItemCheckout'])->name('remove_item_checkout');
+Route::get('/checkout', Checkout::class)->name('checkout');

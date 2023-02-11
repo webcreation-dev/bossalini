@@ -11,16 +11,18 @@ class Order extends Model
     protected $table = 'orders';
 
     protected $fillable = [
-        'tracking_no',
-        'fullname',
-        'email',
+        'first_name',
+        'last_name',
+        'company',
+        'apartment',
+        'city',
+        'country',
+        'zip_code',
         'phone',
-        'adresse',
+        'user_id',
         'status',
-        'order_status',
-        'payement_id',
     ] ;
-    
+
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class,'order_id','id');

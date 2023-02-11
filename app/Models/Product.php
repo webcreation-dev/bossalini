@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\ProductImage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
@@ -17,6 +18,7 @@ class Product extends Model
         'length',
         'description',
         'original_price',
+        'quantity',
         'color',
         'category_id',
     ];
@@ -39,26 +41,51 @@ class Product extends Model
 
     public static function getStatusWishlist($id)
     {
-        $wishlists = session()->get('wishlists');
+        if(Auth::check()) {
 
-        if (in_array($id, $wishlists)) {
+            $wihlist = Wishlis::where('user_id', Auth::user()->id)->where('product_id', $id);
 
-            return "red";
-        } else {
+            if($wihlist->count() > 0) {
+                return "black";
+            }else {
+                return "none";
+            }
 
-            return "none";
+
+        }else {
+            $wishlists = session()->get('wishlists');
+
+            if (in_array($id, $wishlists)) {
+
+                return "black";
+            } else {
+
+                return "none";
+            }
         }
 
     }
 
     public static function getStatusCart($id)
     {
-        $cart = session()->get('cart');
+        if(Auth::check()) {
 
-        if (in_array($id, $cart)) {
-            return true;
-        } else {
-            return false;
+            $cart = Cart::where('user_id', Auth::user()->id)->where('product_id', $id);
+
+            if($cart->count() > 0) {
+                return true;
+            }else {
+                return false;
+            }
+
+        }else {
+            $cart = session()->get('cart');
+
+            if (in_array($id, $cart)) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
     }

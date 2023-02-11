@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Cart;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Upsell;
-
+use App\Models\Wishlis;
+use Illuminate\Support\Facades\Auth;
 class SingleProduct extends Component
 {
     public function render(Request $request)
@@ -35,39 +37,73 @@ class SingleProduct extends Component
         ->section("content");
     }
 
-    public function wishlist($id) {
+    public function wishlist($id, Request $request) {
 
-        $wishlists = session()->get('wishlists');
+        if(Auth::check()) {
 
-        if (in_array($id, $wishlists)) {
+            $wishlist = Wishlis::where('product_id', $id);
 
-            $key = array_search($id, $wishlists);
-            if ($key !== false) {
-                array_splice($wishlists, $key, 1);
+            if($wishlist->count() > 0) {
+
+                $wishlist->delete();
+            }else {
+                Wishlis::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $id,
+                ]);
             }
-            session()->put('wishlists', $wishlists);
-        } else {
 
-            $wishlists[] = $id;
-            session()->put('wishlists', $wishlists);
+        }else {
+
+            $wishlists = session()->get('wishlists');
+
+            if (in_array($id, $wishlists)) {
+
+                $key = array_search($id, $wishlists);
+                if ($key !== false) {
+                    array_splice($wishlists, $key, 1);
+                }
+                session()->put('wishlists', $wishlists);
+            } else {
+
+                $wishlists[] = $id;
+                session()->put('wishlists', $wishlists);
+            }
         }
+        $request->merge(['product_id' => $id]);
+
     }
 
-    public function addToCart($id) {
 
-        $cart = session()->get('cart');
 
-        if (in_array($id, $cart)) {
+    public function addToCart($id, Request $request) {
 
-            $key = array_search($id, $cart);
-            if ($key !== false) {
-                array_splice($cart, $key, 1);
+
+        if(Auth::check()) {
+
+            Cart::create([
+                'user_id' => Auth::user()->id,
+                'product_id' => $id,
+            ]);
+
+        }else {
+
+            $cart = session()->get('cart');
+
+            if (in_array($id, $cart)) {
+
+                $key = array_search($id, $cart);
+                if ($key !== false) {
+                    array_splice($cart, $key, 1);
+                }
+                session()->put('cart', $cart);
+            } else {
+
+                $cart[] = $id;
+                session()->put('cart', $cart);
             }
-            session()->put('cart', $cart);
-        } else {
-
-            $cart[] = $id;
-            session()->put('cart', $cart);
         }
+
+        $request->merge(['product_id' => $id]);
     }
 }
