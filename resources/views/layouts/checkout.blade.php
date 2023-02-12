@@ -3,6 +3,10 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BOSSALINI | Find all your items here</title>
+    <link rel="icon" type="image/svg+xml" href="{{asset('files/bossa.svg')}}">
+    <link rel="stylesheet" href="{{asset('files/index.57cdf621.css')}}">
+
     <link href="{{asset('files/panagora.3e1ae51f4475488adcfe.css')}}" rel="stylesheet">
     <link href="{{asset('files/select2.css')}}" rel="stylesheet" type="text/css" media="all"1>
     <script src="{{asset('files/country.js')}}"></script>

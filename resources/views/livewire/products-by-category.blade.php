@@ -3,7 +3,7 @@
 <section class="md:pt-0 pt-[76px]">
 
     <div class="justify-center text-center">
-      <p class="mt-4 mb-[22px] text-sm font-bold"> KEEP*IT*FLY - ALL </p>
+      <p class="mt-4 mb-[22px] text-sm font-bold"> {{$category[0]['name']}} </p>
     </div>
 
     <div class="flex-none lg:flex items-center justify-center lg:space-x-5 lg:space-y-0 space-y-2">

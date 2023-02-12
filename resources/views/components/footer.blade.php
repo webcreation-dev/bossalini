@@ -2,28 +2,28 @@
     <div class="antialiased md:mx-9 mx-4 mb-3 md:grid md:grid-cols-4">
       <div>
         <div class="border-t border-tiret"></div>
-        <p class="pb-5 pt-3 text-xs">COMPANY</p>
+        <p class="pb-5 pt-3 text-xs"><a href="#">COMPANY</a></p>
         <div class="space-y-0.5 leading-relaxed">
-          <p class="text-xs">ABOUT</p>
-          <p class="text-xs">BOSSALINI RADIO</p>
-          <p class="text-xs">WISHLIST</p>
+          <p class="text-xs"><a href="{{route('about')}}">ABOUT</a></p>
+          <p class="text-xs"><a href="#">BOSSALINI RADIO</a></p>
+          <p class="text-xs"><a href="{{route('wishlists')}}">WISHLIST</a></p>
         </div>
       </div>
       <div class="mt-3 md:mt-0">
         <div class="border-t border-tiret"></div>
-        <p class="pb-5 pt-3 text-xs">CUSTOMER CARE</p>
+        <p class="pb-5 pt-3 text-xs"><a href="#">CUSTOMER CARE</a></p>
         <div class="space-y-0.5 leading-relaxed">
-          <p class="text-xs">CONTACT</p>
-          <p class="text-xs">FAQS</p>
-          <p class="text-xs">MAKE A RETURN</p>
-          <p class="text-xs">SHIPPING POLICIES</p>
-          <p class="text-xs">RETURN POLICIES</p>
-          <p class="text-xs">TERMS</p>
+          <p class="text-xs"><a href="">CONTACT</a></p>
+          <p class="text-xs"><a href="#">FAQS</a></p>
+          <p class="text-xs"><a href="#">MAKE A RETURN</a></p>
+          <p class="text-xs"><a href="#">SHIPPING POLICIES</a></p>
+          <p class="text-xs"><a href="#">RETURN POLICIES</a></p>
+          <p class="text-xs"><a href="#">TERMS</a></p>
         </div>
       </div>
       <div class="w-full col-span-2 mt-3 md:mt-0">
         <div class="border-t border-tiret"></div>
-        <p class="pb-5 pt-3 text-xs">COMMUNITY</p>
+        <p class="pb-5 pt-3 text-xs"><a href="#">COMMUNITY</a></p>
         <div class="flex gap-5"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M11.51 2.822a.88.88 0 1 0 0 1.761.88.88 0 1 0 0-1.76ZM7.587 3.953a3.71 3.71 0 0 0-3.704 3.705 3.71 3.71 0 0 0 3.704 3.704 3.71 3.71 0 0 0 3.704-3.704 3.707 3.707 0 0 0-3.704-3.705Zm0 6.082a2.374 2.374 0 0 1 0-4.746 2.374 2.374 0 0 1 0 4.746Z"

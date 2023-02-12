@@ -65,7 +65,7 @@
                                         <div class="pt-[19px]">
                                             <div class="py-[14px] px-[14px] bg-answer">
                                                 <a
-                                                href="https://bossalini.funcodes.bj/overview"
+                                                href="#"
                                                 class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                                                 GO TO CART </a>
                                             </div>

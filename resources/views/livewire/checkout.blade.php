@@ -579,7 +579,17 @@
           </span>
         </label>
       </div>
-      <div class="adyen-checkout__paypal-container js-adyen-checkout" data-payment-type="paypal" data-base-url="/en/adyencheckout">
+
+      <div class="adyen-checkout__paypal-container js-adyen-checkout">
+        <div class="adyen-checkout__paypal">
+            <button onclick="document.getElementById('get-data-cart-desktop').submit();"
+                class="mt-8 text-center font-bold px-8 w-full antialised py-3 bg-black text-white text-[13px]">
+                 PAY NOW
+            </button>
+        </div>
+      </div>
+
+      {{-- <div class="adyen-checkout__paypal-container js-adyen-checkout" data-payment-type="paypal" data-base-url="/en/adyencheckout">
         <div class="adyen-checkout__paypal">
           <div class="adyen-checkout__paypal__buttons">
             <div class="adyen-checkout__paypal__button adyen-checkout__paypal__button--paypal">
@@ -638,14 +648,14 @@
             <div class="adyen-checkout__paypal__button adyen-checkout__paypal__button--credit"></div>
           </div>
         </div>
-      </div>
-      <div class="checkout js-checkout" data-generic-update="checkout">
+      </div> --}}
+      {{-- <div class="checkout js-checkout" data-generic-update="checkout">
         <div class="checkout__content ">
           <button id="checkout-btn" class="btn checkout-btn js-checkout-btn" type="submit" disabled="">
             <span>Checkout</span>
           </button>
         </div>
-      </div>
+      </div> --}}
     </form>
   </main>
 

@@ -38,12 +38,12 @@
                             </div>
                             <div id="new-drop"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>NEW DROP</p>
+                                <p><a href="#">NEW DROP</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="shop-all"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>SHOP ALL</p>
+                                <p><a href="{{route('shop')}}">SHOP ALL</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="keep-it-fly"
@@ -53,12 +53,12 @@
                             </div>
                             <div id="gift-card"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>GIFT CARD</p>
+                                <p><a href="#">GIFT CARD</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="shop-instagram"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>SHOP INSTAGRAM</p>
+                                <p><a href="#">SHOP INSTAGRAM</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="customer-care"
@@ -74,7 +74,9 @@
                             <div id="wishlist"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p>WISHLIST</p>
+                                <a href="{{route('wishlists')}}">
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                </a>
                             </div>
                             <div id="media"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
@@ -88,14 +90,16 @@
                             </div>
                             <div id="uk"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <div class="flex justify-center items-center"><img class="mr-[10px]"
-                                        src="{{asset('files/flag-uk.3248720d.svg')}}" alt="">
+                                <div class="flex justify-center items-center">
+                                    {{-- <img class="mr-[10px]"
+                                        src="{{asset('files/flag-uk.3248720d.svg')}}" alt=""> --}}
+                                        <img class="focus:text-black focus:font-bold extra antialiased text-xs py-2 rounded-md hover:font-bold"
+                                            aria-haspopup="true" src=" @if (Auth::check())  {{ asset('files/' .  getUserImageCurrency() . '') }} @else {{ asset('files/' .  getImageCurrency() . '') }} @endif  " height="18">
                                     <p>UNITED KINGDOM / GBP</p>
                                 </div>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
-
 
                         <div id="shop-category-modal" style=" animation-name: fadeInRight; animation-duration: 0.5s;"
                             class="absolute hidden shadow-lg w-screen h-screen fixed z-50 top-full right-0 flex-reverse block items-center lg:hidden bg-white">
@@ -106,35 +110,35 @@
                                 <p></p>
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p class="font-bold">CLOTHING</p><img src="{{asset('files/Vector.8dc6065e.svg')}}"
+                                <p class="font-bold"><a href="#"> CLOTHING</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}"
                                     height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>ALL</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{route('shop')}}">>ALL</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>T-SHIRTS</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}">T-SHIRTS</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>HOODIES</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}">HOODIES</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>BOTTOMS</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="#">BOTTOMS</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p class="font-bold">ACCESSORIES</p><img src="{{asset('files/Vector.8dc6065e.svg')}}"
+                                <p class="font-bold"><a href="#">ACCESSORIES</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}"
                                     height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>HEADWEAR</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}">HEADWEAR</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p class="font-bold">COLLECTIONS</p><img src="{{asset('files/Vector.8dc6065e.svg')}}"
+                                <p class="font-bold"><a href="{{route('overview')}}">COLLECTIONS</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}"
                                     height="18">
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p>KEEP*IT*FLY</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="#">KEEP*IT*FLY</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                         </div>
 
@@ -143,28 +147,27 @@
                             <div id="shop-collection-modal-close"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between"><img
                                     class="rotate-180" src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
-                                <p>COLLECTION</p>
-                                <p></p>
+                                <p><a href="{{route('overview')}}">COLLECTION</a></p>
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p class="font-bold">KEEP*IT*FLY</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}"
+                                <p class="font-bold"><a href="#">KEEP*IT*FLY</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}"
                                     height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>OVERVIEW</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{route('overview')}}">OVERVIEW</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>T-SHIRTS</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}">T-SHIRTS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>HOODIES</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}">HOODIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>BOTTOMS</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="#">BOTTOMS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p>ACCESSORIES</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="#">ACCESSORIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
 
@@ -174,23 +177,22 @@
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between"><img
                                     class="rotate-180" src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                                 <p>CUSTOMER CARE</p>
-                                <p></p>
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>CONTACT</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{route('contact')}}">CONTACT</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>FAQS</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="#">FAQS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>SHIPPING POLICIES</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="#">SHIPPING POLICIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>RETURN POLICIES</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="#">RETURN POLICIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p>TERMS</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="#">TERMS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
 
@@ -203,11 +205,11 @@
                                 <p></p>
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>LOGIN</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{route('login')}}">LOGIN</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p>REGISTER</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{route('register')}}">REGISTER</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
 
@@ -217,11 +219,10 @@
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between"><img
                                     class="rotate-180" src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                                 <p>MEDIA</p>
-                                <p></p>
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p>KEEP*IT*FLY ESSENTIALS LOOKBOOK</p><img
+                                <p><a href="#">KEEP*IT*FLY ESSENTIALS LOOKBOOK</a></p><img
                                     src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
@@ -232,13 +233,12 @@
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between"><img
                                     class="rotate-180" src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                                 <p>BRAND</p>
-                                <p></p>
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>ABOUT</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{route('about')}}">ABOUT</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>MEDIA</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="#">MEDIA</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
 
@@ -252,17 +252,22 @@
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
                                 <img src="{{asset('files/flag-eur.eb1348a4.svg')}}" height="18">
-                                <p>EUROPE / EUR</p>
+                                <p><a href="{{ route('change_currency', ['currency' => '€', 'id'=> 1]) }}">EUROPE / EUR</a></p>
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
                                 <img src="{{asset('files/flag-swz.dc144f59.svg')}}" height="18">
-                                <p>SWITZERLAND / CHF</p>
+                                <p><a href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}">SWITZERLAND / CHF</a></p>
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
                                 <img src="{{asset('files/flag-usa.1c85eb67.svg')}}" height="18">
-                                <p>USA - REST OF THE WORLD / USD</p>
+                                <p><a href="{{ route('change_currency', ['currency' => '£', 'id'=> 3]) }}">UNITED KINGDOM</a></p>
+                            </div>
+                            <div
+                                class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
+                                <img src="{{asset('files/flag-usa.1c85eb67.svg')}}" height="18">
+                                <p><a href="{{ route('change_currency', ['currency' => '$', 'id'=> 4]) }}">USA - REST OF THE WORLD / USD</a></p>
                             </div>
                         </div>
 
@@ -421,21 +426,29 @@
                             <img src="{{ asset('files/logo.e4b8d2f2.svg') }}" height="38"></a>
 
                             <div class="flex space-x-5 items-end">
-                                <a class="mx-auto">
-                                    <img src="{{ asset('files/profil.c74a5317.svg') }}" height="18"></a>
-                                    <a
-                                        class="mx-auto">
-                                        <img src="{{ asset('files/cart.95d40601.svg') }}" height="18">
-                                        <span class="cart_qty_mobile">
-                                            {{getNumberProductCart()}}
-                                        </span>
+                                @if (Auth::check())
+                                    <a class="mx-auto">
+                                        <img src="{{ asset('files/profil.c74a5317.svg') }}" height="18">
                                     </a>
+                                @endif
+                                <a href="{{route('wishlists')}}" class="mx-auto">
+                                    <img src="{{ asset('files/wish.639c7b91.svg') }}" height="18">
+                                </a>
+                                <a class="mx-auto">
+                                    <img src="{{ asset('files/cart.95d40601.svg') }}" height="18">
+                                    <span class="cart_qty_mobile">
+                                        {{getNumberProductCart()}}
+                                    </span>
+                                </a>
+
+
                             </div>
 
 
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <x-nav />

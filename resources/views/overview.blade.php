@@ -81,7 +81,7 @@
                     </button></div>
                 </div>
               </div>
-              <div class="pt-4"><a href="https://bossalini.funcodes.bj/overview"
+              <div class="pt-4"><a href="#"
                   class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
@@ -90,7 +90,7 @@
                     <span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
                       HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
                       <a
-                    href="https://bossalini.funcodes.bj/overview"
+                    href="#"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
                 </div>
@@ -147,7 +147,7 @@
                     </button></div>
                 </div>
               </div>
-              <div class="pt-4"><a href="https://bossalini.funcodes.bj/overview"
+              <div class="pt-4"><a href="#"
                   class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
@@ -155,7 +155,7 @@
                   {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
                       HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
                       <a
-                    href="https://bossalini.funcodes.bj/overview"
+                    href="#"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
                 </div>
@@ -212,7 +212,7 @@
                     </button></div>
                 </div>
               </div>
-              <div class="pt-4"><a href="https://bossalini.funcodes.bj/overview"
+              <div class="pt-4"><a href="#"
                   class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
@@ -220,7 +220,7 @@
                   {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
                       HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
                       <a
-                    href="https://bossalini.funcodes.bj/overview"
+                    href="#"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
                 </div>
@@ -277,7 +277,7 @@
                     </button></div>
                 </div>
               </div>
-              <div class="pt-4"><a href="https://bossalini.funcodes.bj/overview"
+              <div class="pt-4"><a href="#"
                   class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
                   ADD TO CART </a></div>
               <div class="pt-[19px]">
@@ -285,7 +285,7 @@
                   {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
                       HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
                       <a
-                    href="https://bossalini.funcodes.bj/overview"
+                    href="#"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
                 </div>

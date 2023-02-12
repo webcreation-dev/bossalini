@@ -81,57 +81,43 @@
         <p class="antialiased text-sm">GET THE FULL LOOK</p>
         <p class="mt-4 mb-[22px] text-sm font-bold"> KEEP*IT*FLY ESSENTIALS COLLECTION </p>
     </div>
-    <div class="flex-none lg:flex items-center justify-center lg:space-x-5 lg:space-y-0 space-y-2">
-        <div class="flex space-x-5">
-            @foreach ($products as $product)
+
+    <div class="col-span-3">
+        <div class="flex items-center justify-center space-x-5">
+            <div class="grid md:grid-cols-4 grid-cols-2 gap-3 flex-auto">
+
+                @foreach ($products as $product)
 
                 <div class="">
                     <div class="relative mb-3">
                         <div class="absolute flex flex-col top-0 right-0 p-3">
-
                             <button wire:click="wishlist({{ $product->id }})"
-                                class="transition ease-in duration-300 hover:text-purple-500 w-8 h-8 text-center p-1"><svg
-                                    xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="{{App\Models\Product::getStatusWishlist($product->id)}}"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="1"
+                                class="transition ease-in duration-300 w-8 h-8 text-center p-1"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="icon1 h-6 w-6"
+                                    fill="{{App\Models\Product::getStatusWishlist($product->id)  }}" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                         d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
                                     </path>
-                                </svg>
-                            </button>
-
-
+                                </svg></button>
                         </div>
-                        <div id="id" class="group w-full">
-                            <div class="group-hover:hidden">
-                                <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
-                                <img
-                                    class="transition ease-in duration-300 hover:bg-gray-900"
-                                    src="{{ asset('files/' . App\Models\Product::getFirstImageAttribute($product->id) . '') }}"
-                                    alt="Product title">
-                                </a>
-                            </div>
-                            <div class="hidden group-hover:flex">
-                                <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
-                                <img
-                                    class="transition ease-in duration-300 hover:bg-gray-900"
-                                    src="{{ asset('files/' . App\Models\Product::getFirstImageAttribute($product->id) . '') }}"
-                                    alt="Product title">
-                                </a>
-                            </div>
-                        </div>
+                        <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
+                            <img class="transition ease-in duration-300 hover:bg-gray-900"
+                                src="{{ asset('files/' . App\Models\Product::getFirstImageAttribute($product->id) . '') }}"
+                                alt="Product title">
+                        </a>
                     </div>
-                    <div class="flex-auto justify-evenly">
-                        <p class="text-xs font-bold">{{ $product->name }}</p>
-                        <p class="antialiased text-xs mt-0.5">
-                            @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif
-
-                            {{ $product->original_price }}</p>
+                    <div class="flex-auto text-center justify-evenly">
+                        <p class="pt-3 text-xs text f-700"> {{ $product->name }} </p>
+                        <p class="antialiased text-xs">@if (Auth::check()) {{getUserCurrency()}} @else
+                            {{getCodeCurrency()}} @endif {{ $product->original_price }}</p>
                     </div>
                 </div>
-            @endforeach
-        </div>
 
+                @endforeach
+
+            </div>
+        </div>
     </div>
 </section>
 

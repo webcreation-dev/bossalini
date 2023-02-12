@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Wishlis;
+use App\Models\Categories;
 
 class ProductsByCategory extends Component
 {
     public function render(Request $request)
     {
-        // dd($request);
 
         if (!session()->has('wishlists')) {
             $wishlists = [];
@@ -22,7 +22,10 @@ class ProductsByCategory extends Component
         $category_id = $request->category_id;
 
         $products = Product::where('category_id', $request->category_id)->get();
-        return view('livewire.products-by-category', compact('products', 'category_id'))
+
+        $category = Categories::where('id', 1)->get()->toArray();
+
+        return view('livewire.products-by-category', compact('products', 'category_id', 'category'))
         ->extends("layouts.master")
         ->section("content");
     }

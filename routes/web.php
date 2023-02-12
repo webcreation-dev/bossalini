@@ -26,17 +26,20 @@ use App\Http\Livewire\Wishlist;
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
+
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
+
 Route::get('/lookbook', function () {
     return view('lookbook');
-});
+})->name('lookbook');
+
 
 Route::get('/overview', function () {
     return view('overview');
-});
+})->name('overview');
 
 require __DIR__.'/auth.php';
 
