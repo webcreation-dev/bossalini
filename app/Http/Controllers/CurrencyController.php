@@ -54,20 +54,4 @@ class CurrencyController extends Controller
         return redirect()->route('checkout');
     }
 
-    public function removeItemCheckout(Request $request) {
-
-        if(!(Auth::check())) {
-
-            $cart_items = session()->get('cart_items');
-            unset($cart_items[$request->id]);
-            session()->put('cart_items', $cart_items);
-        }else {
-
-            $cart_item = Cart::where('product_id', $request->id)->first();
-            $cart_item->delete();
-        }
-
-        return redirect()->route('checkout');
-    }
-
 }

@@ -7,7 +7,8 @@
     <title>BOSSALINI | Find all your items here</title>
     <link rel="stylesheet" href="{{asset('files/index.57cdf621.css')}}">
 
-    <script type="module" crossorigin="" src="{{asset('files/index.de6f6b5e.js.téléchargement')}}"></script>
+
+    {{-- <script type="module" crossorigin="" src="{{asset('files/index.de6f6b5e.js.téléchargement')}}"></script> --}}
 
     <link rel="stylesheet" href="{{asset('files/bootstrap.min.css')}}">
 

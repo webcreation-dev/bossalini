@@ -176,7 +176,7 @@
       </ul>
     </nav>
     <div>
-      <nav><a aria-current="page" href=""
+      <nav><a aria-current="page" href="{{route('home')}}"
           class="router-link-active router-link-exact-active mx-auto"><img src="{{asset('files/logo.e4b8d2f2.svg')}}"
             height="38"></a></nav>
     </div>
@@ -242,17 +242,17 @@
                         <li><a href="{{ route('change_currency', ['currency' => '€', 'id'=> 1]) }}"
                           class="flex justify-center items-center text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600"><img
                             class="mr-[10px]" src="{{asset('files/flag-eur.eb1348a4.svg')}}" alt=""><a
-                            href="{{ route('change_currency', ['currency' => '€', 'id'=> 1]) }}" class="">EUROPEAN</a></a></li>
+                            href="{{ route('change_currency', ['currency' => '€', 'id'=> 1]) }}" class="text-xs">EUROPEAN</a></a></li>
 
                             <li><a href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}"
                           class="flex justify-center items-center text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600"><img
                             class="mr-[10px]" src="{{asset('files/flag-swz.dc144f59.svg')}}" alt=""><a
-                            href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}" class="">SWITZERLAND</a></a></li>
+                            href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}" class="text-xs">SWITZERLAND</a></a></li>
 
                             <li><a href="{{ route('change_currency', ['currency' => '£', 'id'=> 3]) }}"
                           class="flex justify-center items-center text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600"><img
                             class="mr-[10px]" src="{{asset('files/flag-uk.3248720d.svg')}}" alt=""><a
-                            href="{{ route('change_currency', ['currency' => '£', 'id'=> 3]) }}" class="">UNITED KINGDOM</a></a></li>
+                            href="{{ route('change_currency', ['currency' => '£', 'id'=> 3]) }}" class="text-xs">UNITED KINGDOM</a></a></li>
 
                             <li><a href="{{ route('change_currency', ['currency' => '$', 'id'=> 4]) }}"
                           class="flex justify-center pr-9 items-center text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600"><img

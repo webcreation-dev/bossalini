@@ -18,12 +18,14 @@
                   <span class="cart-item__brand-label">{{ $product->name }}</span>
                 </div>
                 <div class="price cart-item__price ">
-                  <span class="price__current"> @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif {{getTotalPrice($product->id)}}</span>
+                    <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif  </span>
+                  <span class="price__current"> {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getTotalPrice($product->id) ) }}</span>
                 </div>
-                <a class="cart-item__name" href="https://www.nakedcph.com/en/product/7627/new-balance-990gl5-w990gl5">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif
-                    {{ $product->original_price }} </a>
+                <a class="cart-item__name" href="https://www.nakedcph.com/en/product/7627/new-balance-990gl5-w990gl5">
+                    @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}
+                </a>
                 <span class="cart-item__size-label"> Number: {{getNumberProduct($product->id)}} </span>
-                <button class="cart-item__remove"><a href="{{route('remove_item_checkout', ['id' => $product->id])}}" style="text-decoration: none !important;">
+                <button class="cart-item__remove"><a wire:click="removeItemProduct({{$product->id}})" href="#" style="text-decoration: none !important;">
                     Remove
                     </a></button>
 
@@ -65,7 +67,8 @@
                 <tbody>
                   <tr>
                     <th class="cart-totals__label cart-totals__label--products" scope="row">Total</th>
-                    <td class="cart-totals__value cart-totals__value--products">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif {{$total}}</td>
+
+                    <td class="cart-totals__value cart-totals__value--products"> <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif</span> <span class="total-price-products">15</span></td>
                   </tr>
                   <tr>
                     <th class="cart-totals__label cart-totals__label--shipping" scope="row">Shipping</th>
@@ -78,7 +81,7 @@
               <tbody>
                 <tr>
                   <th class="cart-totals__label cart-totals__label--grand-total" scope="row">SUBTOTAL</th>
-                  <td class="cart-totals__value cart-totals__value--grand-total"> @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif {{$total}} </td>
+                  <td class="cart-totals__value cart-totals__value--grand-total"> @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif 15 </td>
                 </tr>
                 {{-- <tr>
                   <th class="cart-totals__label cart-totals__label--vat" scope="row"> Including VAT (25%) </th>

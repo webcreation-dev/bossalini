@@ -22,65 +22,131 @@
                         @foreach ($products as $product)
                             <div class="xl:col-span-1 lg:col-span-2 flex flex-col items-center lg:pt-0 md:pt-[70px] pt-11">
                                 <div class="md:w-[368px]">
+                                    <div class="flex-auto justify-evenly">
+                                        <p class="space-x-1 pb-[26px] md:pt-0 pt-[19px] text-[10px] f-700">
+                                          <span class="uppercase">
+                                            <a href="https://bossalini.funcodes.bj/">HOME</a>
+                                          </span>
+                                          <span>/</span>
+                                          <span class="uppercase">
+                                            <a href="https://bossalini.funcodes.bj/product/bossalini-fly-cap-black">{{ $product->name }}</a>
+                                          </span>
+                                          <span>/</span>
+                                        </p>
+                                      </div>
+                                    <div class="flex-auto justify-evenly">
+                                        <p class="font-bold md:pt-0 text-[13px] f-700">{{ $product->name }}</p>
+                                        <p class="antialiased text-xs">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</p>
+                                      </div>
 
-                                    <div class="pt-4 flex-auto justify-center">
-                                        <p class="text-left font-bold md:pt-0 text-[13px] f-700"> {{ $product->name }} </p>
-                                        <p class="pt-2.5 text-left antialiased font-medium text-xs"></p>
-                                    </div>
-                                    <br>
+
+                                      <div class="pt-7">
+                                        <p class="antialiased text-xs">SELECT COLOUR</p>
+                                        <div class="col-span-2 pt-4">
+                                          <div class="grid grid-cols-5 gap-3 flex-auto">
+                                            @foreach ($colors as $color)
+
+                                                <div @if(!checkStockColorProduct($product->id, $color->id)) style="opacity: 0.5;" @endif class="hover:border-black hover:border hover:border-2 @if (getColorSelectProduct($product->id, $color->code) ) border-2 @endif">
+                                                    <a
+                                                    @if(checkStockColorProduct($product->id, $color->id))
+                                                    wire:click="saveColorProduct('{{$color->code}}', {{$product->id}})"
+                                                    @endif
+                                                    href="#"
+                                                     >
+                                                        <div style="width: 100%; height: 100%; background-color: <?php echo $color->code ?> ;" > </div>
+                                                        <img class="" style="opacity: 0;" src="{{asset('files/slider_home01.c824a1f9.jpg')}}" alt="Product title">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                          </div>
+                                        </div>
+                                      </div>
 
                                     <div class="md:pt-[1px] pt-4">
                                         <div>
-                                            <p class="mb-1">SELECT SIZE</p>
-                                            <div class="grid grid-cols-3 gap-[19px] flex-auto"><button
-                                                    class="active text-xs focus:text-black text-white focus:bg-white bg-black text-center py-3.5 w-full border">
-                                                    <p>xs</p>
-                                                </button><button
-                                                    class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                                                    <p>s</p>
-                                                </button><button
-                                                    class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                                                    <p>M</p>
-                                                </button><button
-                                                    class="text-xs focus:bg-black text-center py-3.5 w-full border">
-                                                    <p>L</p>
-                                                </button><button
-                                                    class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                                                    <p>XL</p>
-                                                </button><button
-                                                    class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                                                    <p>XXL</p>
-                                                </button></div>
+                                            <p class="mb-1 antialiased text-xs">SELECT SIZE</p>
+                                            <div class="grid grid-cols-3 gap-[19px] flex-auto">
+
+                                                @foreach ($sizes as $size)
+                                                <a
+                                                @if(checkStockSizeProduct($product->id, $size->id)) wire:click="saveSizeProduct('{{$size->name}}', {{$product->id}})" @endif
+                                                href="#"
+                                                >
+                                                    <button @if(!checkStockSizeProduct($product->id, $size->id)) style="opacity: 0.5;" @endif
+                                                        class="text-xs text-center py-3.5 w-full border focus:text-white focus:bg-black @if (getSizeSelectProduct($product->id, $size->name) ) text-white bg-black @endif ">
+                                                        <p>{{$size->name}}</p>
+                                                    </button>
+                                                </a>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
+                                    @if (getButtonAddCart($product->id))
 
-                                    @if (App\Models\Product::getStatusCart($product->id) == false)
-                                    <div class="pt-4">
-                                        <a  href="#"
-                                            wire:click="addToCart({{ $product->id }})" class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
-                                            ADD TO CART
-                                         </a>
-                                        </div>
-                                    @else
-                                        <div class="pt-[19px]">
-                                            <div class="py-[14px] px-[14px] bg-answer">
-                                                <a
-                                                href="#"
-                                                class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
-                                                GO TO CART </a>
+                                        @if (App\Models\Product::getStatusCart($product->id) == false)
+                                        <div class="pt-4">
+                                            <a  wire:click="addProductToCart({{$product->id}})" href="#"
+                                                class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
+                                                ADD TO CART
+                                            </a>
                                             </div>
-                                            </div>
+                                        @else
+                                            <div class="pt-[19px]">
+                                                <div class="py-[14px] px-[14px] bg-answer">
+                                                    <a
+                                                    href="{{route('add_cart')}}"
+                                                    class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
+                                                    GO TO CART </a>
+                                                </div>
+                                                </div>
+                                        @endif
                                     @endif
-
-                                    <hr
-                                        style="background-color: #cccccc; height: 2px; border: none;
-                                        margin: 30px 0;" />
 
 
                                     <div class="pt-4 flex-auto justify-center">
-                                        <p class="text-left font-bold md:pt-0 text-[13px] f-700"> PRODUCT DESCRIPTION </p>
-                                        <p class="pt-2.5 text-left antialiased font-medium text-xs">{{ $product->description }}
-                                        </p>
+
+                                        <div class="w-full">
+                                            <div class="relative border-t border-tiret2">
+                                              <button type="button" class="w-full py-3 text-left">
+                                                <div class="flex items-center justify-between">
+                                                  <span class="text-xs"> PRODUCT DESCRIPTION </span>
+                                                  <!---->
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="9" fill="none">
+                                                    <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m14.363 1-6.5 7-6.5-7"></path>
+                                                  </svg>
+                                                </div>
+                                              </button>
+                                              <div>
+                                                <div class="mb-4 text-xs">
+                                                    {{ $product->description }}
+                                                </div>
+                                              </div>
+                                            </div>
+                                            {{-- <div class="relative border-t border-tiret2">
+                                              <button type="button" class="w-full py-3 text-left">
+                                                <div class="flex items-center justify-between">
+                                                  <span class="text-xs"> PRODUCT SIZING </span>
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" fill="none">
+                                                    <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m1.363 1 7 6.5-7 6.5"></path>
+                                                  </svg>
+                                                  <!---->
+                                                </div>
+                                              </button>
+                                              <!---->
+                                            </div>
+                                            <div class="relative border-b border-t border-tiret2">
+                                              <button type="button" class="w-full py-3 text-left">
+                                                <div class="flex items-center justify-between">
+                                                  <span class="text-xs"> BODY MEASUREMENTS </span>
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" fill="none">
+                                                    <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m1.363 1 7 6.5-7 6.5"></path>
+                                                  </svg>
+                                                  <!---->
+                                                </div>
+                                              </button>
+                                              <!---->
+                                            </div> --}}
+                                          </div>
 
                                     </div>
                                 </div>
@@ -117,7 +183,7 @@
                         </div>
                         <div class="flex-auto text-center justify-evenly">
                             <p class="pt-3 text-xs text f-700"> {{ $product->name }} </p>
-                            <p class="antialiased text-xs">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif {{ $product->original_price }}</p>
+                            <p class="antialiased text-xs">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</p>
                         </div>
                     </div>
                 @endforeach

@@ -28,6 +28,34 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
+Route::get('/returns', function () {
+    return view('returns');
+})->name('returns');
+
+Route::get('/shipping', function () {
+    return view('shipping');
+})->name('shipping');
+
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+
+Route::get('/media', function () {
+    return view('media');
+})->name('media');
+
+Route::get('/playlist', function () {
+    return view('playlist');
+})->name('playlist');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
@@ -52,9 +80,8 @@ Route::get('/add_cart', AddCart::class)->name('add_cart');
 Route::get('/shop', Shop::class)->name('shop');
 Route::get('/account', Account::class)->name('account');
 Route::get('/profile', Addresse::class)->name('addresse');
+Route::get('/checkout', Checkout::class)->name('checkout');
 
 
 Route::get('/change_currency', [CurrencyController::class, 'index'])->name('change_currency');
 Route::post('/get_data_cart', [CurrencyController::class, 'getDataCart'])->name('get_data_cart');
-Route::get('/remove_item_checkout', [CurrencyController::class, 'removeItemCheckout'])->name('remove_item_checkout');
-Route::get('/checkout', Checkout::class)->name('checkout');

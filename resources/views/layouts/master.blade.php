@@ -95,7 +95,7 @@
                                         src="{{asset('files/flag-uk.3248720d.svg')}}" alt=""> --}}
                                         <img class="focus:text-black focus:font-bold extra antialiased text-xs py-2 rounded-md hover:font-bold"
                                             aria-haspopup="true" src=" @if (Auth::check())  {{ asset('files/' .  getUserImageCurrency() . '') }} @else {{ asset('files/' .  getImageCurrency() . '') }} @endif  " height="18">
-                                    <p>UNITED KINGDOM / GBP</p>
+                                    <p>@if (Auth::check())  {{getUserNameCurrency()}} @else {{getNameCurrency()}} @endif</p>
                                 </div>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
@@ -249,26 +249,37 @@
                                 <p>SELECT CURRENCY</p>
                                 <p></p>
                             </div>
-                            <div
-                                class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
-                                <img src="{{asset('files/flag-eur.eb1348a4.svg')}}" height="18">
-                                <p><a href="{{ route('change_currency', ['currency' => '€', 'id'=> 1]) }}">EUROPE / EUR</a></p>
-                            </div>
-                            <div
-                                class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
-                                <img src="{{asset('files/flag-swz.dc144f59.svg')}}" height="18">
-                                <p><a href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}">SWITZERLAND / CHF</a></p>
-                            </div>
-                            <div
-                                class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
-                                <img src="{{asset('files/flag-usa.1c85eb67.svg')}}" height="18">
-                                <p><a href="{{ route('change_currency', ['currency' => '£', 'id'=> 3]) }}">UNITED KINGDOM</a></p>
-                            </div>
-                            <div
-                                class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
-                                <img src="{{asset('files/flag-usa.1c85eb67.svg')}}" height="18">
-                                <p><a href="{{ route('change_currency', ['currency' => '$', 'id'=> 4]) }}">USA - REST OF THE WORLD / USD</a></p>
-                            </div>
+                            <a href="{{ route('change_currency', ['currency' => '€', 'id'=> 1]) }}">
+                                <div
+                                    class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
+                                    <img src="{{asset('files/flag-eur.eb1348a4.svg')}}" height="18">
+                                    <p>EUROPE / EUR</p>
+                                </div>
+                            </a>
+
+                            <a href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}">
+                                <div
+                                    class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
+                                    <img src="{{asset('files/flag-swz.dc144f59.svg')}}" height="18">
+                                    <p>SWITZERLAND / CHF</p>
+                                </div>
+                            </a>
+
+                            <a href="{{ route('change_currency', ['currency' => '£', 'id'=> 3]) }}">
+                                <div
+                                    class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
+                                    <img src="{{asset('files/flag-uk.3248720d.svg')}}" height="18">
+                                    <p>UNITED KINGDOM</p>
+                                </div>
+                            </a>
+
+                            <a href="{{ route('change_currency', ['currency' => '$', 'id'=> 4]) }}">
+                                <div
+                                    class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
+                                    <img src="{{asset('files/flag-usa.1c85eb67.svg')}}" height="18">
+                                    <p>USA - REST OF THE WORLD / USD</p>
+                                </div>
+                            </a>
                         </div>
 
 
@@ -506,7 +517,6 @@
     </div>
 
 
-    @livewireScripts
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js'></script>
@@ -587,7 +597,7 @@
                     total = total + sum;
                 }
                 totalGlobal = total ;
-                $(this).closest('.mobile-only').find('.cart-total .total-price').html(sum + ",00");
+                $(this).closest('.mobile-only').find('.cart-total .total-price').html(sum);
             });
             $('.subtotal').text(totalGlobal);
         });
@@ -612,7 +622,7 @@
                     total = total + sum;
                 }
                 totalGlobal = total ;
-                $(this).closest('.desktop-only').find('.box-cart .total_price').html(sum + ",00");
+                $(this).closest('.desktop-only').find('.box-cart .total_price').html(sum);
             });
             $('.subtotal').text(totalGlobal);
 
@@ -621,7 +631,7 @@
     });
 </script>
 
-
+@livewireScripts
 </body>
 
 </html>

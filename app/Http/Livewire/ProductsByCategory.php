@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Wishlis;
 use App\Models\Categories;
+use App\Models\CategoryProduct;
 
 class ProductsByCategory extends Component
 {
@@ -21,9 +22,10 @@ class ProductsByCategory extends Component
 
         $category_id = $request->category_id;
 
-        $products = Product::where('category_id', $request->category_id)->get();
+        $products_id = CategoryProduct::where('category_id', $request->category_id)->get(['product_id'])->toArray();
+        $products = Product::whereIn('id', $products_id)->get();
 
-        $category = Categories::where('id', 1)->get()->toArray();
+        $category = Categories::where('id', $category_id)->get()->toArray();
 
         return view('livewire.products-by-category', compact('products', 'category_id', 'category'))
         ->extends("layouts.master")

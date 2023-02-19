@@ -16,16 +16,16 @@ class Checkout extends Component
     {
         if(!(Auth::check())) {
 
+            if (!session()->has('cart_items')) {
+                $cart_items = [];
+                session()->put('cart_items', $cart_items);
+            }
+
             $cart_items = session()->get('cart_items');
             $product_ids = array_column($cart_items, 'id');
 
             $products = Product::whereIn('id', $product_ids)->get();
 
-            $totals = Product::whereIn('id', $product_ids)->get(['original_price', 'id'])->toArray();
-            $total = 0;
-            foreach ($totals as $value) {
-                $total += $value['original_price'] * $cart_items[$value['id']]['quantity'];
-            }
             $addresses = [];
 
         }else {
@@ -33,29 +33,33 @@ class Checkout extends Component
             $cart_products = Cart::where('user_id', Auth::user()->id)->where('status', 'unpaid')->get(['product_id'])->toArray();
             $products = Product::whereIn('id', $cart_products)->get();
 
-            $products_id = Product::whereIn('id', $cart_products)->get(['id'])->toArray();
-            $totals = Product::whereIn('id', $products_id)->get(['original_price', 'id'])->toArray();
-            $total = 0;
-            foreach ($totals as $value) {
-                $quantity = Cart::where('user_id', Auth::user()->id)->where('product_id', $value['id'])->where('status', 'unpaid')->first()->quantity;
-                $total += $value['original_price'] * $quantity;
-            }
             $addresses = Order::where('user_id', Auth()->user()->id)->where('status', 'default')->first()->get()->toArray();
-
             $cart_items = [];
 
         }
 
-        return view('livewire.checkout', compact('products', 'total', 'addresses', 'cart_items'))
+        return view('livewire.checkout', compact('products', 'addresses', 'cart_items'))
         ->extends("layouts.checkout")
         ->section("content");
     }
 
-    // public function removeItem($id)
-    // {
-    //     dd($id);
-    //     $cart = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('status', 'unpaid')->first();
-    //     $cart->delete();
-    //     $this->emit('cartUpdated');
-    // }
+    public function removeItemProduct($id) {
+
+        if(!(Auth::check())) {
+
+            $cart_items = session()->get('cart');
+
+            foreach ($cart_items as $key => $product) {
+                if ($product['id'] == $id) {
+                    unset($cart_items[$key]);
+                    session()->put('cart', $cart_items);
+                }
+            }
+        }else {
+
+            $cart_item = Cart::where('product_id', $id)->first();
+            $cart_item->delete();
+        }
+
+    }
 }

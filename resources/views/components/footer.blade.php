@@ -59,7 +59,7 @@
         <p class="my-3 text-xs">EUR/€ +</p>
       </span>
       <div class="border-t border-tiret"></div>
-      <p class="my-3 text-xs">BOSSALINI 2022 © - ALL RIGHTS RESERVED</p>
+      <p class="my-3 text-xs">BOSSALINI 2023 © - ALL RIGHTS RESERVED</p>
       <div class="border-t border-tiret"></div>
     </div>
     <div class="md:mx-9 mx-4 pb-9 flex mt-3 gap-x-1.5">

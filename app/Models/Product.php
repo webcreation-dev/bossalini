@@ -15,12 +15,10 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'length',
         'description',
-        'original_price',
-        'quantity',
-        'color',
-        'category_id',
+        'selling_price',
+        'sizing',
+        'measurement',
     ];
 
     public function productImages()
@@ -79,13 +77,25 @@ class Product extends Model
             }
 
         }else {
+
             $cart = session()->get('cart');
 
-            if (in_array($id, $cart)) {
-                return true;
-            } else {
-                return false;
+            $status = false;
+
+            foreach ($cart as $key => $item) {
+                if ($item['id'] != $id) {
+                    $status = false;
+                }else {
+                    if($item['status'] != "unpaid") {
+                        $status = false;
+                    }else {
+                        $status = true;
+                        break;
+                    }
+                }
             }
+
+            return $status;
         }
 
     }

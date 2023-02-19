@@ -22,10 +22,10 @@
             </div>
             <div class="flex-auto justify-evenly">
             <p class="text-xs font-bold text-center">{{ $product->name }}</p>
-            <p class="antialiased text-xs text-center mt-0.5">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif {{ $product->original_price }}</p>
+            <p class="antialiased text-xs text-center mt-0.5">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</p>
             </div>
 
-            @if ($product->quantity == 0)
+            {{-- @if ($product->quantity == 0)
 
             <div class="text-center">
                 <button
@@ -45,14 +45,13 @@
                 @else
 
                 <div class="py-[14px] px-[14px] bg-answer">
-                    {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">{{ $product->name }}</span><span class="">was added to the cart!</span></p> --}}
                     <a
-                    href="#"
+                    href="{{route('add_cart')}}"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
                 </div>
                 @endif
-            @endif
+            @endif --}}
         </div>
 
 

@@ -8,6 +8,7 @@ use App\Models\Categories;
 use App\Models\Currency;
 use App\Models\Product;
 use App\Models\ProductImage;
+use Illuminate\Support\Facades\DB;
 use App\Models\Upsell;
 
 class FactoryTableSeeder extends Seeder
@@ -21,650 +22,137 @@ class FactoryTableSeeder extends Seeder
     {
         // Categories of products
         Categories::create([
-            'name' => 'Hoodiees',
+            'name' => 'PANTS - ALL',
         ]);
         Categories::create([
-            'name' => 'Pants',
+            'name' => 'HEADWEAR - ALL',
         ]);
         Categories::create([
-            'name' => 'Headwars',
+            'name' => 'HOODIES - ALL',
         ]);
         Categories::create([
-            'name' => 'Teeshirts',
+            'name' => 'T-SHIRTS - ALL',
+        ]);
+        Categories::create([
+            'name' => 'ACCESSORIES - ALL',
+        ]);
+        Categories::create([
+            'name' => 'KEEP*IT*FLY - ALL',
         ]);
 
         // Products
         Product::create([
-            'name' => 'BOSSALINI FLY HOODIE - BLACK',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 1,
-            'quantity' => 10,
-            'length' => 1,
+            'name' => 'BOSSALINI FLY HOODIE - BLACK PANTS - BLACK',
+            'description' => 'Oversized fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs. 7 oz 65% cotton, 35% polyester twill Embroidered patch front Embroidery left / right / back Adjustable snapback strap Slim fit / size up for relax fit Palette tone: Mustang Brown 100% Cotton body. 480gsm. Model is 186cm and 74kg wearing size Large Made in Portugal Product code: M04199-184',
+            'selling_price' => 98.00,
         ]);
 
         Product::create([
-            'name' => 'BOSSALINI FLY HEADWARS - WHITE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 2,
-            'quantity' => 10,
-            'length' => 2,
+            'name' => 'BOSSALINI FLY CAP - BLACK HEADWEAR 1 - BLACK',
+            'description' => 'Oversized fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs. 7 oz 65% cotton, 35% polyester twill Embroidered patch front Embroidery left / right / back Adjustable snapback strap Slim fit / size up for relax fit Palette tone: Mustang Brown 100% Cotton body. 480gsm. Model is 186cm and 74kg wearing size Large Made in Portugal Product code: M04199-184',
+            'selling_price' => 69.00,
         ]);
 
         Product::create([
-            'name' => 'BOSSALINI FLY PANT - GREEN',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 3,
-            'quantity' => 0,
-            'length' => 3,
+            'name' => 'BOSSALINI FLY HOODIES - BLACK',
+            'description' => 'Oversized fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs. 7 oz 65% cotton, 35% polyester twill Embroidered patch front Embroidery left / right / back Adjustable snapback strap Slim fit / size up for relax fit Palette tone: Mustang Brown 100% Cotton body. 480gsm. Model is 186cm and 74kg wearing size Large Made in Portugal Product code: M04199-184',
+            'selling_price' => 10000,
         ]);
 
         Product::create([
-            'name' => 'BOSSALINI FLY HOOD - BLUE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 4,
-            'quantity' => 10,
-            'length' => 4,
+            'name' => 'Teeshirts HOODIES - BLACK',
+            'description' => 'Oversized fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs. 7 oz 65% cotton, 35% polyester twill Embroidered patch front Embroidery left / right / back Adjustable snapback strap Slim fit / size up for relax fit Palette tone: Mustang Brown 100% Cotton body. 480gsm. Model is 186cm and 74kg wearing size Large Made in Portugal Product code: M04199-184',
+            'selling_price' => 566,
         ]);
 
         Product::create([
-            'name' => 'BOSSALINI FLY KEEP - ROSE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 1,
-            'quantity' => 0,
-            'length' => 5,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY TEE - INDIGO',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 2,
-            'quantity' => 10,
-            'length' => 6,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY HOOD - BLUE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 3,
-            'quantity' => 0,
-            'length' => 1,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY KEEP - ROSE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 4,
-            'quantity' => 10,
-            'length' => 2,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY TEE - INDIGO',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 1,
-            'quantity' => 0,
-            'length' => 3,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY HOODIE - BLACK',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 1,
-            'quantity' => 10,
-            'length' => 1,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY HEADWARS - WHITE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 2,
-            'quantity' => 10,
-            'length' => 2,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY PANT - GREEN',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 3,
-            'quantity' => 0,
-            'length' => 3,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY HOOD - BLUE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 4,
-            'quantity' => 10,
-            'length' => 4,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY KEEP - ROSE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 1,
-            'quantity' => 10,
-            'length' => 5,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY TEE - INDIGO',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 2,
-            'quantity' => 0,
-            'length' => 6,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY HOOD - BLUE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 3,
-            'quantity' => 0,
-            'length' => 1,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY KEEP - ROSE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 4,
-            'quantity' => 10,
-            'length' => 2,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY TEE - INDIGO',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 1,
-            'quantity' => 10,
-            'length' => 3,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY TEE - INDIGO',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 2,
-            'quantity' => 0,
-            'length' => 6,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY HOOD - BLUE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 3,
-            'quantity' => 0,
-            'length' => 1,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY KEEP - ROSE',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 4,
-            'quantity' => 10,
-            'length' => 2,
-        ]);
-
-        Product::create([
-            'name' => 'BOSSALINI FLY TEE - INDIGO',
-            'description' => 'Overised fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs',
-            'original_price' => 98.00,
-            'category_id' => 1,
-            'quantity' => 10,
-            'length' => 3,
+            'name' => 'FLY NYLON CAP / BUTTERCREAM',
+            'description' => 'Oversized fit hoodie in a heavyweight jersey cotton. Super soft, pre-shrunk and piece dyed for the ultimate jersey. Ribbed hem & cuffs. 7 oz 65% cotton, 35% polyester twill Embroidered patch front Embroidery left / right / back Adjustable snapback strap Slim fit / size up for relax fit Palette tone: Mustang Brown 100% Cotton body. 480gsm. Model is 186cm and 74kg wearing size Large Made in Portugal Product code: M04199-184',
+            'selling_price' => 68.00,
         ]);
 
         // Images of products
-
-        //Produit 1
         ProductImage::create([
             'product_id' => 1,
-            'image' => 'shoes1.jpg',
-        ]);
-
-        ProductImage::create([
-            'product_id' => 1,
-            'image' => 'shoes2.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 1,
-            'image' => 'shoes3.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 1,
-            'image' => 'shoes4.jpg',
-        ]);
-
-        //Produit 2
-        ProductImage::create([
-            'product_id' => 2,
-            'image' => 'shoes5.jpg',
+            'image' => 'pant-1.jpg',
         ]);
         ProductImage::create([
             'product_id' => 2,
-            'image' => 'shoes6.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 2,
-            'image' => 'shoes7.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 2,
-            'image' => 'shoes8.jpg',
-        ]);
-
-        //Produit 3
-        ProductImage::create([
-            'product_id' => 3,
-            'image' => 'shoes9.jpg',
+            'image' => 'headwar-1.jpg',
         ]);
         ProductImage::create([
             'product_id' => 3,
-            'image' => 'shoes10.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 3,
-            'image' => 'shoes11.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 3,
-            'image' => 'shoes12.jpg',
-        ]);
-
-        ProductImage::create([
-            'product_id' => 3,
-            'image' => 'shoes13.jpg',
-        ]);
-
-        //Produit 4
-        ProductImage::create([
-            'product_id' => 4,
-            'image' => 'pant1.jpg',
+            'image' => 'hoodie-1.png',
         ]);
         ProductImage::create([
             'product_id' => 4,
-            'image' => 'pant2.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 4,
-            'image' => 'pant3.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 4,
-            'image' => 'pant4.jpg',
-        ]);
-
-        //Produit 5
-        ProductImage::create([
-            'product_id' => 5,
-            'image' => 'pant5.jpg',
+            'image' => 'hoodie-2.png',
         ]);
         ProductImage::create([
             'product_id' => 5,
-            'image' => 'pant6.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 5,
-            'image' => 'pant7.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 5,
-            'image' => 'pant8.jpg',
+            'image' => 'tshirt-1.jpg',
         ]);
 
-        //Produit 6
-        ProductImage::create([
-            'product_id' => 6,
-            'image' => 'pant9.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 6,
-            'image' => 'pant10.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 6,
-            'image' => 'pant11.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 6,
-            'image' => 'pant12.jpg',
+        // Affection des catégories aux produits
+        DB::table("category_products")->insert([
+            ["product_id"=>1, "category_id"=>1],
         ]);
 
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 7,
-            'image' => 'pant13.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 7,
-            'image' => 'pant14.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 7,
-            'image' => 'pant15.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 7,
-            'image' => 'pant16.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>2, "category_id"=>2],
         ]);
 
-        //Produit 8
-        ProductImage::create([
-            'product_id' => 8,
-            'image' => 'pull1.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>3, "category_id"=>3],
         ]);
-        ProductImage::create([
-            'product_id' => 8,
-            'image' => 'pull2.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 8,
-            'image' => 'pull3.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 8,
-            'image' => 'pull4.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>4, "category_id"=>3],
         ]);
 
-        //Produit 9
-        ProductImage::create([
-            'product_id' => 9,
-            'image' => 'pull5.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 9,
-            'image' => 'pull6.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 9,
-            'image' => 'pull7.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 9,
-            'image' => 'pull8.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>5, "category_id"=>4],
         ]);
 
-        //
-        ProductImage::create([
-            'product_id' => 10,
-            'image' => 'pull9.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>2, "category_id"=>5],
         ]);
 
-        ProductImage::create([
-            'product_id' => 10,
-            'image' => 'pull10.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>1, "category_id"=>6],
         ]);
-        ProductImage::create([
-            'product_id' => 10,
-            'image' => 'pull11.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>2, "category_id"=>6],
         ]);
-        ProductImage::create([
-            'product_id' => 10,
-            'image' => 'pull12.jpg',
-        ]);
-
-        //Produit 2
-        ProductImage::create([
-            'product_id' => 11,
-            'image' => 'pull13.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 11,
-            'image' => 'pull14.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 11,
-            'image' => 'pull15.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 11,
-            'image' => 'pull16.jpg',
-        ]);
-
-        //Produit 3
-        ProductImage::create([
-            'product_id' => 12,
-            'image' => 'pull17.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 12,
-            'image' => 'pull18.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 12,
-            'image' => 'pull19.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 12,
-            'image' => 'pul20.jpg',
-        ]);
-
-        //Produit 4
-        ProductImage::create([
-            'product_id' => 13,
-            'image' => 'pull21.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 13,
-            'image' => 'pull22.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 13,
-            'image' => 'pull23.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 13,
-            'image' => 'pull24.jpg',
-        ]);
-
-        //Produit 5
-        ProductImage::create([
-            'product_id' => 14,
-            'image' => 'pull25.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 14,
-            'image' => 'pull26.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 14,
-            'image' => 'pull27.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 14,
-            'image' => 'pull28.jpg',
-        ]);
-
-        //Produit 6
-        ProductImage::create([
-            'product_id' => 15,
-            'image' => 'pull29.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 15,
-            'image' => 'pull30.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 15,
-            'image' => 'pull31.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 15,
-            'image' => 'pull32.jpg',
-        ]);
-
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 16,
-            'image' => 'pull33.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 16,
-            'image' => 'pull34.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 16,
-            'image' => 'pull35.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 16,
-            'image' => 'pull36.jpg',
-        ]);
-
-        //******************************* */
-
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 17,
-            'image' => 'tee1.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 17,
-            'image' => 'tee2.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 17,
-            'image' => 'tee3.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 17,
-            'image' => 'tee4.jpg',
-        ]);
-
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 18,
-            'image' => 'tee5.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 18,
-            'image' => 'tee6.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 18,
-            'image' => 'tee7.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 18,
-            'image' => 'tee8.jpg',
-        ]);
-
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 19,
-            'image' => 'tee9.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 19,
-            'image' => 'tee10.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 19,
-            'image' => 'tee11.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 19,
-            'image' => 'tee12.jpg',
-        ]);
-
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 20,
-            'image' => 'tee13.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 20,
-            'image' => 'tee14.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 20,
-            'image' => 'tee15.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 20,
-            'image' => 'tee16.jpg',
-        ]);
-
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 21,
-            'image' => 'tee17.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 21,
-            'image' => 'tee18.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 21,
-            'image' => 'tee19.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 21,
-            'image' => 'tee20.jpg',
-        ]);
-
-        //Produit 7
-        ProductImage::create([
-            'product_id' => 22,
-            'image' => 'tee21.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' =>   22,
-            'image' => 'tee22.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 22,
-            'image' => 'tee23.jpg',
-        ]);
-        ProductImage::create([
-            'product_id' => 22,
-            'image' => 'tee24.jpg',
+        DB::table("category_products")->insert([
+            ["product_id"=>5, "category_id"=>6],
         ]);
 
         //Upsell of Products
 
         Upsell::create([
             'product_id' => 1,
-            'upsell_product_id' => 7,
+            'upsell_product_id' => 1,
         ]);
         Upsell::create([
             'product_id' => 1,
-            'upsell_product_id' => 8,
+            'upsell_product_id' => 2,
         ]);
         Upsell::create([
             'product_id' => 1,
-            'upsell_product_id' => 9,
+            'upsell_product_id' => 5,
         ]);
 
         Upsell::create([
             'product_id' => 2,
+            'upsell_product_id' => 1,
+        ]);
+        Upsell::create([
+            'product_id' => 2,
+            'upsell_product_id' => 2,
+        ]);
+        Upsell::create([
+            'product_id' => 2,
             'upsell_product_id' => 5,
-        ]);
-        Upsell::create([
-            'product_id' => 2,
-            'upsell_product_id' => 6,
-        ]);
-        Upsell::create([
-            'product_id' => 2,
-            'upsell_product_id' => 4,
         ]);
 
         Upsell::create([
@@ -673,17 +161,17 @@ class FactoryTableSeeder extends Seeder
         ]);
         Upsell::create([
             'product_id' => 3,
-            'upsell_product_id' => 7,
+            'upsell_product_id' => 2,
         ]);
         Upsell::create([
             'product_id' => 3,
-            'upsell_product_id' => 8,
+            'upsell_product_id' => 5,
         ]);
 
 
         Upsell::create([
             'product_id' => 4,
-            'upsell_product_id' => 7,
+            'upsell_product_id' => 1,
         ]);
         Upsell::create([
             'product_id' => 4,
@@ -696,7 +184,7 @@ class FactoryTableSeeder extends Seeder
 
         Upsell::create([
             'product_id' => 5,
-            'upsell_product_id' => 9,
+            'upsell_product_id' => 1,
         ]);
         Upsell::create([
             'product_id' => 5,
@@ -704,77 +192,274 @@ class FactoryTableSeeder extends Seeder
         ]);
         Upsell::create([
             'product_id' => 5,
-            'upsell_product_id' => 6,
-        ]);
-
-        Upsell::create([
-            'product_id' => 6,
-            'upsell_product_id' => 1,
-        ]);
-        Upsell::create([
-            'product_id' => 6,
-            'upsell_product_id' => 8,
-        ]);
-        Upsell::create([
-            'product_id' => 6,
-            'upsell_product_id' => 3,
-        ]);
-
-        Upsell::create([
-            'product_id' => 7,
-            'upsell_product_id' => 3,
-        ]);
-        Upsell::create([
-            'product_id' => 7,
-            'upsell_product_id' => 5,
-        ]);
-        Upsell::create([
-            'product_id' => 7,
-            'upsell_product_id' => 8,
-        ]);
-
-        Upsell::create([
-            'product_id' => 8,
-            'upsell_product_id' => 1,
-        ]);
-        Upsell::create([
-            'product_id' => 8,
-            'upsell_product_id' => 2,
-        ]);
-        Upsell::create([
-            'product_id' => 8,
-            'upsell_product_id' => 3,
-        ]);
-
-        Upsell::create([
-            'product_id' => 9,
-            'upsell_product_id' => 5,
-        ]);
-        Upsell::create([
-            'product_id' => 9,
-            'upsell_product_id' => 3,
-        ]);
-        Upsell::create([
-            'product_id' => 9,
             'upsell_product_id' => 5,
         ]);
 
+        // Tailles
+        DB::table("sizes")->insert([
+            ["name"=>"XS"],
+            ["name"=>"S"],
+            ["name"=>"M"],
+            ["name"=>"L"],
+            ["name"=>"XL"],
+            ["name"=>"XXL"],
+        ]);
 
+        // Couleurs
+        DB::table("colors")->insert([
+            ["code"=>"#F4ECDD"],
+            ["code"=>"#50352C"],
+            ["code"=>"#7966B6"],
+            ["code"=>"#172927"],
+            ["code"=>"#54ABEE"],
+        ]);
+
+
+        //Tailles des produits
+        DB::table("size_products")->insert([
+            ["product_id"=>1,
+            "size_id"=>1,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>1,
+            "size_id"=>2,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>1,
+            "size_id"=>3,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>1,
+            "size_id"=>4,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>1,
+            "size_id"=>5,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>1,
+            "size_id"=>6
+            ,"quantity"=>1,
+            "price"=>78],
+        ]);
+
+        DB::table("size_products")->insert([
+            ["product_id"=>2,
+            "size_id"=>1,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>2,
+            "size_id"=>2,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>2,
+            "size_id"=>3,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>2,
+            "size_id"=>4,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>2,
+            "size_id"=>5,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>2,
+            "size_id"=>6,
+            "quantity"=>1,
+            "price"=>78],
+        ]);
+
+        DB::table("size_products")->insert([
+            ["product_id"=>3,
+            "size_id"=>1,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>3,
+            "size_id"=>2,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>3,
+            "size_id"=>3,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>3,
+            "size_id"=>4,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>3,
+            "size_id"=>5,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>3,
+            "size_id"=>6,
+            "quantity"=>1,
+            "price"=>78],
+        ]);
+
+        DB::table("size_products")->insert([
+            ["product_id"=>4,
+            "size_id"=>1,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>4,
+            "size_id"=>2,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>4,
+            "size_id"=>3,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>4,
+            "size_id"=>4,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>4,
+            "size_id"=>5,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>4,
+            "size_id"=>6,
+            "quantity"=>1,
+            "price"=>78],
+        ]);
+
+        DB::table("size_products")->insert([
+            ["product_id"=>5,
+            "size_id"=>1,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>5,
+            "size_id"=>2,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>5,
+            "size_id"=>3,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>5,
+            "size_id"=>4,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>5,
+            "size_id"=>5,
+            "quantity"=>1,
+            "price"=>78],
+            ["product_id"=>5,
+            "size_id"=>6,
+            "quantity"=>1,
+            "price"=>78],
+        ]);
+
+        //Couleurs des produits
+        DB::table("color_products")->insert([
+            ["product_id"=>1,
+            "color_id"=>1,
+            "quantity"=>1],
+            ["product_id"=>1,
+            "color_id"=>2,
+            "quantity"=>1],
+            ["product_id"=>1,
+            "color_id"=>3,
+            "quantity"=>1],
+            ["product_id"=>1,
+            "color_id"=>4,
+            "quantity"=>1],
+            ["product_id"=>1,
+            "color_id"=>5,
+            "quantity"=>1],
+        ]);
+
+        DB::table("color_products")->insert([
+            ["product_id"=>2,
+            "color_id"=>1,
+            "quantity"=>1],
+            ["product_id"=>2,
+            "color_id"=>2,
+            "quantity"=>1],
+            ["product_id"=>2,
+            "color_id"=>3,
+            "quantity"=>1],
+            ["product_id"=>2,
+            "color_id"=>4,
+            "quantity"=>1],
+            ["product_id"=>2,
+            "color_id"=>5,
+            "quantity"=>1],
+        ]);
+
+        DB::table("color_products")->insert([
+            ["product_id"=>3,
+            "color_id"=>1,
+            "quantity"=>1],
+            ["product_id"=>3,
+            "color_id"=>2,
+            "quantity"=>1],
+            ["product_id"=>3,
+            "color_id"=>3,
+            "quantity"=>1],
+            ["product_id"=>3,
+            "color_id"=>4,
+            "quantity"=>1],
+            ["product_id"=>3,
+            "color_id"=>5,
+            "quantity"=>1],
+        ]);
+
+        DB::table("color_products")->insert([
+            ["product_id"=>4,
+            "color_id"=>1,
+            "quantity"=>1],
+            ["product_id"=>4,
+            "color_id"=>2,
+            "quantity"=>1],
+            ["product_id"=>4,
+            "color_id"=>3,
+            "quantity"=>1],
+            ["product_id"=>4,
+            "color_id"=>4,
+            "quantity"=>1],
+            ["product_id"=>4,
+            "color_id"=>5,
+            "quantity"=>1],
+        ]);
+
+        DB::table("color_products")->insert([
+            ["product_id"=>5,
+            "color_id"=>1,
+            "quantity"=>1],
+            ["product_id"=>5,
+            "color_id"=>2,
+            "quantity"=>1],
+            ["product_id"=>5,
+            "color_id"=>3,
+            "quantity"=>1],
+            ["product_id"=>5,
+            "color_id"=>4,
+            "quantity"=>1],
+            ["product_id"=>5,
+            "color_id"=>5,
+            "quantity"=>1],
+        ]);
         //Currencies
         Currency::create ([
             'code' => '€',
+            'rate' => '€',
             'image' => 'flag-eur.eb1348a4.svg',
         ]);
         Currency::create ([
             'code' => 'CHF',
+            'rate' => 'CHF',
             'image' => 'flag-swz.dc144f59.svg',
         ]);
         Currency::create ([
             'code' => '£',
+            'rate' => 'GBP',
             'image' => 'flag-uk.3248720d.svg',
         ]);
         Currency::create ([
             'code' => '$',
+            'rate' => 'USD',
             'image' => 'flag-usa.1c85eb67.svg',
         ]);
 

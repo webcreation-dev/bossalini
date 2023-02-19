@@ -3,10 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cart;
+use App\Models\Color;
+use App\Models\ColorProduct;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Size;
+use App\Models\SizeProduct;
 use App\Models\Upsell;
 use App\Models\Wishlis;
 use Illuminate\Support\Facades\Auth;
@@ -29,10 +33,18 @@ class SingleProduct extends Component
         $images = ProductImage::where('product_id', $request->product_id)->get();
 
         $upsells_id = Upsell::where('product_id', $request->product_id)->get(['upsell_product_id'])->toArray();
-
         $upsells_products = Product::whereIn('id', $upsells_id)->get();
 
-        return view('livewire.single-product', compact('products', 'images', 'upsells_products'))
+        //********************************************************************* */
+        $colors_id = ColorProduct::where('product_id', $request->product_id)->get(['color_id'])->toArray();
+        $colors = Color::whereIn('id', $colors_id)->get();
+
+        $sizes_id =  SizeProduct::where('product_id', $request->product_id)->get(['size_id'])->toArray();
+        $sizes = Size::whereIn('id', $sizes_id)->get();
+        //********************************************************************* */
+
+
+        return view('livewire.single-product', compact('products', 'images', 'upsells_products', 'colors', 'sizes'))
         ->extends("layouts.master")
         ->section("content");
     }
@@ -76,34 +88,204 @@ class SingleProduct extends Component
 
 
 
-    public function addToCart($id, Request $request) {
+    public function addToCart($id) {
 
+        $product = [
+            "color" => "",
+            "status" => "unpaid",
+            "size" => "",
+            "id" => $id
+        ];
 
-        if(Auth::check()) {
+        if(!(Auth::check())) {
 
-            Cart::create([
-                'user_id' => Auth::user()->id,
-                'product_id' => $id,
-            ]);
+            $product_in_cart = false;
+
+            if (session()->has('cart')) {
+                $cart_items = session()->get('cart');
+
+                foreach ($cart_items as $key => $item) {
+                    if ($item['id'] == $id) {
+                        $cart_items[$key]['status'] = "unpaid";
+                        session()->put('cart', $cart_items);
+                        $product_in_cart = true;
+                        break;
+                    }
+                }
+            }
+            if (!$product_in_cart) {
+                $cart_items = session()->get('cart');
+                $cart_items[] = $product;
+                session()->put('cart', $cart_items);
+            }
 
         }else {
 
-            $cart = session()->get('cart');
+            $product = Cart::where('product_id', $id);
+            if(!($product->count() == 0)) {
+                Cart::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $id,
+                    'status' => "unpaid",
+                ]);
+            }else {
+                $product->update([
+                    'status' => "unpaid",
+                ]);
+            }
 
-            if (in_array($id, $cart)) {
+        }
+    }
 
-                $key = array_search($id, $cart);
-                if ($key !== false) {
-                    array_splice($cart, $key, 1);
+    public function saveColorProduct($color, $id, Request $request) {
+
+        $color_product = [
+            "color" => $color,
+            "status" => "nocart",
+            "size" => "",
+            "id" => $id
+        ];
+
+        if(!(Auth::check())) {
+
+            $product_in_cart = false;
+
+            if (session()->has('cart')) {
+                $cart_items = session()->get('cart');
+
+                foreach ($cart_items as $key => $item) {
+                    if ($item['id'] == $id) {
+                        $cart_items[$key]['color'] = $color;
+                        session()->put('cart', $cart_items);
+                        $product_in_cart = true;
+                        break;
+                    }
                 }
-                session()->put('cart', $cart);
-            } else {
+            }
+            if (!$product_in_cart) {
+                $cart_items = session()->get('cart');
+                $cart_items[] = $color_product;
+                session()->put('cart', $cart_items);
+            }
 
-                $cart[] = $id;
-                session()->put('cart', $cart);
+        }else {
+
+            $product = Cart::where('product_id', $id);
+            if(!($product->count() == 0)) {
+                Cart::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $id,
+                    'color' => $color,
+                ]);
+            }else {
+                $product->update([
+                    'color' => $color,
+                ]);
             }
         }
-
         $request->merge(['product_id' => $id]);
     }
+
+    public function saveSizeProduct($size, $id, Request $request) {
+
+        $size_product = [
+            "color" => "",
+            "status" => "nocart",
+            "size" => $size,
+            "id" => $id
+        ];
+
+        if(!(Auth::check())) {
+
+            $product_in_cart = false;
+
+            if (session()->has('cart')) {
+                $cart_items = session()->get('cart');
+
+                foreach ($cart_items as $key => $item) {
+                    if ($item['id'] == $id) {
+                        $cart_items[$key]['size'] = $size;
+                        session()->put('cart', $cart_items);
+                        $product_in_cart = true;
+                        break;
+                    }
+                }
+            }
+            if (!$product_in_cart) {
+                $cart_items = session()->get('cart');
+                $cart_items[] = $size_product;
+                session()->put('cart', $cart_items);
+            }
+
+        }else {
+
+            $product = Cart::where('product_id', $id);
+            if(!($product->count() == 0)) {
+                Cart::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $id,
+                    'size' => $size,
+                ]);
+            }else {
+                $product->update([
+                    'size' => $size,
+                ]);
+            }
+
+        }
+        $request->merge(['product_id' => $id]);
+    }
+
+    public function addProductToCart($id, Request $request) {
+
+        $product = [
+            "color" => "",
+            "status" => "unpaid",
+            "size" => "",
+            "id" => $id
+        ];
+
+        if(!(Auth::check())) {
+
+            $product_in_cart = false;
+
+            if (session()->has('cart')) {
+                $cart_items = session()->get('cart');
+
+                foreach ($cart_items as $key => $item) {
+                    if ($item['id'] == $request->id) {
+                        $cart_items[$key]['status'] = "unpaid";
+                        session()->put('cart', $cart_items);
+                        $product_in_cart = true;
+                        break;
+                    }
+                }
+            }
+            if (!$product_in_cart) {
+                $cart_items = session()->get('cart');
+                $cart_items[] = $product;
+                session()->put('cart', $cart_items);
+            }
+
+        }else {
+
+            $product = Cart::where('product_id', $id);
+            if($product->count() == 0) {
+                Cart::create([
+                    'user_id' => Auth::user()->id,
+                    "color" => "",
+                    "size" => "",
+                    'product_id' => $id,
+                    'status' => "unpaid",
+                ]);
+            }else {
+                $product->update([
+                    'status' => "unpaid",
+                ]);
+            }
+
+        }
+        $request->merge(['product_id' => $id]);
+}
+
 }

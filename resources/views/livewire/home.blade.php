@@ -24,7 +24,7 @@
     </div>
 </section>
 <section class="hidden lg:flex py-5 items-center justify-center space-x-5 section3">
-    <a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}"
+    <a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}"
         class="cursor-pointer relative text-center"><img
             class="h-[600px] w-screen bg-cover md:block hidden"
             src="{{ asset('files/1674478440category.png') }}" alt="Product title">
@@ -33,7 +33,7 @@
             <p class="font-bold italic text-[53px] leading-normal">HOODIES</p>
         </div>
     </a>
-    <a href="{{ route('get_products_by_categories', ['category_id' => 2]) }}" class="cursor-pointer relative text-center"><img
+    <a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}" class="cursor-pointer relative text-center"><img
             class="h-[600px] w-screen bg-cover md:block hidden"
             src="{{ asset('files/1675024764category.png') }}" alt="Product title">
         <div class="absolute top-1/2 w-full text-white text-sm">
@@ -41,7 +41,7 @@
             <p class="font-bold italic text-[53px] leading-normal">PANTS</p>
         </div>
     </a>
-    <a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}" class="cursor-pointer relative text-center">
+    <a href="{{ route('get_products_by_categories', ['category_id' => 2]) }}" class="cursor-pointer relative text-center">
         <img
             class="h-[600px] w-screen bg-cover md:block hidden"
             src="{{ asset('files/1675024893category.png') }}" alt="Product title">
@@ -109,8 +109,8 @@
                     </div>
                     <div class="flex-auto text-center justify-evenly">
                         <p class="pt-3 text-xs text f-700"> {{ $product->name }} </p>
-                        <p class="antialiased text-xs">@if (Auth::check()) {{getUserCurrency()}} @else
-                            {{getCodeCurrency()}} @endif {{ $product->original_price }}</p>
+                        <p class="antialiased text-xs">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</p>
+
                     </div>
                 </div>
 

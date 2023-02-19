@@ -34,7 +34,7 @@
           </div>
           <div class="flex-auto justify-evenly">
             <p class="text-xs font-bold">{{ $product->name }}</p>
-            <p class="antialiased text-xs mt-0.5">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif {{ $product->original_price }}</p>
+            <p class="antialiased text-xs mt-0.5">@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</p>
           </div>
         </div>
 

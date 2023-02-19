@@ -57,13 +57,16 @@
 
                                 <p class="pt-2.5 text-left antialiased font-medium text-xs"> M/ BLACK @if (Auth::check())
                                     {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif
-                                    {{$product->original_price}}
+                                    {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}
+
                                 </p>
 
 
                                 <p class="text-[13px]"
                                     style="text-decoration: underline; position: absolute; bottom: 0; left: 0; right: 0; text-align: center; display: flex; align-items: center;">
-                                    <button wire:click="remove({{ $product->id }})">REMOVE</button>
+                                    <a wire:click="removeItemProduct({{$product->id}})" href="#" style="text-decoration: none !important;">
+                                        REMOVE
+                                        </a>
                                 </p>
                             </div>
 
@@ -73,7 +76,9 @@
 
                             <p class="text-[13px] font-bold flex justify-center text-center article ">
                                 <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif</span>
-                                <span class="item_price"> {{$product->original_price}},00 </span>
+
+                                <span class="item_price"> {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }} </span>
+
                             </p>
 
                             <input type="number" value="1" name="products[{{ $product->id }}][quantity]"
@@ -107,7 +112,10 @@
                                             src="{{ asset('files/' . App\Models\Product::getFirstImageAttribute($product->id) . '') }}"
                                             alt="" width="90" height="90">
                                     </p>
-                                    <button wire:click="remove({{ $product->id }})" class="remove-price" style="text-align: left;">REMOVE</button>
+                                    <button type="button" ><a wire:click="removeItemProduct({{$product->id}})" href="#" style="text-decoration: none !important;">
+                                        REMOVE
+                                        </a></button>
+                                    {{-- <button wire:click="remove({{ $product->id }})" class="remove-price" style="text-align: left;">REMOVE</button> --}}
 
                                 </div>
 
@@ -118,7 +126,7 @@
                                             style="margin-bottom: auto; "> BOSSALINI FLY HOODIE - BLACK </p>
                                         <p class="text-left col  md:pt-0 text-[13px] f-700"
                                             style="margin-bottom: auto; align-self-center"> <span>M / CHF</span> <span
-                                                class="item_price">112,00</span> </p>
+                                                class="item_price">112</span> </p>
                                     </div>
 
                                     <input type="number" name="products[{{ $product->id }}][quantity]"
@@ -130,7 +138,7 @@
                                     style="flex-direction: column; justify-content : space-between; text-align:end; ">
 
                                     <p class="text-end col  md:pt-0 text-[13px] f-700" style="margin-bottom: auto; align-self-end">
-                                        <span class="total-price">112,00</span> </p>
+                                        <span class="total-price">112</span> </p>
 
 
                                     <button type="button"
@@ -274,8 +282,8 @@
                     </div>
                     <div class="flex-auto text-center justify-evenly">
                         <p class="pt-3 text-xs text f-700"> {{ $product->name }} </p>
-                        <p class="antialiased text-xs">@if (Auth::check()) {{getUserCurrency()}} @else
-                            {{getCodeCurrency()}} @endif {{ $product->original_price }}</p>
+                        <p class="antialiased text-xs"> <span> @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif </span>  {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</p>
+
                     </div>
                 </div>
 

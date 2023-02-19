@@ -21,7 +21,7 @@
             <header class="cart-header">
               <div class="cart-header-container">
                 <div class="cart-header__logo">
-                  <a class="site-logo" href="https://www.nakedcph.com/en/">
+                  <a class="site-logo" href="{{route('home')}}">
                     <img src="{{asset('files/logo.e4b8d2f2.svg')}}" height="25">
                     <span class="site-logo__text">Bossalini Company</span>
                   </a>
@@ -55,6 +55,13 @@
     <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
+
+        let totalPrice = 0;
+        $('span.price__current').each(function() {
+            const price = parseFloat($(this).text().substring(1));
+            totalPrice += price;
+        });
+        $('.total-price-products').text(totalPrice);
     });
     </script>
   </body>
