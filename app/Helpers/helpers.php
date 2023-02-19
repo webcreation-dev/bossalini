@@ -1,10 +1,10 @@
 <?php
 use App\Models\Cart;
-use App\Models\ColorProduct;
+use App\Models\Color;
 use App\Models\Currency;
 use App\Models\Product;
 use App\Models\Size;
-use App\Models\SizeProduct;
+use App\Models\SizesColorsProducts;
 use Illuminate\Support\Facades\Auth;
 
 define("ADDRESS", "adderss");
@@ -99,16 +99,20 @@ function getColorSelectProduct($id, $color) {
             $color_select = true;
         }
 
-    }else {
+    }
+    else {
 
         $cart_items = session()->get('cart');
 
         foreach ($cart_items as $key => $item) {
-            if ($item['id'] == $id && $item['color'] == $color) {
+            if ($item['id'] == $id &&   $color == $item['color']) {
+
                 $color_select = true;
             }
         }
+
     }
+
     return $color_select;
 }
 
@@ -116,108 +120,135 @@ function getButtonAddCart($id) {
 
     $button_add_cart = false;
 
+    $product_simple = SizesColorsProducts::where('product_id', $id)->where('color_id', "")->where('size_id', "")->count();
+    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "")->count();
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('size_id', '!=', "")->count();
+
+
     if(Auth::check()) {
 
-        $check_color_product = ColorProduct::where('product_id', $id)->count();
-        $check_size_product = SizeProduct::where('product_id', $id)->count();
+        if($product_simple > 0) {
 
+            $product = Cart::where('product_id', $id)->where('size', "")->where('color', "");
+            $button_add_cart = ($product->count() > 0) ? false : true;
+        }
 
-        if($check_color_product == 0 && $check_size_product > 0) {
+        if($product_sizes > 0) {
 
-            $product = Cart::where('product_id', $id)->whereNotNull('size');
-            if($product->count() > 0) {
-                $button_add_cart = true;
-            }
-        }elseif($check_color_product > 0 && $check_size_product == 0) {
-            $product = Cart::where('product_id', $id)->whereNotNull('color');
-            if($product->count() > 0) {
-                $button_add_cart = true;
-            }
+            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "!=", "");
+            $button_add_cart = ($product->count() > 0) ? false : true;
+        }
 
-        }elseif($check_color_product > 0 && $check_size_product > 0) {
-            $product = Cart::where('product_id', $id)->whereNotNull('size')->whereNotNull('color');
-            if($product->count() > 0) {
-                $button_add_cart = true;
-            }
+        if($product_colors > 0) {
 
+            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "");
+            $button_add_cart = ($product->count() > 0) ? false : true;
         }
 
     }else {
 
         $cart_items = session()->get('cart');
 
-        $check_color_product = ColorProduct::where('product_id', $id)->count();
-        $check_size_product = SizeProduct::where('product_id', $id)->count();
+        if($product_simple > 0) {
+            $button_add_cart = true;
+        }
 
-
-        if($check_color_product == 0 && $check_size_product > 0) {
+        if($product_sizes > 0) {
 
             foreach ($cart_items as $key => $item) {
-                if ($item['id'] == $id && $item['size'] != "") {
+                if ($item['id'] == $id && $item['size'] != "" && $item['color'] == "none") {
                     $button_add_cart = true;
                 }
             }
-        }elseif($check_color_product > 0 && $check_size_product == 0) {
+        }
+
+        if($product_colors > 0) {
+
             foreach ($cart_items as $key => $item) {
-                if ($item['id'] == $id && $item['color'] != "") {
+                if ($item['id'] == $id && $item['size'] != "" && $item['color'] != "none") {
                     $button_add_cart = true;
                 }
             }
-
-        }elseif($check_color_product > 0 && $check_size_product > 0) {
-            foreach ($cart_items as $key => $item) {
-                if ($item['id'] == $id && $item['color'] != "" && $item['size'] != "") {
-                    $button_add_cart = true;
-                }
-            }
-
         }
     }
     return $button_add_cart;
 
 }
 
-/*function getColorDefaultProduct($id, $color) {
+function getColorDefaultProduct($id, $color) {
 
     $color_default = false;
 
     if(Auth::check()) {
 
-        $product = Cart::where('product_id', $id)->where('color', '#F4ECDD');
-        if(!($product->count() == 0)) {
+        $product = Cart::where('product_id', $id);
+        if($product->count() == 0) {
             $color_default = true;
+            Cart::create([
+                'user_id' => Auth::user()->id,
+                'product_id' => $id,
+                'color' => $color,
+            ]);
+        }else {
+            $color_default = true;
+            $product->update([
+                'color' => $color,
+            ]);
         }
     }else {
 
         $cart_items = session()->get('cart');
 
-        if($color =="#F4ECDD") {
-            if($cart_items == []) {
-                $color_default = true;
-            }else {
-                foreach ($cart_items as $key => $item) {
-                    if ($item['id'] != $id) {
-                        $color_default = true;
-                    }else {
-                        $color_default = false;
-                        break;
-                    }
-                }
+        if($cart_items == []) {
 
-                foreach ($cart_items as $key => $item) {
-                    if($item['id'] == $id ) {
-                        if($item['color'] != "") {
-                            $color_default = false;
-                        }else {
-                            $color_default = true;
-                        }
+            $color_default = true;
+            $color_product = [
+                "color" => $color,
+                "status" => "nocart",
+                "size" => "",
+                "id" => $id
+            ];
+            $cart_items[] = $color_product;
+            session()->put('cart', $cart_items);
+        }else {
+
+            foreach ($cart_items as $key => $item) {
+                if ($item['id'] != $id) {
+
+                    $color_default = true;
+
+                    $color_product = [
+                        "color" => $color,
+                        "status" => "nocart",
+                        "size" => "",
+                        "id" => $id
+                    ];
+                    $cart_items[] = $color_product;
+                    session()->put('cart', $cart_items);
+
+                }else {
+                    $color_default = false;
+                    break;
+                }
+            }
+
+            foreach ($cart_items as $key => $item) {
+                if($item['id'] == $id ) {
+                    if($item['color'] != "") {
+                        $color_default = false;
+                    }elseif($item['color'] == "none" && $item['size'] != "") {
+                        $color_default = false;
+                    }else {
+                        $color_default = true;
+                        $cart_items[$key]['color'] = $color;
+                        session()->put('cart', $cart_items);
                     }
                 }
             }
         }
     }
     return $color_default;
-}*/
+}
 
 function getSizeSelectProduct($id, $size) {
 
@@ -241,7 +272,7 @@ function getSizeSelectProduct($id, $size) {
     return $size_select;
 }
 
-function getSizeDefaultProduct($id) {
+function getSizeDefaultProduct($id, $size) {
 
     $size_default = false;
 
@@ -250,6 +281,16 @@ function getSizeDefaultProduct($id) {
         $product = Cart::where('product_id', $id);
         if(!($product->count() == 0)) {
             $size_default = true;
+            Cart::create([
+                'user_id' => Auth::user()->id,
+                'product_id' => $id,
+                'size' => $size,
+            ]);
+        }else {
+            $size_default = true;
+            $product->update([
+                'size' => $size,
+            ]);
         }
     }else {
 
@@ -257,10 +298,26 @@ function getSizeDefaultProduct($id) {
 
         if($cart_items == []) {
             $size_default = true;
+            $size_product = [
+                "color" => "",
+                "status" => "nocart",
+                "size" => $size,
+                "id" => $id
+            ];
+            $cart_items[] = $size_product;
+            session()->put('cart', $cart_items);
         }else {
             foreach ($cart_items as $key => $item) {
                 if ($item['id'] != $id) {
                     $size_default = true;
+                    $size_product = [
+                        "color" => "",
+                        "status" => "nocart",
+                        "size" => $size,
+                        "id" => $id
+                    ];
+                    $cart_items[] = $size_product;
+                    session()->put('cart', $cart_items);
                 }else {
                     $size_default = false;
                     break;
@@ -273,11 +330,20 @@ function getSizeDefaultProduct($id) {
                         $size_default = false;
                     }else {
                         $size_default = true;
+                        $cart_items[$key]['size'] = $size;
+                        session()->put('cart', $cart_items);
                     }
                 }
             }
         }
 
+    }
+    if($size_default == true) {
+
+        $size = Size::where('name', $size)->first();
+        if (!session()->has('size_select')) {
+            session()->put('size_select', $size->id);
+        }
     }
 
     return $size_default;
@@ -360,15 +426,39 @@ function getUserCurrency() {
 
 function checkStockSizeProduct($id, $size) {
     $stock = true;
-    $sizeProduct = SizeProduct::where('product_id', $id)->where('size_id', $size)->first();
-    $stock = ($sizeProduct->quantity > 0) ? true : false;
+
+    $sizeProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', $size)->sum('quantity');
+    $stock = ($sizeProduct > 0) ? true : false;
     return $stock;
 }
 
 function checkStockColorProduct($id, $color) {
-    $stock = true;
-    $sizeProduct = ColorProduct::where('product_id', $id)->where('color_id', $color)->first();
-    $stock = ($sizeProduct->quantity > 0) ? true : false;
+
+    $stock = false;
+
+    $color = Color::where('code', $color)->first();
+
+    if(Auth::check()) {
+        $items = Cart::where('product_id', $id)->first();
+        $size = Size::where('name', $items->size)->first();
+
+        $colorProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', $size->id)->where('color_id', $color->id)->sum('quantity');
+        $stock = ($colorProduct > 0) ? true : false;
+
+    }else {
+        $cart_items = session()->get('cart');
+
+        foreach ($cart_items as $key => $item) {
+            if ($item['id'] == $id) {
+                $size = $cart_items[$key]['size'];
+                $size = Size::where('name', $size)->first();
+                $colorProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', $size->id)->where('color_id', $color->id)->sum('quantity');
+                $stock = ($colorProduct > 0) ? true : false;
+                break;
+            }
+        }
+
+    }
     return $stock;
 }
 
@@ -424,54 +514,50 @@ function getPriceProduct($id) {
 
     $product = Product::find($id);
     $price = "";
-    $check_size_product = SizeProduct::where('product_id', $id)->count();
 
+    if(Auth::check()) {
 
-    if($check_size_product == 0) {
-        $price = $product->selling_price;
-    }else {
-
-        if(Auth::check()) {
-
-            $products_cart = Cart::where('product_id', $id);
-            if(!($products_cart->count() == 0)) {
-                if($products_cart->size != "") {
-                    $size_id = Size::where('name', $products_cart->size)->first()->get(['id'])->toArray();
-                    $price_product = SizeProduct::where('product_id', $id)->where('size_id', $size_id)->first();
-                    $price = $price_product->price;
-                }else {
-                    $price = $product->selling_price;
-                }
+        $products_cart = Cart::where('product_id', $id);
+        if(!($products_cart->count() == 0)) {
+            if($products_cart->size != "") {
+                $size_id = Size::where('name', $products_cart->size)->first()->get(['id'])->toArray();
+                $price_product = SizesColorsProducts::where('product_id', $id)->where('size_id', $size_id)->first();
+                $price = $price_product->price;
             }else {
                 $price = $product->selling_price;
             }
         }else {
+            $price = $product->selling_price;
+        }
+    }else {
 
-            $cart_items = session()->get('cart');
+        // $cart = [];
+        // session()->put('cart', $cart);
+        $cart_items = session()->get('cart');
+        // dd()
 
-            if($cart_items == []) {
-                $price = $product->selling_price;
-            }else {
-                foreach ($cart_items as $key => $item) {
-                    if ($item['id'] != $id) {
+        if($cart_items == []) {
+            $price = $product->selling_price;
+        }else {
+            foreach ($cart_items as $key => $item) {
+                if ($item['id'] != $id) {
+                    $price = $product->selling_price;
+                }else {
+                    if($item['size'] == "") {
                         $price = $product->selling_price;
                     }else {
-                        if($item['size'] == "") {
-                            $price = $product->selling_price;
-                        }else {
-                            $size_id = Size::where('name', $item['size'])->get(['id'])->toArray();
-                            $price_product = SizeProduct::where('product_id', $id)->where('size_id', $size_id[0]['id'])->first();
-                            $price = $price_product->price;
-                            break;
-                        }
+                        $size_id = Size::where('name', $item['size'])->get(['id'])->toArray();
+                        $price_product = SizesColorsProducts::where('product_id', $id)->where('size_id', $size_id[0]['id'])->first();
+                        $price = $price_product->price;
+                        break;
                     }
                 }
-
             }
 
         }
-    return $price;
 
+
+        return $price;
     }
 
 }
