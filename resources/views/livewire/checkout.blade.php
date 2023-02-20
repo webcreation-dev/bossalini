@@ -25,9 +25,9 @@
                     @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}
                 </a>
                 <span class="cart-item__size-label"> Number: {{getNumberProduct($product->id)}} </span>
-                <button class="cart-item__remove"><a wire:click="removeItemProduct({{$product->id}})" href="#" style="text-decoration: none !important;">
+                <button type="button" wire:click="removeItemProduct({{$product->id}})" class="cart-item__remove">
                     Remove
-                    </a></button>
+                </button>
 
               </div>
             </div>

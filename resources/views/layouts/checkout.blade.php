@@ -11,6 +11,7 @@
     <link href="{{asset('files/select2.css')}}" rel="stylesheet" type="text/css" media="all"1>
     <script src="{{asset('files/country.js')}}"></script>
 
+    @livewireStyles
 
   </head>
   <body class="cart-view" data-controller="cart" data-action="view" data-layoutname="cart" cz-shortcut-listen="true">
@@ -64,5 +65,7 @@
         $('.total-price-products').text(totalPrice);
     });
     </script>
+@livewireScripts
+
   </body>
 </html>
