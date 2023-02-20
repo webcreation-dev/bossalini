@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Order;
+use App\Models\Address;
 use App\Models\OrderItem;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +13,7 @@ class Account extends Component
     {
         $orders = OrderItem::where('user_id', Auth()->user()->id)->get();
 
-        $default_address = Order::where('user_id', Auth()->user()->id)->where('status', 'default')->get();
+        $default_address = Address::where('user_id', Auth()->user()->id)->get();
 
         return view('livewire.account', compact('orders', 'default_address'))
         ->extends("layouts.master")

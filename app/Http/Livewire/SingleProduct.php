@@ -71,6 +71,7 @@ class SingleProduct extends Component
             $size_id = SizesColorsProducts::where('product_id', $request->product_id)->select('size_id')->distinct()->first();
             $size_name = Size::where('id', $size_id->size_id)->first();
             $first_size_id = $size_id->size_id;
+
             if(getSizeDefaultProduct($request->product_id, $size_name->name)) {
                 $colors_id = SizesColorsProducts::where('product_id', $request->product_id)
                                                 ->where('size_id', $first_size_id)
@@ -85,6 +86,7 @@ class SingleProduct extends Component
                 $colors = Color::whereIn('id', $colors_id)->get();
             }
         }
+
 
         return view('livewire.single-product', compact('products', 'images', 'upsells_products', 'colors', 'sizes'))
         ->extends("layouts.master")
@@ -256,7 +258,6 @@ class SingleProduct extends Component
             }
 
             if (!$product_in_cart) {
-                // dd(1);
                 $cart_items = session()->get('cart');
                 $cart_items[] = $size_product;
                 session()->put('cart', $cart_items);
@@ -265,17 +266,19 @@ class SingleProduct extends Component
         }else {
 
             $product = Cart::where('product_id', $id);
-            if(!($product->count() == 0)) {
+            if($product->count() == 0) {
                 Cart::create([
                     'user_id' => Auth::user()->id,
                     'product_id' => $id,
                     'size' => $size,
+                    'color' => "",
                 ]);
             }else {
                 $product->update([
                     'size' => $size,
                     'color' => 'none',
                 ]);
+
             }
 
         }

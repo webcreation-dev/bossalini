@@ -68,7 +68,7 @@ class Product extends Model
     {
         if(Auth::check()) {
 
-            $cart = Cart::where('user_id', Auth::user()->id)->where('product_id', $id);
+            $cart = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('status', 'unpaid');
 
             if($cart->count() > 0) {
                 return true;

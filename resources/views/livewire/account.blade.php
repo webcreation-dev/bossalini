@@ -38,7 +38,7 @@
                             @foreach ($orders as $order)
                                 <tr>
                                     <td> <p class="text-center text-[13px] font-bold" style="border: 1px solid black;">#B26440</p>  </td>
-                                    <td class="text-[13px]" >{{$order->code}}</td>
+                                    <td class="text-[13px]" >FSJNKJF</td>
                                     <td class="text-[13px]">Paid</td>
                                     <td class="text-[13px]">Fulfilled</td>
                                     <td class="text-[13px]">$order->total_price</td>

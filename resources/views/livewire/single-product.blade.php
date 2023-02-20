@@ -85,7 +85,7 @@
                                                     >
                                                         <button @if(!checkStockSizeProduct($product->id, $size->id)) style="opacity: 0.5;" @endif
                                                             class="text-xs text-center py-3.5 w-full border focus:text-white focus:bg-black
-                                                            @if (getSizeSelectProduct($product->id, $size->name) ) text-white bg-black @endif
+                                                            @if (getSizeSelectProduct($product->id, $size->name)) text-white bg-black @endif
                                                             @if ($loop->first) @if(getSizeDefaultProduct($product->id, $size->name)) text-white bg-black @endif @endif
                                                             ">
                                                             <p>{{$size->name}}</p>
@@ -96,26 +96,30 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if (getButtonAddCart($product->id))
+                                    {{-- @if (getButtonAddCart($product->id)) --}}
 
                                         @if (App\Models\Product::getStatusCart($product->id) == false)
-                                        <div class="pt-4">
-                                            <a  wire:click="addProductToCart({{$product->id}})" href="#"
-                                                class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
-                                                ADD TO CART
-                                            </a>
-                                            </div>
+                                            @if (getButtonAddCart($product->id))
+                                            <div class="pt-4">
+                                                <a  wire:click="addProductToCart({{$product->id}})" href="#"
+                                                    class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
+                                                    ADD TO CART
+                                                </a>
+                                                </div>
+                                            @endif
                                         @else
-                                            <div class="pt-[19px]">
-                                                <div class="py-[14px] px-[14px] bg-answer">
-                                                    <a
-                                                    href="{{route('add_cart')}}"
-                                                    class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
-                                                    GO TO CART </a>
-                                                </div>
-                                                </div>
-                                        @endif
-                                    @endif
+                                            @if (getButtonAddCart($product->id) == false )
+                                                <div class="pt-[19px]">
+                                                    <div class="py-[14px] px-[14px] bg-answer">
+                                                        <a
+                                                        href="{{route('add_cart')}}"
+                                                        class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
+                                                        GO TO CART </a>
+                                                    </div>
+                                                    </div>
+                                                    @endif
+                                            @endif
+                                    {{-- @endif --}}
 
 
                                     <div class="pt-4 flex-auto justify-center">
@@ -137,7 +141,7 @@
                                                 </div>
                                               </div>
                                             </div>
-                                            {{-- <div class="relative border-t border-tiret2">
+                                            <div class="relative border-t border-tiret2">
                                               <button type="button" class="w-full py-3 text-left">
                                                 <div class="flex items-center justify-between">
                                                   <span class="text-xs"> PRODUCT SIZING </span>
@@ -160,7 +164,7 @@
                                                 </div>
                                               </button>
                                               <!---->
-                                            </div> --}}
+                                            </div>
                                           </div>
 
                                     </div>
@@ -173,7 +177,7 @@
 
         </section>
 
-    <div class="col-span-3">
+    {{-- <div class="col-span-3">
         <p style="padding-top:82px;" class="text-sm text-center f-700 pb-5"> YOU MIGHT ALSO LIKE </p>
         <div class="flex items-center justify-center space-x-5">
             <div class="grid md:grid-cols-4 grid-cols-2 gap-3 flex-auto">
@@ -353,6 +357,6 @@
                     </svg></button>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 </div>

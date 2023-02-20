@@ -33,7 +33,7 @@ function getNumberProductCart() {
         }
     } else {
 
-        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        $cart = Cart::where('user_id', Auth::user()->id)->where('status', 'unpaid')->get();
         return count($cart);
     }
 }
@@ -95,10 +95,9 @@ function getColorSelectProduct($id, $color) {
     if(Auth::check()) {
 
         $product = Cart::where('product_id', $id)->where('color', $color);
-        if(!($product->count() > 0)) {
+        if($product->count() > 0) {
             $color_select = true;
         }
-
     }
     else {
 
@@ -129,20 +128,50 @@ function getButtonAddCart($id) {
 
         if($product_simple > 0) {
 
-            $product = Cart::where('product_id', $id)->where('size', "")->where('color', "");
+            $product = Cart::where('product_id', $id)->where('size', "")->where('color', "")->where('status', "unpaid");
             $button_add_cart = ($product->count() > 0) ? false : true;
         }
 
         if($product_sizes > 0) {
 
-            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "!=", "");
-            $button_add_cart = ($product->count() > 0) ? false : true;
+
+            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "unpaid");
+
+            $product_2 = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "nocart");
+
+            if($product->count() > 0) {
+                $button_add_cart = false;
+            }
+
+            if($product_2->count() > 0) {
+                $button_add_cart = true;
+            }
+
         }
 
         if($product_colors > 0) {
 
-            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "");
-            $button_add_cart = ($product->count() > 0) ? false : true;
+            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "none")->where('status', "unpaid");
+
+            $product_2 = Cart::where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "none")->where('status', "nocart");
+
+            $product_3 = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "nocart");
+
+            if($product->count() > 0) {
+                $button_add_cart = false;
+            }
+
+            if($product_2->count() > 0) {
+                $button_add_cart = true;
+            }
+
+            if($product_3->count() > 0) {
+                $button_add_cart = false;
+            }
+
+            // dd($product->count());
+            // $button_add_cart = ($product->count() > 0) ? true : false;
+            // dd($button_add_cart);
         }
 
     }else {
@@ -150,14 +179,24 @@ function getButtonAddCart($id) {
         $cart_items = session()->get('cart');
 
         if($product_simple > 0) {
-            $button_add_cart = true;
+            foreach ($cart_items as $key => $item) {
+
+                if ($item['id'] == $id && $item['size'] == "" && $item['color'] == "none" && $item['status'] == "nocart" ) {
+                    $button_add_cart = true;
+                }elseif($item['id'] == $id && $item['size'] == "" && $item['color'] == "none" && $item['status'] == "unpaid") {
+                    $button_add_cart = false;
+                }
+            }
         }
 
         if($product_sizes > 0) {
 
             foreach ($cart_items as $key => $item) {
-                if ($item['id'] == $id && $item['size'] != "" && $item['color'] == "none") {
+
+                if ($item['id'] == $id && $item['size'] != "" && $item['color'] == "none" && $item['status'] == "nocart" ) {
                     $button_add_cart = true;
+                }elseif($item['id'] == $id && $item['size'] != "" && $item['color'] == "none" && $item['status'] == "unpaid") {
+                    $button_add_cart = false;
                 }
             }
         }
@@ -165,11 +204,14 @@ function getButtonAddCart($id) {
         if($product_colors > 0) {
 
             foreach ($cart_items as $key => $item) {
-                if ($item['id'] == $id && $item['size'] != "" && $item['color'] != "none") {
+                if ($item['id'] == $id && $item['size'] != "" && $item['color'] != "none" && $item['status'] == "nocart" ) {
                     $button_add_cart = true;
+                }elseif($item['id'] == $id && $item['size'] != "" && $item['color'] != "none" && $item['status'] == "unpaid") {
+                    $button_add_cart = false;
                 }
             }
         }
+        // dd($button_add_cart);
     }
     return $button_add_cart;
 
@@ -189,6 +231,8 @@ function getColorDefaultProduct($id, $color) {
                 'product_id' => $id,
                 'color' => $color,
             ]);
+        }elseif(($product->first()->size != "") && ($product->first()->color != "") ) {
+            $color_default = false;
         }else {
             $color_default = true;
             $product->update([
@@ -257,7 +301,7 @@ function getSizeSelectProduct($id, $size) {
     if(Auth::check()) {
 
         $product = Cart::where('product_id', $id)->where('size', $size);
-        if(!($product->count() > 0)) {
+        if($product->count() > 0) {
             $size_select = true;
         }
     }else {
@@ -269,6 +313,7 @@ function getSizeSelectProduct($id, $size) {
             }
         }
     }
+
     return $size_select;
 }
 
@@ -279,13 +324,17 @@ function getSizeDefaultProduct($id, $size) {
     if(Auth::check()) {
 
         $product = Cart::where('product_id', $id);
-        if(!($product->count() == 0)) {
-            $size_default = true;
+
+        if($product->count() == 0) {
             Cart::create([
                 'user_id' => Auth::user()->id,
                 'product_id' => $id,
                 'size' => $size,
+                'color' => "",
             ]);
+            $size_default = false;
+        }elseif(($product->first()->size != "") && ($product->first()->color != "") ) {
+            $size_default = false;
         }else {
             $size_default = true;
             $product->update([
@@ -440,9 +489,9 @@ function checkStockColorProduct($id, $color) {
 
     if(Auth::check()) {
         $items = Cart::where('product_id', $id)->first();
-        $size = Size::where('name', $items->size)->first();
+        $size = Size::where('name', session()->get('size_select'))->first();
 
-        $colorProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', $size->id)->where('color_id', $color->id)->sum('quantity');
+        $colorProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', session()->get('size_select'))->where('color_id', $color->id)->sum('quantity');
         $stock = ($colorProduct > 0) ? true : false;
 
     }else {
@@ -486,7 +535,7 @@ function getUserRateCurrency() {
 }
 
 function getConvertRatePrice($rate, $price) {
-    $curl = curl_init();
+    /*$curl = curl_init();
 
     curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/convert?to=$rate&from=USD&amount=$price",
@@ -505,7 +554,7 @@ function getConvertRatePrice($rate, $price) {
 
     $response = curl_exec($curl);
     curl_close($curl);
-    $response = json_decode($response, true);
+    $response = json_decode($response, true);*/
     // return round($response['result'], 2);
     return 77;
 }
@@ -516,12 +565,11 @@ function getPriceProduct($id) {
     $price = "";
 
     if(Auth::check()) {
-
         $products_cart = Cart::where('product_id', $id);
         if(!($products_cart->count() == 0)) {
-            if($products_cart->size != "") {
-                $size_id = Size::where('name', $products_cart->size)->first()->get(['id'])->toArray();
-                $price_product = SizesColorsProducts::where('product_id', $id)->where('size_id', $size_id)->first();
+            if($products_cart->first()->size != "") {
+                $size_id = Size::where('name', $products_cart->first()->size)->first()->get(['id'])->toArray();
+                $price_product = SizesColorsProducts::where('product_id', $id)->where('size_id', session()->get('size_select'))->first();
                 $price = $price_product->price;
             }else {
                 $price = $product->selling_price;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Address;
 use Livewire\Component;
 use App\Models\Cart;
 use App\Models\Order;
@@ -33,7 +34,7 @@ class Checkout extends Component
             $cart_products = Cart::where('user_id', Auth::user()->id)->where('status', 'unpaid')->get(['product_id'])->toArray();
             $products = Product::whereIn('id', $cart_products)->get();
 
-            $addresses = Order::where('user_id', Auth()->user()->id)->where('status', 'default')->first()->get()->toArray();
+            $addresses = Address::where('user_id', Auth()->user()->id)->first()->get()->toArray();
             $cart_items = [];
 
         }

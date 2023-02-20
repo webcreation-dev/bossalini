@@ -86,7 +86,7 @@
                 style="padding-top: 12px; padding-bottom: 12px;">
             </div>
 
-            <label class="text-[13px] antialised" for="">Company</label>
+            <label class="text-[13px] antialised" for="">Email</label>
             <div class="pt-2 mb-4">
                 <input type="email" wire:model="address.company"
                 class="antialised text-[13px] form-control block w-full px-4 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-borderInput transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"

@@ -68,7 +68,7 @@
                   <tr>
                     <th class="cart-totals__label cart-totals__label--products" scope="row">Total</th>
 
-                    <td class="cart-totals__value cart-totals__value--products"> <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif</span> <span class="total-price-products">15</span></td>
+                    <td class="cart-totals__value cart-totals__value--products"> <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif</span> <span class="total-price-products">0</span></td>
                   </tr>
                   <tr>
                     <th class="cart-totals__label cart-totals__label--shipping" scope="row">Shipping</th>
@@ -81,7 +81,7 @@
               <tbody>
                 <tr>
                   <th class="cart-totals__label cart-totals__label--grand-total" scope="row">SUBTOTAL</th>
-                  <td class="cart-totals__value cart-totals__value--grand-total"> @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif 15 </td>
+                  <td class="cart-totals__value cart-totals__value--grand-total"> @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif 0 </td>
                 </tr>
                 {{-- <tr>
                   <th class="cart-totals__label cart-totals__label--vat" scope="row"> Including VAT (25%) </th>
@@ -132,14 +132,14 @@
 
             </div>
 
-            <div class="field field-country">
+            <div class="field field-country" style="display: none;">
                 <label for="shipping-country" class="field__label ">State</label>
                 <select class="js-example-basic-single" id="stateSel" style="width: 100%; padding:40px;">
                     <option value="AL">Selectionner la region</option>
                 </select>
             </div>
 
-            <div class="field field-country">
+            <div class="field field-country" style="display: none;">
                 <label for="shipping-country" class="field__label ">City</label>
                 <select class="js-example-basic-single" id="districtSel" style="width: 100%; padding:40px;">
                     <option value="AL">Selectionner la ville</option>
@@ -157,7 +157,7 @@
               <div class="customer-login__field-group">
                 <div class="field ">
                   <label for="email-address" class="field__label">Email</label>
-                  <input id="email-address" name="emailAddress" class="field__input" type="email"  value="@if (Auth::check()) {{$addresses[0]['company']}} @endif" placeholder="E.g jane@company.com" pattern="^[^\u0400-\u04FF\x08\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]{0,20}$" maxlength="20" required="" autocomplete="shipping given-name" wfd-id="id7">
+                  <input id="email-address" name="emailAddress" class="field__input" type="email"  value="@if (Auth::check()) {{$addresses[0]['email']}} @endif" placeholder="E.g jane@company.com" pattern="^[^\u0400-\u04FF\x08\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]{0,20}$" maxlength="20" required="" autocomplete="shipping given-name" wfd-id="id7">
                 </div>
 
               </div>
