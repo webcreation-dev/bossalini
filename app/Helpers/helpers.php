@@ -179,12 +179,14 @@ function getButtonAddCart($id) {
         $cart_items = session()->get('cart');
 
         if($product_simple > 0) {
+
             foreach ($cart_items as $key => $item) {
 
-                if ($item['id'] == $id && $item['size'] == "" && $item['color'] == "none" && $item['status'] == "nocart" ) {
-                    $button_add_cart = true;
-                }elseif($item['id'] == $id && $item['size'] == "" && $item['color'] == "none" && $item['status'] == "unpaid") {
+                if ($item['id'] == $id) {
                     $button_add_cart = false;
+                    break;
+                }else {
+                    $button_add_cart = true;
                 }
             }
         }
