@@ -28,7 +28,9 @@ class AddCart extends Component
 
                 $cart_items = session()->get('cart', []);
                 $cart = collect($cart_items)->map(function ($item) {
-                    return $item['id'];
+                    if($item['status'] == "unpaid") {
+                        return $item['id'];
+                    }
                 })->toArray();
             }
             $products = Product::whereIn('id', $cart)->get();

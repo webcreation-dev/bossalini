@@ -33,6 +33,8 @@ class SingleProduct extends Component
         }
         $cart_items = session()->get('cart');
 
+        // dd($cart_items);
+
         $products = Product::where('id', $request->product_id)->get();
 
         $images = ProductImage::where('product_id', $request->product_id)->get();
@@ -129,56 +131,6 @@ class SingleProduct extends Component
     }
 
 
-
-    /*public function addToCart($id) {
-
-        $product = [
-            "color" => "",
-            "status" => "unpaid",
-            "size" => "",
-            "id" => $id
-        ];
-
-        if(!(Auth::check())) {
-
-            $product_in_cart = false;
-
-            if (session()->has('cart')) {
-                $cart_items = session()->get('cart');
-
-                foreach ($cart_items as $key => $item) {
-                    if ($item['id'] == $id) {
-                        $cart_items[$key]['status'] = "unpaid";
-                        session()->put('cart', $cart_items);
-                        $product_in_cart = true;
-                        break;
-                    }
-                }
-            }
-            if (!$product_in_cart) {
-                $cart_items = session()->get('cart');
-                $cart_items[] = $product;
-                session()->put('cart', $cart_items);
-            }
-
-        }else {
-
-            $product = Cart::where('product_id', $id);
-            if(!($product->count() == 0)) {
-                Cart::create([
-                    'user_id' => Auth::user()->id,
-                    'product_id' => $id,
-                    'status' => "unpaid",
-                ]);
-            }else {
-                $product->update([
-                    'status' => "unpaid",
-                ]);
-            }
-
-        }
-    }*/
-
     public function saveColorProduct($color, $id, Request $request) {
 
         // $color_product = [
@@ -256,6 +208,7 @@ class SingleProduct extends Component
             }
 
             if (!$product_in_cart) {
+                dd(1);
                 $cart_items = session()->get('cart');
                 $cart_items[] = $size_product;
                 session()->put('cart', $cart_items);
@@ -286,6 +239,9 @@ class SingleProduct extends Component
             session()->put('size_select', $size);
         }
         session()->put('size_select', $size->id);
+
+        // dd($cart_items);
+
 
         $request->merge(['product_id' => $id]);
     }

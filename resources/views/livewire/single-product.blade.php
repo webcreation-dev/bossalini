@@ -48,19 +48,19 @@
                                                 @foreach ($colors as $color)
 
                                                     <div
-                                                        @if(checkStockColorProduct($product->id, $color->code ))
-                                                        style="opacity: 0.5; border: 1px solid red;"
-                                                        @endif
+                                                        {{-- @if(checkStockColorProduct($product->id, $color->code )) --}}
+                                                        {{-- style="opacity: 0.5; border: 1px solid red;" --}}
+                                                        {{-- @endif --}}
                                                         class="hover:border-black hover:border hover:border-2
                                                         @if (getColorSelectProduct($product->id, $color->code) ) border-2 @endif
                                                         @if ($loop->first) @if(getColorDefaultProduct($product->id, $color->code)) border-2 @endif @endif
                                                         ">
                                                         <a
-                                                        @if(!checkStockColorProduct($product->id, $color->code ))
+                                                        {{-- @if(!checkStockColorProduct($product->id, $color->code )) --}}
                                                         wire:click="saveColorProduct('{{$color->code}}', {{$product->id}})"
-                                                        @else
+                                                        {{-- @else --}}
                                                         href="#"
-                                                        @endif
+                                                        {{-- @endif --}}
                                                         >
                                                             <div style="width: 100%; height: 100%; background-color: <?php echo $color->code ?> ;" > </div>
                                                             <img class="" style="opacity: 0;" src="{{asset('files/slider_home01.c824a1f9.jpg')}}" alt="Product title">
@@ -81,10 +81,13 @@
 
                                                     @foreach ($sizes as $size)
                                                     <a
-                                                    @if(checkStockSizeProduct($product->id, $size->id)) wire:click="saveSizeProduct('{{$size->name}}', {{$product->id}})" @endif
+                                                    {{-- @if(checkStockSizeProduct($product->id, $size->id))  --}}
+                                                    wire:click="saveSizeProduct('{{$size->name}}', {{$product->id}})"
+                                                    {{-- @endif --}}
                                                     href="#"
                                                     >
-                                                        <button @if(!checkStockSizeProduct($product->id, $size->id)) style="opacity: 0.5;" @endif
+                                                        <button
+                                                        {{-- @if(!checkStockSizeProduct($product->id, $size->id)) style="opacity: 0.5;" @endif --}}
                                                             class="text-xs text-center py-3.5 w-full border focus:text-white focus:bg-black
                                                             @if (getSizeSelectProduct($product->id, $size->name)) text-white bg-black @endif
                                                             @if ($loop->first) @if(getSizeDefaultProduct($product->id, $size->name)) text-white bg-black @endif @endif
@@ -178,7 +181,7 @@
 
         </section>
 
-    {{-- <div class="col-span-3">
+    <div class="col-span-3">
         <p style="padding-top:82px;" class="text-sm text-center f-700 pb-5"> YOU MIGHT ALSO LIKE </p>
         <div class="flex items-center justify-center space-x-5">
             <div class="grid md:grid-cols-4 grid-cols-2 gap-3 flex-auto">
@@ -358,6 +361,6 @@
                     </svg></button>
             </div>
         </div>
-    </section> --}}
+    </section>
 
 </div>
