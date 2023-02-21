@@ -32,7 +32,6 @@ class SingleProduct extends Component
             session()->put('cart', $cart);
         }
         $cart_items = session()->get('cart');
-        // dd($cart_items);
 
         $products = Product::where('id', $request->product_id)->get();
 
@@ -86,7 +85,6 @@ class SingleProduct extends Component
                 $colors = Color::whereIn('id', $colors_id)->get();
             }
         }
-
 
         return view('livewire.single-product', compact('products', 'images', 'upsells_products', 'colors', 'sizes'))
         ->extends("layouts.master")
