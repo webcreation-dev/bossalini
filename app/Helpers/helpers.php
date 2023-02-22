@@ -592,8 +592,8 @@ function getPriceProduct($id) {
         $products_cart = Cart::where('product_id', $id);
         if(!($products_cart->count() == 0)) {
             if($products_cart->first()->size != "") {
-                $size_id = Size::where('name', $products_cart->first()->size)->first()->get(['id'])->toArray();
-                $price_product = SizesColorsProducts::where('product_id', $id)->where('size_id', session()->get('size_select'))->first();
+                $size_id = Size::where('name', $products_cart->first()->size)->first();
+                $price_product = SizesColorsProducts::where('product_id', $id)->where('size_id', $size_id->id)->first();
                 $price = $price_product->price;
             }else {
                 $price = $product->selling_price;
