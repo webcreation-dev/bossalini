@@ -1,4 +1,7 @@
-
+@php
+    $firstSize = 0;
+    $firstColor = 0;
+@endphp
 
     <div>
         <section class=" lg:space-y-11 md:space-y-[101px] space-y-11">
@@ -48,19 +51,23 @@
                                                 @foreach ($colors as $color)
 
                                                     <div
-                                                        {{-- @if(checkStockColorProduct($product->id, $color->code )) --}}
-                                                        {{-- style="opacity: 0.5; border: 1px solid red;" --}}
-                                                        {{-- @endif --}}
+                                                        @if(checkStockColorProduct($product->id, $color->code ))
+                                                        style="opacity: 0.5; border: 1px solid red; pointer-events: none;"
+                                                        @endif
                                                         class="hover:border-black hover:border hover:border-2
                                                         @if (getColorSelectProduct($product->id, $color->code) ) border-2 @endif
-                                                        @if ($loop->first) @if(getColorDefaultProduct($product->id, $color->code)) border-2 @endif @endif
+                                                        {{-- @if ($loop->first) @if(getColorDefaultProduct($product->id, $color->code)) border-2 @endif @endif --}}
+
+                                                        @if (!checkStockColorProduct($product->id, $color->code ))
+                                                            @if ($firstColor == 0)
+                                                                @if(getColorDefaultProduct($product->id, $color->code)) border-2 @endif
+                                                                <?php $firstColor++; ?>
+                                                            @endif
+                                                        @endif
+
                                                         ">
                                                         <a
-                                                        {{-- @if(!checkStockColorProduct($product->id, $color->code )) --}}
-                                                        wire:click="saveColorProduct('{{$color->code}}', {{$product->id}})"
-                                                        {{-- @else --}}
-                                                        href="#"
-                                                        {{-- @endif --}}
+                                                        wire:click="saveColorProduct('{{$color->code}}', {{$product->id}})" href="#"
                                                         >
                                                             <div style="width: 100%; height: 100%; background-color: <?php echo $color->code ?> ;" > </div>
                                                             <img class="" style="opacity: 0;" src="{{asset('files/slider_home01.c824a1f9.jpg')}}" alt="Product title">
@@ -81,16 +88,26 @@
 
                                                     @foreach ($sizes as $size)
                                                     <a
-                                                    {{-- @if(checkStockSizeProduct($product->id, $size->id))  --}}
+                                                    @if(checkStockSizeProduct($product->id, $size->id))
                                                     wire:click="saveSizeProduct('{{$size->name}}', {{$product->id}})"
-                                                    {{-- @endif --}}
+                                                    @else
                                                     href="#"
+                                                    @endif
+
                                                     >
                                                         <button
-                                                        {{-- @if(!checkStockSizeProduct($product->id, $size->id)) style="opacity: 0.5;" @endif --}}
+                                                        @if(!checkStockSizeProduct($product->id, $size->id)) style="opacity: 0.5;" @endif
                                                             class="text-xs text-center py-3.5 w-full border focus:text-white focus:bg-black
                                                             @if (getSizeSelectProduct($product->id, $size->name)) text-white bg-black @endif
-                                                            @if ($loop->first) @if(getSizeDefaultProduct($product->id, $size->name)) text-white bg-black @endif @endif
+                                                            {{-- @if ($loop->first) @if(getSizeDefaultProduct($product->id, $size->name)) text-white bg-black @endif @endif --}}
+
+                                                            @if (checkStockSizeProduct($product->id, $size->id))
+                                                                @if ($firstSize == 0)
+                                                                    @if(getSizeDefaultProduct($product->id, $size->name)) text-white bg-black @endif
+                                                                    <?php $firstSize++; ?>
+                                                                @endif
+                                                            @endif
+
                                                             ">
                                                             <p>{{$size->name}}</p>
                                                         </button>

@@ -69,7 +69,15 @@ class SingleProduct extends Component
                                             ->toArray();
             $sizes = Size::whereIn('id', $sizes_id)->get();
 
-            $size_id = SizesColorsProducts::where('product_id', $request->product_id)->select('size_id')->distinct()->first();
+            $size_id = SizesColorsProducts::where('product_id', $request->product_id)->select('size_id')->distinct()->get();
+
+            foreach ($size_id as $key => $value) {
+
+                if(checkStockSizeProduct($request->product_id, $value->size_id)) {
+                    $size_id = $value;
+                    break;
+                }
+            }
             $size_name = Size::where('id', $size_id->size_id)->first();
             $first_size_id = $size_id->size_id;
 
@@ -132,7 +140,6 @@ class SingleProduct extends Component
 
 
     public function saveColorProduct($color, $id, Request $request) {
-
         // $color_product = [
         //     "color" => $color,
         //     "status" => "nocart",
