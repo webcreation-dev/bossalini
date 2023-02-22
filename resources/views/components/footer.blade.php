@@ -11,14 +11,14 @@
       </div>
       <div class="mt-3 md:mt-0">
         <div class="border-t border-tiret"></div>
-        <p class="pb-5 pt-3 text-xs"><a href="#">CUSTOMER CARE</a></p>
+        <p class="pb-5 pt-3 text-xs"><a href="{{route('privacy')}}">CUSTOMER CARE</a></p>
         <div class="space-y-0.5 leading-relaxed">
-          <p class="text-xs"><a href="">CONTACT</a></p>
-          <p class="text-xs"><a href="#">FAQS</a></p>
+          <p class="text-xs"><a href="{{route('contact')}}">CONTACT</a></p>
+          <p class="text-xs"><a href="{{route('faq')}}">FAQS</a></p>
           <p class="text-xs"><a href="#">MAKE A RETURN</a></p>
-          <p class="text-xs"><a href="#">SHIPPING POLICIES</a></p>
-          <p class="text-xs"><a href="#">RETURN POLICIES</a></p>
-          <p class="text-xs"><a href="#">TERMS</a></p>
+          <p class="text-xs"><a href="{{route('shipping')}}">SHIPPING POLICIES</a></p>
+          <p class="text-xs"><a href="{{route('returns')}}">RETURN POLICIES</a></p>
+          <p class="text-xs"><a href="{{route('terms')}}">TERMS</a></p>
         </div>
       </div>
       <div class="w-full col-span-2 mt-3 md:mt-0">
@@ -54,6 +54,7 @@
           </svg></div>
       </div>
     </div>
+
     <div class="md:mx-9 mx-4"><span class="block md:block lg:hidden">
         <div class="md:mt-8 mt-0 border-t border-tiret"></div>
         <p class="my-3 text-xs">EUR/€ +</p>

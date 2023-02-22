@@ -91,8 +91,6 @@
                             <div id="uk"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
                                 <div class="flex justify-center items-center">
-                                    {{-- <img class="mr-[10px]"
-                                        src="{{asset('files/flag-uk.3248720d.svg')}}" alt=""> --}}
                                         <img class="focus:text-black focus:font-bold extra antialiased text-xs py-2 rounded-md hover:font-bold"
                                             aria-haspopup="true" src=" @if (Auth::check())  {{ asset('files/' .  getUserImageCurrency() . '') }} @else {{ asset('files/' .  getImageCurrency() . '') }} @endif  " height="18">
                                     <p>@if (Auth::check())  {{getUserNameCurrency()}} @else {{getNameCurrency()}} @endif</p>
@@ -433,29 +431,28 @@
                             });
                         </script>
                         <!---->
-                        <!----><a class="mx-auto">
-                            <img src="{{ asset('files/logo.e4b8d2f2.svg') }}" height="38"></a>
+                        <a class="mx-auto" href="{{route('home')}}">
+                            <img src="{{ asset('files/logo.e4b8d2f2.svg') }}" height="38">
+                        </a>
 
                             <div class="flex space-x-5 items-end">
                                 @if (Auth::check())
-                                    <a class="mx-auto">
+                                    <a class="mx-auto" href="{{route('account')}}">
                                         <img src="{{ asset('files/profil.c74a5317.svg') }}" height="18">
                                     </a>
                                 @endif
+
                                 <a href="{{route('wishlists')}}" class="mx-auto">
                                     <img src="{{ asset('files/wish.639c7b91.svg') }}" height="18">
                                 </a>
-                                <a class="mx-auto">
+
+                                <a class="mx-auto" href="{{route('add_cart')}}">
                                     <img src="{{ asset('files/cart.95d40601.svg') }}" height="18">
                                     <span class="cart_qty_mobile">
                                         {{getNumberProductCart()}}
                                     </span>
                                 </a>
-
-
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -541,6 +538,19 @@
             });
         }
 
+        $('.open_form_notify').click(function() {
+            $(".open_form_notify").addClass("hide");
+            $(".sold_out_product").addClass("hide");
+            $(".form_notify").removeClass("hide");
+        });
+
+        $('.close_form_notify').click(function() {
+            $(".open_form_notify").addClass("hide");
+            $(".sold_out_product").addClass("hide");
+            $(".form_notify").removeClass("hide");
+        });
+
+
         // Custom Button
         $('.customNextBtn').click(function() {
             owl.trigger('next.owl.carousel');
@@ -556,7 +566,6 @@
         }else {
             $(".mobile-only").removeClass("hide");
             $(".desktop-only").addClass("hide");
-
         }
 
         $(".cancel-price").click(function(){
@@ -587,7 +596,6 @@
                 var count = $(this).closest('.mobile-only').find('.cart-box .input-quantity');
                 var price = $(this).closest('.mobile-only').find('.cart-box .box-price .item_price');
 
-
                 var priceVal = parseFloat(price.html());
                 var countVal = parseFloat(count.val());
 
@@ -614,8 +622,6 @@
 
                 var priceVal = parseFloat(price.html());
                 var countVal = parseFloat(count.val());
-                // alert(priceVal)
-
 
                 sum = (countVal * priceVal);
                 if(!(isNaN(sum))) {
@@ -627,6 +633,49 @@
             $('.subtotal').text(totalGlobal);
 
         }).change();
+
+
+        $('.open_modal_description').click(function() {
+            $(".open_modal_description").addClass("hide");
+            $(".close_modal_description").removeClass("hide");
+            $(".product_description").removeClass("hide");
+            document.querySelector(".product_description").style.animationName = "fadeInRight";
+        });
+
+        $('.close_modal_description').click(function() {
+            $(".open_modal_description").removeClass("hide");
+            $(".close_modal_description").addClass("hide");
+            $(".product_description").addClass("hide");
+            document.querySelector(".product_description").style.animationName = "fadeOutRight";
+        });
+
+        $('.open_modal_size').click(function() {
+            $(".open_modal_size").addClass("hide");
+            $(".close_modal_size").removeClass("hide");
+            $(".product_size").removeClass("hide");
+            document.querySelector(".product_size").style.animationName = "fadeInRight";
+        });
+
+        $('.close_modal_size').click(function() {
+            $(".open_modal_size").removeClass("hide");
+            $(".close_modal_size").addClass("hide");
+            $(".product_size").addClass("hide");
+            document.querySelector(".product_size").style.animationName = "fadeOutRight";
+        });
+
+        $('.open_modal_delivery').click(function() {
+            $(".open_modal_delivery").addClass("hide");
+            $(".close_modal_delivery").removeClass("hide");
+            $(".product_delivery").removeClass("hide");
+            document.querySelector(".product_delivery").style.animationName = "fadeInRight";
+        });
+
+        $('.close_modal_delivery').click(function() {
+            $(".open_modal_delivery").removeClass("hide");
+            $(".close_modal_delivery").addClass("hide");
+            $(".product_delivery").addClass("hide");
+            document.querySelector(".product_delivery").style.animationName = "fadeOutRight";
+        });
 
     });
 </script>

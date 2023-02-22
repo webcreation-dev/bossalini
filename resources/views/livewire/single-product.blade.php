@@ -3,6 +3,8 @@
     $firstColor = 0;
 @endphp
 
+<div class="mobile-only" style="padding: 65px;" ></div>
+
     <div>
         <section class=" lg:space-y-11 md:space-y-[101px] space-y-11">
             <div class="justify-center">
@@ -24,7 +26,7 @@
                         </div>
                         @foreach ($products as $product)
                             <div class="xl:col-span-1 lg:col-span-2 flex flex-col items-center lg:pt-0 md:pt-[70px] pt-11">
-                                <div class="md:w-[368px]">
+                                <div class="w-full">
                                     <div class="flex-auto justify-evenly">
                                         <p class="space-x-1 pb-[26px] md:pt-0 pt-[19px] text-[10px] f-700">
                                           <span class="uppercase">
@@ -117,7 +119,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{-- @if (getButtonAddCart($product->id)) --}}
+                                    {{-- @if (checkStockProduct($product->id)) --}}
 
                                         @if (App\Models\Product::getStatusCart($product->id) == false)
                                             @if (getButtonAddCart($product->id))
@@ -126,7 +128,7 @@
                                                     class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
                                                     ADD TO CART
                                                 </a>
-                                                </div>
+                                            </div>
                                             @endif
                                         @else
                                             @if (getButtonAddCart($product->id) == false )
@@ -134,13 +136,39 @@
                                                     <div class="py-[14px] px-[14px] bg-answer">
                                                         <a
                                                         href="{{route('add_cart')}}"
-                                                        class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
+                                                        class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
                                                         GO TO CART </a>
                                                     </div>
-                                                    </div>
-                                                    @endif
+                                                </div>
                                             @endif
-                                    {{-- @endif --}}
+                                        @endif
+                                    {{-- @else
+
+                                    <div class="text-center">
+                                        <button style="opacity: 0.4;"
+                                        class="mt-8 text-center px-8 w-full sold_out_product antialised py-3 border border-1 text-black text-[13px]" style="background-color: white !important;"> SOLD OUT
+                                        </button>
+                                    </div>
+
+                                    <div class="pt-4 pb-4 w-full">
+                                        <a  href="#"
+                                            class="w-auto text-xs border open_form_notify border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
+                                            NOTIFY ME WHEN IS AVAILABLE
+                                        </a>
+                                    </div>
+
+                                    <form method="POST" action="" class="hide form_notify">
+                                            <div syle="border-color:#D8D8D8 " class="flex items-center border-b pb-3.5">
+                                                <input
+                                                    class="antialiased text-sm appearance-none bg-transparent border-none w-full text-black placeholder-black leading-tight focus:outline-none"
+                                                    type="text" placeholder="Email" aria-label="Full name">
+                                            </div>
+                                            <div class="pt-5"><button
+                                                    class="antialiased w-full close_form_notify text-xs border-black border-solid border hover:bg-black hover:text-white py-4 px-11 lg:text-black">
+                                                    NOTIFY ME </button></div>
+                                    </form>
+
+                                    @endif --}}
 
 
                                     <div class="pt-4 flex-auto justify-center">
@@ -151,39 +179,65 @@
                                                 <div class="flex items-center justify-between">
                                                   <span class="text-xs"> PRODUCT DESCRIPTION </span>
                                                   <!---->
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="9" fill="none">
+                                                  <svg class="open_modal_description" xmlns="http://www.w3.org/2000/svg" width="10" height="15" fill="none">
+                                                    <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m1.363 1 7 6.5-7 6.5"></path>
+                                                  </svg>
+                                                  <svg class="close_modal_description hide" xmlns="http://www.w3.org/2000/svg" width="16" height="9" fill="none">
                                                     <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m14.363 1-6.5 7-6.5-7"></path>
                                                   </svg>
                                                 </div>
                                               </button>
-                                              <div>
+
+                                              <div class="product_description hide">
                                                 <div class="mb-4 text-xs">
                                                     {{ $product->description }}
                                                 </div>
                                               </div>
+
                                             </div>
                                             <div class="relative border-t border-tiret2">
                                               <button type="button" class="w-full py-3 text-left">
                                                 <div class="flex items-center justify-between">
                                                   <span class="text-xs"> PRODUCT SIZING </span>
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" fill="none">
+
+                                                  <svg class="open_modal_size" xmlns="http://www.w3.org/2000/svg" width="10" height="15" fill="none">
                                                     <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m1.363 1 7 6.5-7 6.5"></path>
+                                                  </svg>
+                                                  <svg class="close_modal_size hide" xmlns="http://www.w3.org/2000/svg" width="16" height="9" fill="none">
+                                                    <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m14.363 1-6.5 7-6.5-7"></path>
                                                   </svg>
                                                   <!---->
                                                 </div>
                                               </button>
+
+                                              <div class="product_size hide">
+                                                <div class="mb-4 text-xs ">
+                                                    {{ $product->description }}
+                                                </div>
+                                              </div>
                                               <!---->
                                             </div>
                                             <div class="relative border-b border-t border-tiret2">
                                               <button type="button" class="w-full py-3 text-left">
                                                 <div class="flex items-center justify-between">
                                                   <span class="text-xs"> BODY MEASUREMENTS </span>
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" fill="none">
+
+                                                  <svg class="open_modal_delivery" xmlns="http://www.w3.org/2000/svg" width="10" height="15" fill="none">
                                                     <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m1.363 1 7 6.5-7 6.5"></path>
                                                   </svg>
+                                                  <svg class="close_modal_delivery hide" xmlns="http://www.w3.org/2000/svg" width="16" height="9" fill="none">
+                                                    <path stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.3" d="m14.363 1-6.5 7-6.5-7"></path>
+                                                  </svg>
+
                                                   <!---->
                                                 </div>
                                               </button>
+
+                                              <div class="product_delivery hide">
+                                                <div class="mb-4 text-xs">
+                                                    {{ $product->description }}
+                                                </div>
+                                              </div>
                                               <!---->
                                             </div>
                                           </div>

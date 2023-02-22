@@ -71,29 +71,39 @@ class SingleProduct extends Component
 
             $size_id = SizesColorsProducts::where('product_id', $request->product_id)->select('size_id')->distinct()->get();
 
+            $found = false;
             foreach ($size_id as $key => $value) {
 
                 if(checkStockSizeProduct($request->product_id, $value->size_id)) {
+                    $found = true;
                     $size_id = $value;
                     break;
                 }
             }
-            $size_name = Size::where('id', $size_id->size_id)->first();
-            $first_size_id = $size_id->size_id;
 
-            if(getSizeDefaultProduct($request->product_id, $size_name->name)) {
-                $colors_id = SizesColorsProducts::where('product_id', $request->product_id)
-                                                ->where('size_id', $first_size_id)
-                                                ->get(['color_id'])
-                                                ->toArray();
-                $colors = Color::whereIn('id', $colors_id)->get();
+            if($found) {
+
+                $size_name = Size::where('id', $size_id->size_id)->first();
+                $first_size_id = $size_id->size_id;
+
+                if(getSizeDefaultProduct($request->product_id, $size_name->name)) {
+                    $colors_id = SizesColorsProducts::where('product_id', $request->product_id)
+                                                    ->where('size_id', $first_size_id)
+                                                    ->get(['color_id'])
+                                                    ->toArray();
+                    $colors = Color::whereIn('id', $colors_id)->get();
+                }else {
+                    $colors_id = SizesColorsProducts::where('product_id', $request->product_id)
+                                                    ->where('size_id', session()->get('size_select'))
+                                                    ->get(['color_id'])
+                                                    ->toArray();
+                    $colors = Color::whereIn('id', $colors_id)->get();
+                }
             }else {
-                $colors_id = SizesColorsProducts::where('product_id', $request->product_id)
-                                                ->where('size_id', session()->get('size_select'))
-                                                ->get(['color_id'])
-                                                ->toArray();
-                $colors = Color::whereIn('id', $colors_id)->get();
+
+                $colors = null;
             }
+
         }
 
         return view('livewire.single-product', compact('products', 'images', 'upsells_products', 'colors', 'sizes'))
@@ -215,7 +225,6 @@ class SingleProduct extends Component
             }
 
             if (!$product_in_cart) {
-                dd(1);
                 $cart_items = session()->get('cart');
                 $cart_items[] = $size_product;
                 session()->put('cart', $cart_items);
