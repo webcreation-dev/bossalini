@@ -3,7 +3,7 @@
     $firstColor = 0;
 @endphp
 
-<div class="mobile-only" style="padding: 65px;" ></div>
+{{-- <div class="mobile-only" style="padding: 65px;" ></div> --}}
 
     <div>
         <section class=" lg:space-y-11 md:space-y-[101px] space-y-11">
@@ -119,7 +119,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{-- @if (checkStockProduct($product->id)) --}}
+                                    @if (checkStockProduct($product->id))
 
                                         @if (App\Models\Product::getStatusCart($product->id) == false)
                                             @if (getButtonAddCart($product->id))
@@ -142,7 +142,7 @@
                                                 </div>
                                             @endif
                                         @endif
-                                    {{-- @else
+                                    @else
 
                                     <div class="text-center">
                                         <button style="opacity: 0.4;"
@@ -168,7 +168,7 @@
                                                     NOTIFY ME </button></div>
                                     </form>
 
-                                    @endif --}}
+                                    @endif
 
 
                                     <div class="pt-4 flex-auto justify-center">

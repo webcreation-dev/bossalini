@@ -15,6 +15,8 @@ use App\Models\SizesColorsProducts;
 use App\Models\Upsell;
 use App\Models\Wishlis;
 use Illuminate\Support\Facades\Auth;
+use SNMP;
+
 class SingleProduct extends Component
 {
     public function render(Request $request)
@@ -32,8 +34,6 @@ class SingleProduct extends Component
             session()->put('cart', $cart);
         }
         $cart_items = session()->get('cart');
-
-        // dd($cart_items);
 
         $products = Product::where('id', $request->product_id)->get();
 

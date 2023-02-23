@@ -260,59 +260,44 @@ class FactoryTableSeeder extends Seeder
             ["product_id"=>3,"size_id"=>"", "color_id"=>"","quantity"=>5,"price"=>78],
         ]);
 
-        // DB::table("sizes_colors_products")->insert([
-        //     ["product_id"=>4,"size_id"=>1, "color_id"=>1,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>1, "color_id"=>2,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>1, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>1, "color_id"=>4,"quantity"=>0,"price"=>78],
+        DB::table("sizes_colors_products")->insert([
+            ["product_id"=>4,"size_id"=>1, "color_id"=>1,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>1, "color_id"=>2,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>1, "color_id"=>3,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>1, "color_id"=>4,"quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>4,"size_id"=>2, "color_id"=>2,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>2, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>2, "color_id"=>4,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>2, "color_id"=>5,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>2, "color_id"=>2,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>2, "color_id"=>3,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>2, "color_id"=>4,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>2, "color_id"=>5,"quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>4,"size_id"=>3, "color_id"=>1,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>3, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>3, "color_id"=>4,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>3, "color_id"=>2,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>3, "color_id"=>1,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>3, "color_id"=>3,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>3, "color_id"=>4,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>3, "color_id"=>2,"quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>4,"size_id"=>4, "color_id"=>4,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>4, "color_id"=>5,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>4, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>4, "color_id"=>1,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>4, "color_id"=>4,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>4, "color_id"=>5,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>4, "color_id"=>3,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>4, "color_id"=>1,"quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>4,"size_id"=>5, "color_id"=>5,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>5, "color_id"=>2,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>5, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>4,"size_id"=>5, "color_id"=>1,"quantity"=>0,"price"=>78],
-        // ]);
+            ["product_id"=>4,"size_id"=>5, "color_id"=>5,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>5, "color_id"=>2,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>5, "color_id"=>3,"quantity"=>0,"price"=>78],
+            ["product_id"=>4,"size_id"=>5, "color_id"=>1,"quantity"=>0,"price"=>78],
+        ]);
 
-        // DB::table("sizes_colors_products")->insert([
-        //     ["product_id"=>5,"size_id"=>1, "color_id"=>1,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>1, "color_id"=>2,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>1, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>1, "color_id"=>4,"quantity"=>0,"price"=>78],
+        DB::table("sizes_colors_products")->insert([
+            ["product_id"=>5,"size_id"=>1, "color_id"=>"","quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>5,"size_id"=>2, "color_id"=>2,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>2, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>2, "color_id"=>4,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>2, "color_id"=>5,"quantity"=>0,"price"=>78],
+            ["product_id"=>5,"size_id"=>2, "color_id"=>"","quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>5,"size_id"=>3, "color_id"=>1,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>3, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>3, "color_id"=>4,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>3, "color_id"=>2,"quantity"=>0,"price"=>78],
+            ["product_id"=>5,"size_id"=>3, "color_id"=>"","quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>5,"size_id"=>4, "color_id"=>4,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>4, "color_id"=>5,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>4, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>4, "color_id"=>1,"quantity"=>0,"price"=>78],
+            ["product_id"=>5,"size_id"=>4, "color_id"=>"","quantity"=>0,"price"=>78],
 
-        //     ["product_id"=>5,"size_id"=>5, "color_id"=>5,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>5, "color_id"=>2,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>5, "color_id"=>3,"quantity"=>0,"price"=>78],
-        //     ["product_id"=>5,"size_id"=>5, "color_id"=>1,"quantity"=>0,"price"=>78],
-        // ]);
+            ["product_id"=>5,"size_id"=>5, "color_id"=>"","quantity"=>0,"price"=>78],
+        ]);
 
         //Currencies
         Currency::create ([

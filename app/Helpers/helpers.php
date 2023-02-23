@@ -401,7 +401,7 @@ function getSizeDefaultProduct($id, $size) {
     if($size_default == true) {
 
         $size = Size::where('name', $size)->first();
-        if (session()->has('size_select')) {
+        if ((session()->has('size_select')) ||(!session()->has('size_select'))) {
             session()->put('size_select', $size->id);
         }
     }
@@ -534,10 +534,6 @@ function checkStockColorProduct($id, $color) {
 
     if($product_colors > 0) {
         $stockColorProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', session()->get('size_select'))->where('color_id', $color->id)->first();
-
-        // if($stockColorProduct == null) {
-        //     dd($id, session()->get('size_select'), $color->id );
-        // }
         $stock = ($stockColorProduct->quantity > 0) ? false : true;
     }
 

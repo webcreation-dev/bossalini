@@ -211,7 +211,7 @@
                             class="text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                             LOGIN</a></li>
                         <li>
-                            <a href="{{ route('register') }}}"
+                            <a href="{{ route('register') }}"
                             class="text-xs text-block pr-9 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                            REGISTER</a></li>
 
