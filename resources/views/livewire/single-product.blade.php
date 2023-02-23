@@ -13,17 +13,31 @@
 
 
 
-                        <div class="xl:col-span-2 lg:col-span-3">
+                        <div class="xl:col-span-2 lg:col-span-3 zoom_image_product hide">
+                            <div class="relative mb-3">
+                                <div class="absolute flex flex-col top-0 right-0 p-3">
+                                    <button
+                                    class="transition ease-in duration-300 hover:text-purple-500 w-8 h-8 text-center p-1 close_zoom_project"><img
+                                    src="{{ asset('files/x.7e1a15a2.svg') }}" height="18"></button>
+                                </div>
+                                <a href="#">
+                                    <img class="w-full zoom_src" src=""
+                                    alt="Product title">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="xl:col-span-2 lg:col-span-3 product_images">
                             <div class="grid xl:grid-cols-2 gap-2 flex-auto">
                                 @foreach ($images as $image)
                                     <div>
-                                        <img class="w-full min-h-[326px]" src="{{ asset('files/' . $image->image . '') }}"
+                                        <img class="w-full min-h-[326px] product_image" src="{{ asset('files/' . $image->image . '') }}"
                                             alt="Product title">
                                     </div>
                                 @endforeach
-
                             </div>
                         </div>
+
                         @foreach ($products as $product)
                             <div class="xl:col-span-1 lg:col-span-2 flex flex-col items-center lg:pt-0 md:pt-[70px] pt-11">
                                 <div class="w-full">

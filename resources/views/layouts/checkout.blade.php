@@ -63,6 +63,11 @@
             totalPrice += price;
         });
         $('.total-price-products').text(totalPrice);
+
+        var input = $('input[name="amount"]');
+        input.val(totalPrice);
+
+
     });
     </script>
 @livewireScripts

@@ -15,7 +15,7 @@
                 src="{{ asset('files/x.7e1a15a2.svg') }}" height="18"></button>
 
             </div>
-                <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
+            <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
                 <img class="w-full" src="{{ asset('files/' . App\Models\Product::getFirstImageAttribute($product->id) . '') }}"
                 alt="Product title">
             </a>

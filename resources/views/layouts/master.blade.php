@@ -677,6 +677,22 @@
             document.querySelector(".product_delivery").style.animationName = "fadeOutRight";
         });
 
+
+        $('.product_image').click(function() {
+            var path = $(this).attr('src');
+            $('.zoom_image_product').removeClass("hide");
+            $('.product_images').addClass("hide");
+            $('.zoom_src').attr('src', path);
+        });
+
+        $('.close_zoom_project').click(function() {
+            $('.zoom_image_product').addClass("hide");
+            $('.product_images').removeClass("hide");
+        });
+
+
+
+
     });
 </script>
 

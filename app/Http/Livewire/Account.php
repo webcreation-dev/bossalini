@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Address;
+use App\Models\Order;
 use App\Models\OrderItem;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -11,11 +12,17 @@ class Account extends Component
 {
     public function render()
     {
-        $orders = OrderItem::where('user_id', Auth()->user()->id)->get();
+        if(Auth::check()) {
 
-        $default_address = Address::where('user_id', Auth()->user()->id)->get();
+            $orders = Order::where('user_id', Auth()->user()->id)->get(['id'])->toArray();
+            $order_items = Order::whereIn('order_id', $orders)->get();
+            $default_address = Address::where('user_id', Auth()->user()->id)->first();
 
-        return view('livewire.account', compact('orders', 'default_address'))
+        }else{
+            return redirect()->route('login');
+        }
+
+        return view('livewire.account', compact('order_items', 'default_address'))
         ->extends("layouts.master")
         ->section("content");
     }

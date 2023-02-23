@@ -292,3 +292,20 @@
             </div>
         </div>
     </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        window.addEventListener("deleteCartItem", event=>{
+            if ($(window).width() > 767.98) {
+                $(".mobile-only").addClass("hide");
+                $(".desktop-only").removeClass("hide");
+            } else {
+                $(".mobile-only").removeClass("hide");
+                $(".desktop-only").addClass("hide");
+            }
+        });
+    </script>
+

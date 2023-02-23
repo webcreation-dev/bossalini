@@ -608,10 +608,7 @@ function getPriceProduct($id) {
         }
     }else {
 
-        // $cart = [];
-        // session()->put('cart', $cart);
         $cart_items = session()->get('cart');
-        // dd()
 
         if($cart_items == []) {
             $price = $product->selling_price;
@@ -633,10 +630,9 @@ function getPriceProduct($id) {
 
         }
 
-
-        return $price;
     }
 
+    return $price;
 }
 
 function checkStockProduct($id) {

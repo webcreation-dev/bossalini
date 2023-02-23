@@ -99,6 +99,7 @@ class AddCart extends Component
             $cart_item->delete();
         }
 
+        $this->dispatchBrowserEvent("deleteCartItem");
     }
 
     public function goToShop()

@@ -11,11 +11,12 @@ class OrderItem extends Model
     protected $table = 'order_items';
 
     protected $fillable = [
-        'order_code',
-        'date',
-        'status_payment',
-        'status_fulfilement',
-        'total_price',
-        'user_id',
+        'order_id',
+        'product_id',
+        'product_color_id',
+        'product_size_id',
+        'price',
+        'quantity',
+        'total',
     ] ;
 }

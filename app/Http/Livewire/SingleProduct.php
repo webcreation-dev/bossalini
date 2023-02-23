@@ -313,6 +313,6 @@ class SingleProduct extends Component
 
         }
         $request->merge(['product_id' => $id]);
-}
+    }
 
 }

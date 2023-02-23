@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Checkout;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Livewire\Account;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\AddCart;
@@ -82,6 +83,9 @@ Route::get('/account', Account::class)->name('account');
 Route::get('/profile', Addresse::class)->name('addresse');
 Route::get('/checkout', Checkout::class)->name('checkout');
 
+Route::post('/pay', [PaymentController::class,'pay'])->name('paypal.pay');
+Route::get('/success/{order_id}', [PaymentController::class,'success'])->name('paypal.success');
+Route::get('/error/{order_id}', [PaymentController::class,'error'])->name('paypal.error');
 
 Route::get('/change_currency', [CurrencyController::class, 'index'])->name('change_currency');
 Route::post('/get_data_cart', [CurrencyController::class, 'getDataCart'])->name('get_data_cart');

@@ -34,10 +34,17 @@ class Checkout extends Component
             $cart_products = Cart::where('user_id', Auth::user()->id)->where('status', 'unpaid')->get(['product_id'])->toArray();
             $products = Product::whereIn('id', $cart_products)->get();
 
-            $addresses = Address::where('user_id', Auth()->user()->id)->first()->get()->toArray();
+            $addresses = Address::where('user_id', Auth()->user()->id)->first();
+
+            if($addresses == null) {
+                $addresses = [];
+            }else {
+                $addresses = $addresses->toArray();
+            }
             $cart_items = [];
 
         }
+
 
         return view('livewire.checkout', compact('products', 'addresses', 'cart_items'))
         ->extends("layouts.checkout")
@@ -63,4 +70,5 @@ class Checkout extends Component
         }
 
     }
+
 }

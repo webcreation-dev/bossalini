@@ -1,3 +1,7 @@
+@php
+    // dd($default_address);
+@endphp
+
 <section style="margin-top: 200px;">
     <div class="mx-9 lg:px-6 px-0 pb-12 h-full">
       <div>
@@ -18,7 +22,7 @@
           <div class="col-sm-8">
             <p class=" font-bold text-base pt-11 d-flex" style="justify-content: start; "> ORDER HISTORY </p>
             <br> <br>
-                @if ($orders->isEmpty())
+                @if ($order_items->isEmpty())
                     <p class=" text-[13px] mt-2">
                         You haven't place any orders yet
                     </p>
@@ -35,13 +39,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($orders as $order)
+                            @foreach ($order_items as $order_item)
                                 <tr>
-                                    <td> <p class="text-center text-[13px] font-bold" style="border: 1px solid black;">#B26440</p>  </td>
-                                    <td class="text-[13px]" >FSJNKJF</td>
-                                    <td class="text-[13px]">Paid</td>
-                                    <td class="text-[13px]">Fulfilled</td>
-                                    <td class="text-[13px]">$order->total_price</td>
+                                    <td> <p class="text-center text-[13px] font-bold" style="border: 1px solid black;">#{{ $order_item->payment_id }}</p>  </td>
+                                    <td class="text-[13px]" >{{ $order_item->created_at }}</td>
+                                    <td class="text-[13px]">{{ $order_item->payment_status }}</td>
+                                    <td class="text-[13px]">{{ $order_item->payment_status }}</td>
+                                    <td class="text-[13px]">{{ $order_item->payment_status }}</td>
                                 </tr>
                             @endforeach
 
@@ -57,7 +61,7 @@
 
                 <p class=" font-bold text-base pt-11"> ACCOUNT DETAILS </p>
 
-                @if ($default_address->isEmpty())
+                @if ( $default_address == null)
                     <p class=" text-[13px] mt-2">
                         John Leon <br>
                         19 Route de Florissant <br>
@@ -66,12 +70,12 @@
                     </p>
                 @else
                     <p class=" text-[13px] mt-2">
-                        @foreach ( $default_address as $address)
-                            {{ $address->first_name }} {{ $address->last_name }} <br>
-                            {{ $address->apartment }} <br>
-                            {{ $address->zip_code }} {{ $address->city }} <br>
-                            {{ $address->country }}
-                        @endforeach
+                        {{-- @foreach ( $default_address as $address) --}}
+                            {{ $default_address->first_name }} {{ $default_address->last_name }} <br>
+                            {{ $default_address->apartment }} <br>
+                            {{ $default_address->zip_code }} {{ $default_address->city }} <br>
+                            {{ $default_address->country }}
+                        {{-- @endforeach --}}
                     </p>
                 @endif
 
