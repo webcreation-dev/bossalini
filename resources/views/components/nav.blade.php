@@ -2,7 +2,7 @@
         class="pt-4 lg:flex hidden z-40 fixed top-20 left-0 right-0 antialiased antialiased md:border-t border-b px-9 text-xs py-3 justify-center items-center">
         <p class="text-center" id="sequence">CLEARPAY &amp; KLARNA AVAILABLE AT CHECKOUT</p>
       </section>
-      <section class="lg:hidden relative">
+      <section class="lg:hidden relative nav_menu_mobile">
         <div class="-mt-8 z-20 fixed w-screen pt-8 top-20">
           <div class="">
             <form>

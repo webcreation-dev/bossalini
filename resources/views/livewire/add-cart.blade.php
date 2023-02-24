@@ -81,7 +81,7 @@
 
                             </p>
 
-                            <input type="number" value="1" name="products[{{ $product->id }}][quantity]"
+                            <input type="number" value="1" min="0" max="{{checkStockCartItems($product->id)}}" name="products[{{ $product->id }}][quantity]"
                                 class="w-full input-quantity text-center text-[13px] font-bold border-black border"
                                 style="height: 50%; width: 50%;">
 
@@ -125,11 +125,12 @@
                                         <p class="text-left font-bold md:pt-0 text-[13px] f-700 align-self-start"
                                             style="margin-bottom: auto; "> BOSSALINI FLY HOODIE - BLACK </p>
                                         <p class="text-left col  md:pt-0 text-[13px] f-700"
-                                            style="margin-bottom: auto; align-self-center"> <span>M / CHF</span> <span
-                                                class="item_price">112</span> </p>
+                                            style="margin-bottom: auto; align-self-center">
+                                            <span>M / @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif </span>
+                                                <span class="item_price">{{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</span> </p>
                                     </div>
 
-                                    <input type="number" name="products[{{ $product->id }}][quantity]"
+                                    <input type="number" min="0" max="{{checkStockCartItems($product->id)}}" name="products[{{ $product->id }}][quantity]"
                                         class="w-full input-quantity hidden input-price text-center text-[13px] font-bold border-black border" :
                                         style="height: 25%; width: 25%;" value="1">
                                 </div>
@@ -138,6 +139,7 @@
                                     style="flex-direction: column; justify-content : space-between; text-align:end; ">
 
                                     <p class="text-end col  md:pt-0 text-[13px] f-700" style="margin-bottom: auto; align-self-end">
+                                        <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif</span>
                                         <span class="total-price">112</span> </p>
 
 
@@ -296,7 +298,6 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
         window.addEventListener("deleteCartItem", event=>{
             if ($(window).width() > 767.98) {

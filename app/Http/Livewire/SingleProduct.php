@@ -45,8 +45,8 @@ class SingleProduct extends Component
 
 
         $product_simple = SizesColorsProducts::where('product_id', $request->product_id)->where('color_id', "")->where('size_id', "")->count();
-        $product_sizes = SizesColorsProducts::where('product_id', $request->product_id)->where('size_id', '!=', "")->where('color_id', "")->count();
-        $product_colors = SizesColorsProducts::where('product_id', $request->product_id)->where('color_id', '!=', "")->where('size_id', '!=', "")->count();
+        $product_sizes = SizesColorsProducts::where('product_id', $request->product_id)->where('size_id', '!=', "")->where('color_id', "none")->count();
+        $product_colors = SizesColorsProducts::where('product_id', $request->product_id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
 
         if($product_sizes > 0) {
 
@@ -105,7 +105,6 @@ class SingleProduct extends Component
             }
 
         }
-
         return view('livewire.single-product', compact('products', 'images', 'upsells_products', 'colors', 'sizes'))
         ->extends("layouts.master")
         ->section("content");
@@ -144,8 +143,9 @@ class SingleProduct extends Component
                 session()->put('wishlists', $wishlists);
             }
         }
-        $request->merge(['product_id' => $id]);
 
+        $this->dispatchBrowserEvent("mobile_menu");
+        $request->merge(['product_id' => $id]);
     }
 
 
@@ -194,6 +194,7 @@ class SingleProduct extends Component
                 ]);
             // }
         }
+        $this->dispatchBrowserEvent("mobile_menu");
         $request->merge(['product_id' => $id]);
     }
 
@@ -255,10 +256,7 @@ class SingleProduct extends Component
             session()->put('size_select', $size);
         }
         session()->put('size_select', $size->id);
-
-        // dd($cart_items);
-
-
+        $this->dispatchBrowserEvent("mobile_menu");
         $request->merge(['product_id' => $id]);
     }
 
@@ -312,6 +310,7 @@ class SingleProduct extends Component
             }
 
         }
+        $this->dispatchBrowserEvent("mobile_menu");
         $request->merge(['product_id' => $id]);
     }
 

@@ -120,8 +120,8 @@ function getButtonAddCart($id) {
     $button_add_cart = false;
 
     $product_simple = SizesColorsProducts::where('product_id', $id)->where('color_id', "")->where('size_id', "")->count();
-    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "")->count();
-    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('size_id', '!=', "")->count();
+    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "none")->count();
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
 
 
     if(Auth::check()) {
@@ -488,8 +488,8 @@ function checkStockSizeProduct($id, $size) {
     $stock = true;
 
     $product_simple = SizesColorsProducts::where('product_id', $id)->where('color_id', "")->where('size_id', "")->count();
-    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "")->count();
-    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('size_id', '!=', "")->count();
+    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "none")->count();
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
 
     if($product_simple > 0) {
         $stockSizeProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', "")->sum('quantity');
@@ -519,8 +519,8 @@ function checkStockColorProduct($id, $color) {
     $color = Color::where('code', $color)->first();
 
     $product_simple = SizesColorsProducts::where('product_id', $id)->where('color_id', "")->where('size_id', "")->count();
-    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "")->count();
-    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('size_id', '!=', "")->count();
+    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "none")->count();
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
 
     if($product_simple > 0) {
         $stockColorProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', "")->where('color_id', "")->first();
@@ -639,8 +639,8 @@ function checkStockProduct($id) {
     $stock = false;
 
     $product_simple = SizesColorsProducts::where('product_id', $id)->where('color_id', "")->where('size_id', "")->count();
-    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "")->count();
-    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('size_id', '!=', "")->count();
+    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "none")->count();
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
 
     if($product_simple > 0) {
         $stockProduct = SizesColorsProducts::where('product_id', $id)->sum('quantity');
@@ -655,6 +655,100 @@ function checkStockProduct($id) {
     if($product_colors > 0) {
         $stockProduct = SizesColorsProducts::where('product_id', $id)->sum('quantity');
         $stock = ($stockProduct > 0) ? true : false;
+    }
+
+    return $stock;
+}
+
+
+function checkStockCartItems($id) {
+
+    $stock = 0;
+
+    $product_simple = SizesColorsProducts::where('product_id', $id)->where('color_id', "")->where('size_id', "")->count();
+    $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "none")->count();
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
+
+    if($product_simple > 0) {
+
+        if(Auth::check()) {
+
+            $cart_products = Cart::where('user_id', Auth::user()->id)->where('status', 'unpaid')->get();
+            foreach ($cart_products as $key => $value) {
+                if($value->product_id == $id) {
+                    $stock = SizesColorsProducts::where('product_id', $id)->where('size_id', "")->where('color_id', "")->first()->quantity;
+                    break;
+                }
+            }
+        }else {
+
+            $cart = session()->get('cart');
+            foreach ($cart as $key => $item) {
+                if($item['status'] == "unpaid") {
+                    if ($item['id'] == $id) {
+                        $stock = SizesColorsProducts::where('product_id', $id)->where('size_id', "")->where('color_id', "")->first()->quantity;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    if($product_sizes > 0) {
+
+        if(Auth::check()) {
+
+            $cart_products = Cart::where('user_id', Auth::user()->id)->where('status', 'unpaid')->get();
+            foreach ($cart_products as $key => $value) {
+                if($value->product_id == $id) {
+                    $size = Size::where('name', $value->size)->first();
+                    $stock = SizesColorsProducts::where('product_id', $id)->where('size_id', $size->id)->where('color_id', "none")->first();
+                    break;
+                }
+            }
+        }else {
+
+            $cart = session()->get('cart');
+            foreach ($cart as $key => $item) {
+                if($item['status'] == "unpaid") {
+                    if ($item['id'] == $id) {
+                        $size = Size::where('name', $item['size'])->first();
+                        $stock = SizesColorsProducts::where('product_id', $id)->where('size_id', $size->id)->where('color_id', "none")->first()->quantity;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    if($product_colors > 0) {
+
+        if(Auth::check()) {
+
+            $cart_products = Cart::where('user_id', Auth::user()->id)->where('status', 'unpaid')->get();
+            foreach ($cart_products as $key => $value) {
+                if($value->product_id == $id) {
+                    $size = Size::where('name', $value->size)->first();
+                    $color = Color::where('code', $value->color)->first();
+                    $stock = SizesColorsProducts::where('product_id', $id)->where('size_id', $size->id)->where('color_id', $color->id)->first()->quantity;
+                    break;
+                }
+            }
+        }else {
+
+            $cart = session()->get('cart');
+            foreach ($cart as $key => $item) {
+                if($item['status'] == "unpaid") {
+                    if ($item['id'] == $id) {
+                        $size = Size::where('name', $item['size'])->first();
+                        $color = Color::where('code', $item['color'])->first();
+                        $stock = SizesColorsProducts::where('product_id', $id)->where('size_id', $size->id)->where('color_id', $color->id)->first()->quantity;
+
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     return $stock;

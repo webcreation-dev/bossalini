@@ -449,3 +449,15 @@
     </section>
 
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    window.addEventListener("mobile_menu", event=>{
+        if ($(window).width() > 767.98) {
+            $(".nav_menu_mobile").css("margin-bottom", "0px");
+        } else {
+            $(".nav_menu_mobile").css("margin-bottom", "180px");
+        }
+    });
+</script>
