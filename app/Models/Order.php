@@ -15,6 +15,7 @@ class Order extends Model
         'last_name',
         'company',
         'apartment',
+        'email',
         'city',
         'country',
         'zip_code',

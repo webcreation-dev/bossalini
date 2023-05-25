@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Cart;
 use App\Models\Color;
 use App\Models\ColorProduct;
+use App\Models\Notification;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -15,6 +16,7 @@ use App\Models\SizesColorsProducts;
 use App\Models\Upsell;
 use App\Models\Wishlis;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use SNMP;
 
 class SingleProduct extends Component
@@ -105,9 +107,27 @@ class SingleProduct extends Component
             }
 
         }
-        return view('livewire.single-product', compact('products', 'images', 'upsells_products', 'colors', 'sizes'))
+
+        $titre = $products[0]->name;
+        session()->put('titre', $titre);
+
+        // return view('livewire.single-product', compact('products', 'images', 'upsells_products', 'colors', 'sizes'))
+        // ->extends("layouts.master")
+        // ->section("content");
+
+        return view('livewire.single-product', [
+            'produ_id' => $products[0]->id,
+            'slug' => Str::slug($products[0]->name),
+            'products' => $products,
+            'images' => $images,
+            'upsells_products' => $upsells_products,
+            'colors' => $colors,
+            'sizes' => $sizes,
+        ])
+        ->with('slug', Str::slug($products[0]->name))
         ->extends("layouts.master")
         ->section("content");
+
     }
 
     public function wishlist($id, Request $request) {

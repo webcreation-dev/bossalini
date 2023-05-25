@@ -5,7 +5,7 @@
         <p class="pb-5 pt-3 text-xs"><a href="#">COMPANY</a></p>
         <div class="space-y-0.5 leading-relaxed">
           <p class="text-xs"><a href="{{route('about')}}">ABOUT</a></p>
-          <p class="text-xs"><a href="#">BOSSALINI RADIO</a></p>
+          <p class="text-xs"><a href="{{route('playlist')}}">BOSSALINI RADIO</a></p>
           <p class="text-xs"><a href="{{route('wishlists')}}">WISHLIST</a></p>
         </div>
       </div>

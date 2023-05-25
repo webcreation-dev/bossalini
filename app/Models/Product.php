@@ -100,5 +100,16 @@ class Product extends Model
 
     }
 
+    public static function getNameByProductId($productId)
+    {
+        $product = self::find($productId);
+        return $product ? $product->name : null;
+    }
+
+    public static function getDescriptionByProductId($productId)
+    {
+        $product = self::find($productId);
+        return $product ? $product->description : null;
+    }
 
 }

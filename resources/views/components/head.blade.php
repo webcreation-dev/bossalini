@@ -4,17 +4,35 @@
     <link rel="icon" type="image/svg+xml" href="{{asset('files/bossa.svg')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('files/bootstrap-icons.css')}}">
-    <title>BOSSALINI | Find all your items here</title>
+    <title>
+        @if (session()->has('titre'))
+            {{ session('titre') }}
+            @php
+                session()->forget('titre');
+            @endphp
+        @else
+            BOSSALINI | Find all your items here
+        @endif
+    </title>
+
     <link rel="stylesheet" href="{{asset('files/index.57cdf621.css')}}">
 
 
     {{-- <script type="module" crossorigin="" src="{{asset('files/index.de6f6b5e.js.téléchargement')}}"></script> --}}
 
     <link rel="stylesheet" href="{{asset('files/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('files/toastr.min.css')}}" >
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.css'>
 
     <style>
+
+        .space {
+            padding-bottom: 130px;
+        }
+        .wishlist-mobile {
+            padding-top: 130px;
+        }
 
         td, th, tr {
             border: 1px solid black;
@@ -115,9 +133,8 @@
 
     </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     @livewireStyles
   </head>

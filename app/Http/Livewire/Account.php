@@ -15,7 +15,7 @@ class Account extends Component
         if(Auth::check()) {
 
             $orders = Order::where('user_id', Auth()->user()->id)->get(['id'])->toArray();
-            $order_items = Order::whereIn('order_id', $orders)->get();
+            $order_items = OrderItem::whereIn('order_id', $orders)->get();
             $default_address = Address::where('user_id', Auth()->user()->id)->first();
 
         }else{

@@ -7,8 +7,18 @@ use App\Models\Size;
 use App\Models\SizesColorsProducts;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Categories;
+use Illuminate\Support\Str;
+
+
 define("ADDRESS", "adderss");
 define("FORMADDRESS", "form_address");
+
+function slugCategory($category_id) {
+    $category = Categories::where('id', $category_id)->get()->toArray();
+    $slug  = Str::slug($category[0]['name']);
+    return $slug;
+}
 
 function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
@@ -71,10 +81,10 @@ function getNameCurrency() {
 
         $currency = '€';
         session()->put('currency', $currency);
-        return 'EUROPEAN';
+        return 'EUROPE / EUR';
     } elseif ($currency == '€') {
 
-        return 'EUROPEAN';
+        return 'EUROPE / EUR';
     } elseif ($currency == 'CHF') {
 
         return 'SWITZERLAND';
@@ -128,18 +138,18 @@ function getButtonAddCart($id) {
 
         if($product_simple > 0) {
 
-            $product = Cart::where('product_id', $id)->where('size', "")->where('color', "")->where('status', "unpaid");
+            $product = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('size', "")->where('color', "")->where('status', "unpaid");
             $button_add_cart = ($product->count() > 0) ? false : true;
         }
 
         if($product_sizes > 0) {
 
 
-            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "unpaid");
+            $product = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "unpaid");
 
-            $product_2 = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "nocart");
+            $product_2 = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "nocart");
 
-            $product_3 = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "")->where('status', "nocart");
+            $product_3 = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('size', "!=", "")->where('color', "")->where('status', "nocart");
 
             if($product->count() > 0) {
                 $button_add_cart = false;
@@ -157,27 +167,20 @@ function getButtonAddCart($id) {
 
         if($product_colors > 0) {
 
-            $product = Cart::where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "none")->where('status', "unpaid");
+            $product = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "none")->where('status', "unpaid");
 
-            $product_2 = Cart::where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "none")->where('status', "nocart");
+            $product_2 = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('size', "!=", "")->where('color',"!=", "none")->where('status', "nocart");
 
-            $product_3 = Cart::where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "nocart");
+            $product_3 = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->where('size', "!=", "")->where('color', "none")->where('status', "nocart");
 
             if($product->count() > 0) {
                 $button_add_cart = false;
-            }
-
-            if($product_2->count() > 0) {
+            }elseif($product_2->count() > 0) {
                 $button_add_cart = true;
-            }
-
-            if($product_3->count() > 0) {
+            }elseif($product_3->count() > 0) {
                 $button_add_cart = false;
             }
 
-            // dd($product->count());
-            // $button_add_cart = ($product->count() > 0) ? true : false;
-            // dd($button_add_cart);
         }
 
     }else {
@@ -237,7 +240,7 @@ function getColorDefaultProduct($id, $color) {
 
     if(Auth::check()) {
 
-        $product = Cart::where('product_id', $id);
+        $product = Cart::where('product_id', $id)->where('user_id', Auth::user()->id);
         if($product->count() == 0) {
             $color_default = true;
             Cart::create([
@@ -331,9 +334,12 @@ function getSizeDefaultProduct($id, $size) {
 
     $size_default = false;
 
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
+
     if(Auth::check()) {
 
-        $product = Cart::where('product_id', $id);
+
+        $product = Cart::where('product_id', $id)->where('user_id', Auth::user()->id);
 
         if($product->count() == 0) {
             $size_default = true;
@@ -342,7 +348,7 @@ function getSizeDefaultProduct($id, $size) {
                 'user_id' => Auth::user()->id,
                 'product_id' => $id,
                 'size' => $size,
-                'color' => "",
+                'color' => ($product_colors > 0) ? "" : "none",
             ]);
         }elseif(($product->first()->size != "") && ($product->first()->color != "") ) {
             $size_default = false;
@@ -464,7 +470,7 @@ function getUserNameCurrency() {
 
     if ($currency == '€') {
 
-        return 'EUROPEAN';
+        return 'EUROPE / EUR';
     } elseif ($currency == 'CHF') {
 
         return 'SWITZERLAND';
@@ -520,7 +526,9 @@ function checkStockColorProduct($id, $color) {
 
     $product_simple = SizesColorsProducts::where('product_id', $id)->where('color_id', "")->where('size_id', "")->count();
     $product_sizes = SizesColorsProducts::where('product_id', $id)->where('size_id', '!=', "")->where('color_id', "none")->count();
-    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")->where('size_id', '!=', "")->count();
+
+    $product_colors = SizesColorsProducts::where('product_id', $id)->where('color_id', '!=', "")->where('color_id', '!=', "none")
+    ->where('size_id', '!=', "")->count();
 
     if($product_simple > 0) {
         $stockColorProduct = SizesColorsProducts::where('product_id', $id)->where('size_id', "")->where('color_id', "")->first();
@@ -560,17 +568,20 @@ function getRateCurrency() {
 
 function getUserRateCurrency() {
     $currency = Currency::where('id', Auth::user()->currency_id)->first();
+    if($currency->rate == '€') {
+        $currency->rate = 'EUR';
+    }
     return $currency->rate;
 }
 
 function getConvertRatePrice($rate, $price) {
-    /*$curl = curl_init();
+    $curl = curl_init();
 
     curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/convert?to=$rate&from=USD&amount=$price",
     CURLOPT_HTTPHEADER => array(
         "Content-Type: text/plain",
-        "apikey: 8dYXIkvfiId7KmWDFTuf2yUSqt0DVg6L"
+        "apikey: vpoK5KgqbD195Gv5gl4w15PSQAff8Pqg"
     ),
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
@@ -583,7 +594,7 @@ function getConvertRatePrice($rate, $price) {
 
     $response = curl_exec($curl);
     curl_close($curl);
-    $response = json_decode($response, true);*/
+    $response = json_decode($response, true);
     // return round($response['result'], 2);
     return 77;
 }
@@ -752,4 +763,38 @@ function checkStockCartItems($id) {
     }
 
     return $stock;
+}
+
+function getCartColorProduct($id) {
+    if (Auth::check()) {
+        $cart = Cart::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        if ($cart) {
+            return $cart->color;
+        }
+    } else {
+        $cart_items = session()->get('cart', []);
+        foreach ($cart_items as $item) {
+            if ($item['id'] == $id) {
+                return $item['color'];
+            }
+        }
+    }
+    return "AUCUNE";
+}
+
+function getCartSizeProduct($id) {
+    if (Auth::check()) {
+        $cart = Cart::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        if ($cart) {
+            return $cart->size;
+        }
+    } else {
+        $cart_items = session()->get('cart', []);
+        foreach ($cart_items as $item) {
+            if ($item['id'] == $id) {
+                return $item['size'];
+            }
+        }
+    }
+    return "AUCUNE";
 }

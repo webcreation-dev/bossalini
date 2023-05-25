@@ -1,3 +1,4 @@
+<div class="wishlist-mobile"></div>
 <section class="lg:pt-11 pt-[6px]">
 
     @if (!$products->isEmpty())

@@ -28,6 +28,7 @@ class ProductsByCategory extends Component
         $category = Categories::where('id', $category_id)->get()->toArray();
 
         return view('livewire.products-by-category', compact('products', 'category_id', 'category'))
+        ->with('slug', slugCategory($category_id))
         ->extends("layouts.master")
         ->section("content");
     }

@@ -35,7 +35,7 @@
                             <th class="font-bold text-center" >DATE</th>
                             <th class="font-bold text-center" >PAYMENT</th>
                             <th class="font-bold text-center" >FULFILEMENT </th>
-                            <th class="font-bold text-center" >STATUS</th>
+                            <th class="font-bold text-center" >TOTAL</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,8 +44,13 @@
                                     <td> <p class="text-center text-[13px] font-bold" style="border: 1px solid black;">#{{ $order_item->payment_id }}</p>  </td>
                                     <td class="text-[13px]" >{{ $order_item->created_at }}</td>
                                     <td class="text-[13px]">{{ $order_item->payment_status }}</td>
-                                    <td class="text-[13px]">{{ $order_item->payment_status }}</td>
-                                    <td class="text-[13px]">{{ $order_item->payment_status }}</td>
+                                    <td class="text-[13px]">{{ $order_item->order_status }}</td>
+                                    <td class="text-[13px]">
+                                        @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif
+                                        <span>
+                                            {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), $order_item->amount ) }}
+                                        </span>
+                                    </td>
                                 </tr>
                             @endforeach
 

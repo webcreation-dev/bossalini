@@ -42,35 +42,35 @@ class Addresse extends Component
 
     public function createAddress() {
 
-    $order = Address::where('user_id', Auth()->user()->id);
+        $order = Address::where('user_id', Auth()->user()->id);
 
-    if($order->count() == 0) {
-        Address::create([
-            'user_id' => Auth()->user()->id,
-            'first_name' => $this->address['first_name'],
-            'last_name' => $this->address['last_name'],
-            'email' => $this->address['company'],
-            'apartment' => $this->address['apartment'],
-            'city' => $this->address['city'],
-            'country' => $this->address['country'],
-            'zip_code' => $this->address['zip_code'],
-            'phone' => $this->address['phone'],
-        ]);
-    } else {
+        if($order->count() == 0) {
+            Address::create([
+                'user_id' => Auth()->user()->id,
+                'first_name' => $this->address['first_name'],
+                'last_name' => $this->address['last_name'],
+                'email' => $this->address['company'],
+                'apartment' => $this->address['apartment'],
+                'city' => $this->address['city'],
+                'country' => $this->address['country'],
+                'zip_code' => $this->address['zip_code'],
+                'phone' => $this->address['phone'],
+            ]);
+        } else {
 
-        $order->update([
-            'user_id' => Auth()->user()->id,
-            'first_name' => $this->address['first_name'],
-            'last_name' => $this->address['last_name'],
-            'email' => $this->address['company'],
-            'apartment' => $this->address['apartment'],
-            'city' => $this->address['city'],
-            'country' => $this->address['country'],
-            'zip_code' => $this->address['zip_code'],
-            'phone' => $this->address['phone']
-        ]);
+            $order->update([
+                'user_id' => Auth()->user()->id,
+                'first_name' => $this->address['first_name'],
+                'last_name' => $this->address['last_name'],
+                'email' => $this->address['company'],
+                'apartment' => $this->address['apartment'],
+                'city' => $this->address['city'],
+                'country' => $this->address['country'],
+                'zip_code' => $this->address['zip_code'],
+                'phone' => $this->address['phone']
+            ]);
 
-    }
+        }
 
         $this->currentPage = ADDRESS;
     }

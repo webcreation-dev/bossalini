@@ -16,8 +16,8 @@
                     <img class="object-cover lg:w-full lg:h-[640px] md:w-full md:h-[716px] min-w-[343px] min-h-[517px]" src=" {{asset('files/slider_home01.6ec5af8b.jpg')}}" alt="Product title">
                   </div>
                   <div class="flex-auto justify-evenly">
-                    <p class="text-xs font-bold">BOSSALINI FLY HOODIE - BLACK</p>
-                    <p class="antialiased text-xs mt-0.5">€ 98,00</p>
+                    <p class="text-xs font-bold">KEEP*IT*FLY ESSENTIALS COLLECTION</p>
+                    <p class="antialiased text-xs mt-0.5">VIEW NOW</p>
                   </div>
                 </div>
                 <div class="">
@@ -32,8 +32,8 @@
                     <img class="object-cover lg:w-full lg:h-[640px] md:w-full md:h-[716px] min-w-[343px] min-h-[517px]" src="{{asset('files/slider_home01-2.6afd85d3.jpg')}}" alt="Product title">
                   </div>
                   <div class="flex-auto justify-evenly">
-                    <p class="text-xs font-bold">BOSSALINI FLY SWEATPANT - BLACK</p>
-                    <p class="antialiased text-xs mt-0.5">€ 98,00</p>
+                    <p class="text-xs font-bold">KEEP*IT*FLY ESSENTIALS COLLECTION</p>
+                    <p class="antialiased text-xs mt-0.5">VIEW NOW</p>
                   </div>
                 </div>
                 <div class="">
@@ -48,8 +48,8 @@
                     <img class="object-cover lg:w-full lg:h-[640px] md:w-full md:h-[716px] min-w-[343px] min-h-[517px]" src="{{asset('files/slider_home01-1.7028721b.jpg')}}" alt="Product title">
                   </div>
                   <div class="flex-auto justify-evenly">
-                    <p class="text-xs font-bold">BOSSALINI FLY CAP - BLACK</p>
-                    <p class="antialiased text-xs mt-0.5">€ 58,00</p>
+                    <p class="text-xs font-bold">KEEP*IT*FLY ESSENTIALS COLLECTION</p>
+                    <p class="antialiased text-xs mt-0.5">VIEW NOW</p>
                   </div>
                 </div>
                 <div class="">
@@ -66,8 +66,8 @@
                     </div>
                   </div>
                   <div class="flex-auto justify-evenly">
-                    <p class="text-xs font-bold">BOSSALINI FLY HOODIE - BLACK</p>
-                    <p class="antialiased text-xs mt-0.5">€ 98,00</p>
+                    <p class="text-xs font-bold">KEEP*IT*FLY ESSENTIALS COLLECTION</p>
+                    <p class="antialiased text-xs mt-0.5">VIEW NOW</p>
                   </div>
                 </div>
               </div>

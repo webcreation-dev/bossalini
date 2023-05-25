@@ -24,7 +24,7 @@
     </div>
 </section>
 <section class="hidden lg:flex py-5 items-center justify-center space-x-5 section3">
-    <a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}"
+    <a href="{{ route('get_products_by_categories', ['category_id' => 3, 'slug' => slugCategory(3)]) }}"
         class="cursor-pointer relative text-center"><img
             class="h-[600px] w-screen bg-cover md:block hidden"
             src="{{ asset('files/1674478440category.png') }}" alt="Product title">
@@ -33,7 +33,7 @@
             <p class="font-bold italic text-[53px] leading-normal">HOODIES</p>
         </div>
     </a>
-    <a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}" class="cursor-pointer relative text-center"><img
+    <a href="{{ route('get_products_by_categories', ['category_id' => 1, 'slug' => slugCategory(1)]) }}" class="cursor-pointer relative text-center"><img
             class="h-[600px] w-screen bg-cover md:block hidden"
             src="{{ asset('files/1675024764category.png') }}" alt="Product title">
         <div class="absolute top-1/2 w-full text-white text-sm">
@@ -41,7 +41,7 @@
             <p class="font-bold italic text-[53px] leading-normal">PANTS</p>
         </div>
     </a>
-    <a href="{{ route('get_products_by_categories', ['category_id' => 2]) }}" class="cursor-pointer relative text-center">
+    <a href="{{ route('get_products_by_categories', ['category_id' => 2, 'slug' => slugCategory(2)]) }}" class="cursor-pointer relative text-center">
         <img
             class="h-[600px] w-screen bg-cover md:block hidden"
             src="{{ asset('files/1675024893category.png') }}" alt="Product title">
@@ -70,7 +70,7 @@
         src="{{ asset('files/slid2.bd8542ed.png') }}" alt="Product title">
 
         <div class="absolute top-1/2 w-full text-white text-sm">
-            <a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}">
+            <a href="{{ route('get_products_by_categories', ['category_id' => 4, 'slug' => slugCategory(4)]) }}">
             <p class="font-bold italic text-center text-[53px] leading-normal">TEE-SHIRTS</p>
         </a>
         </div>
@@ -101,7 +101,7 @@
                                     </path>
                                 </svg></button>
                         </div>
-                        <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
+                        <a href="{{ route('single_product', ['product_id' => $product->id, 'slug' => Str::slug($product->name)]) }}">
                             <img class="transition ease-in duration-300 hover:bg-gray-900"
                                 src="{{ asset('files/' . App\Models\Product::getFirstImageAttribute($product->id) . '') }}"
                                 alt="Product title">

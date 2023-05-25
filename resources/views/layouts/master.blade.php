@@ -28,12 +28,12 @@
                             class="absolute hidden shadow-lg w-screen h-screen fixed z-50 top-full right-0 flex-reverse block items-center bg-white">
                             <div id="shop-category"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>SHOP BY CATEGORY</p>
+                                <p><a href="#">SHOP BY CATEGORY</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="shop-collection"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>SHOP BY COLLECTION</p>
+                                <p><a href="{{route('overview')}}">SHOP BY COLLECTION</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="new-drop"
@@ -48,14 +48,14 @@
                             </div>
                             <div id="keep-it-fly"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>KEEP*IT*FLY</p>
+                                <p><a href="#">KEEP*IT*FLY</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
-                            <div id="gift-card"
+                            {{-- <div id="gift-card"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p><a href="#">GIFT CARD</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
-                            </div>
+                            </div> --}}
                             <div id="shop-instagram"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p><a href="#">SHOP INSTAGRAM</a></p>
@@ -63,29 +63,29 @@
                             </div>
                             <div id="customer-care"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>CUSTOMER CARE</p>
+                                <p><a href="#">CUSTOMER CARE</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="account"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>ACCOUNT</p>
+                                <p><a href="#">ACCOUNT</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="wishlist"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>WISHLIST</p>
+                                <p><a href="#">WISHLIST</a></p>
                                 <a href="{{route('wishlists')}}">
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                                 </a>
                             </div>
                             <div id="media"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>MEDIA</p>
+                                <p><a href="#">MEDIA</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="brand"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p>BRAND</p>
+                                <p><a href="#">BRAND</a></p>
                                 <img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div id="uk"
@@ -112,13 +112,13 @@
                                     height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="{{route('shop')}}">>ALL</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{route('shop')}}">ALL</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}">T-SHIRTS</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 4, 'slug' => slugCategory(4)]) }}">T-SHIRTS</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}">HOODIES</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 1, 'slug' => slugCategory(1)]) }}">HOODIES</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p><a href="#">BOTTOMS</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
@@ -128,7 +128,7 @@
                                     height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}">HEADWEAR</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 3, 'slug' => slugCategory(3)]) }}">CAPS</p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p class="font-bold"><a href="{{route('overview')}}">COLLECTIONS</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}"
@@ -136,7 +136,7 @@
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p><a href="#">KEEP*IT*FLY</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
+                                <p><a href="{{route('shop')}}">KEEP*IT*FLY</a></p><img src="{{asset('files/Vector.8dc6065e.svg')}}" height="18">
                             </div>
                         </div>
 
@@ -148,17 +148,17 @@
                                 <p><a href="{{route('overview')}}">COLLECTION</a></p>
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p class="font-bold"><a href="#">KEEP*IT*FLY</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}"
+                                <p class="font-bold"><a href="{{route('shop')}}">KEEP*IT*FLY</p><img src="{{ asset('files/Vector.8dc6065e.svg') }}"
                                     height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p><a href="{{route('overview')}}">OVERVIEW</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}">T-SHIRTS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 4, 'slug' => slugCategory(4)]) }}">T-SHIRTS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}">HOODIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('get_products_by_categories', ['category_id' => 1, 'slug' => slugCategory(1)]) }}">HOODIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p><a href="#">BOTTOMS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
@@ -174,34 +174,36 @@
                             <div id="customer-care-modal-close"
                                 class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between"><img
                                     class="rotate-180" src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
-                                <p>CUSTOMER CARE</p>
+                                <p><a href="{{ route('terms')}}">CUSTOMER CARE</a></p>
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p><a href="{{route('contact')}}">CONTACT</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="#">FAQS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('faq')}}">FAQS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="#">SHIPPING POLICIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('shipping')}}">SHIPPING POLICIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="#">RETURN POLICIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('returns')}}">RETURN POLICIES</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p><a href="#">TERMS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{ route('terms')}}">TERMS</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
 
                         <div id="account-modal" style=" animation-name: fadeInRight; animation-duration: 0.5s;"
                             class="absolute hidden shadow-lg w-screen h-screen fixed z-50 top-full right-0 flex-reverse block items-center lg:hidden bg-white">
-                            <div id="account-modal-close"
-                                class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between"><img
-                                    class="rotate-180" src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
-                                <p>ACCOUNT</p>
-                                <p></p>
-                            </div>
+                            @if (Auth::check())
+                                <div id="account-modal-close"
+                                    class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between"> <a href="{{ route('account')}}"> <img
+                                        class="rotate-180" src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18"></a>
+                                    <p>ACCOUNT</p>
+                                    <p></p>
+                                </div>
+                            @endif
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
                                 <p><a href="{{route('login')}}">LOGIN</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
@@ -220,7 +222,7 @@
                             </div>
                             <div
                                 class="text-[11px] px-4 py-[9.25px] border-t border-b border-tiret2 flex justify-between">
-                                <p><a href="#">KEEP*IT*FLY ESSENTIALS LOOKBOOK</a></p><img
+                                <p><a href="{{route('lookbook')}}">KEEP*IT*FLY DROP 1 LOOKBOOK</a></p><img
                                     src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
@@ -236,7 +238,7 @@
                                 <p><a href="{{route('about')}}">ABOUT</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                             <div class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between">
-                                <p><a href="#">MEDIA</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
+                                <p><a href="{{route('media')}}">MEDIA</a></p><img src="{{ asset('files/Vector.8dc6065e.svg') }}" height="18">
                             </div>
                         </div>
 
@@ -247,6 +249,13 @@
                                 <p>SELECT CURRENCY</p>
                                 <p></p>
                             </div>
+                            <a href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}">
+                                <div
+                                    class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
+                                    <img src="{{asset('files/flag-swz.dc144f59.svg')}}" height="18">
+                                    <p>SWITZERLAND / CHF</p>
+                                </div>
+                            </a>
                             <a href="{{ route('change_currency', ['currency' => '€', 'id'=> 1]) }}">
                                 <div
                                     class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
@@ -255,19 +264,13 @@
                                 </div>
                             </a>
 
-                            <a href="{{ route('change_currency', ['currency' => 'CHF', 'id'=> 2]) }}">
-                                <div
-                                    class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
-                                    <img src="{{asset('files/flag-swz.dc144f59.svg')}}" height="18">
-                                    <p>SWITZERLAND / CHF</p>
-                                </div>
-                            </a>
+
 
                             <a href="{{ route('change_currency', ['currency' => '£', 'id'=> 3]) }}">
                                 <div
                                     class="text-[11px] px-4 py-[9.25px] border-t border-tiret2 flex justify-between items-center">
                                     <img src="{{asset('files/flag-uk.3248720d.svg')}}" height="18">
-                                    <p>UNITED KINGDOM</p>
+                                    <p>UNITED KINGDOM / GBP</p>
                                 </div>
                             </a>
 
@@ -485,19 +488,20 @@
                             </div>
                             <div
                                 class="py-12 border-l border-r sm:border-t-0 lg:border-t border-b lg:border-l-0 lg:border-r lg:border-t lg:border-b border-black border-solid justify-center items-center">
-                                <form class="">
+                                <form class="" method="POST" action="{{route('subscribe.newsletter')}}">
+                                    @csrf
                                     <div class="justify-center md:px-64 lg:px-32 xl:px-48 px-11 items-center">
                                         <div syle="border-color:#D8D8D8 " class="flex items-center border-b pb-3.5">
-                                            <input
+                                            <input name="name"
                                                 class="antialiased text-sm appearance-none bg-transparent border-none w-full text-black placeholder-black leading-tight focus:outline-none"
                                                 type="text" placeholder="NAME" aria-label="Full name">
                                         </div>
                                         <div syle="border-color:#D8D8D8 "
-                                            class="flex items-center border-b pb-3.5 pt-6"><input
+                                            class="flex items-center border-b pb-3.5 pt-6"><input name="email"
                                                 class="antialiased text-sm appearance-none bg-transparent border-none w-full text-black mr-11 placeholder-black leading-tight focus:outline-none"
                                                 type="text" placeholder="EMAIL ADRESS" aria-label="Full name">
                                         </div>
-                                        <div class="pt-5"><button
+                                        <div class="pt-5"><button type="submit"
                                                 class="antialiased w-full text-xs border-black border-solid border hover:bg-black hover:text-white py-4 px-11 lg:text-black">
                                                 SIGN UP </button></div>
                                     </div>
@@ -517,6 +521,8 @@
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js'></script>
+<script type="text/javascript" src="{{asset('files/toastr.min.js')}}"></script>
+
 <script>
     $(document).ready(function(){
         var owl = $('.owl-carousel');
@@ -568,6 +574,12 @@
             $(".desktop-only").addClass("hide");
         }
 
+        if ($(window).width() > 767.98) {
+            $(".wishlist-mobile").addClass("hide");
+        }else {
+            $(".wishlist-mobile").removeClass("hide");
+        }
+
         $(".cancel-price").click(function(){
 
             $(this).closest('.mobile-only').find('.remove-price').addClass('hidden');
@@ -593,7 +605,7 @@
             var totalGlobal = 0;
 
             $('.cart-box').each(function () {
-                var count = $(this).closest('.mobile-only').find('.cart-box .input-quantity');
+                var count = $(this).closest('.mobile-only').find('.cart-box .input-quantity-mobile');
                 var price = $(this).closest('.mobile-only').find('.cart-box .box-price .item_price');
 
                 var priceVal = parseFloat(price.html());
@@ -611,12 +623,12 @@
         });
 
 
-        $(".input-quantity").change(function() {
+        $(".input-quantity-desktop").change(function() {
             var sum = 0;
             var total = 0;
             var totalGlobal = 0;
             $('.box-cart').each(function () {
-                var count = $(this).closest('.desktop-only').find('.box-cart .input-quantity');
+                var count = $(this).closest('.desktop-only').find('.box-cart .input-quantity-desktop');
                 var price = $(this).closest('.desktop-only').find('.box-cart .article .item_price');
 
 
@@ -629,6 +641,31 @@
                 }
                 totalGlobal = total ;
                 $(this).closest('.desktop-only').find('.box-cart .total_price').html(sum);
+            });
+            $('.subtotal').text(totalGlobal);
+
+        }).change();
+
+        $(".input-quantity-mobile").change(function() {
+            var sum = 0;
+            var total = 0;
+            var totalGlobal = 0;
+            $('.cart-box').each(function () {
+                var count = $(this).closest('.mobile-only').find('.cart-box .input-quantity-mobile');
+                var price = $(this).closest('.mobile-only').find('.cart-box .article .item_price');
+
+
+                var priceVal = parseFloat(price.html());
+                var countVal = parseFloat(count.val());
+
+                sum = (countVal * priceVal);
+                if(!(isNaN(sum))) {
+                    total = total + sum;
+                }
+                totalGlobal = total ;
+                // alert($(this).closest('.mobile-only').find('.cart-total .total_price').html())
+
+                $(this).closest('.mobile-only').find('.cart-total .total-price').html(sum);
             });
             $('.subtotal').text(totalGlobal);
 
@@ -691,14 +728,21 @@
         });
 
 
-        if ($(window).width() > 767.98) {
-            $(".nav_menu_mobile").css("margin-bottom", "0px");
-        } else {
-            $(".nav_menu_mobile").css("margin-bottom", "180px");
-        }
+        @if (session()->has('message') && session()->has('title'))
+            var message = "{{ session('message') }}";
+            var title = "{{ session('title') }}";
+            toastr.success(message, title, {escapeHtml:true})
+        @endif
+
+        @if (session()->has('error_message') && session()->has('error_title'))
+            var message = "{{ session('error_message') }}";
+            var title = "{{ session('error_title') }}";
+            toastr.error()(message, title, {escapeHtml:true})
+        @endif
 
     });
 </script>
+
 
 @livewireScripts
 </body>

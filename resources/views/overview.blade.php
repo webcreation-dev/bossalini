@@ -34,15 +34,17 @@
       d'un motif avec la signature de l'artiste. </p>
   </section>
   <section class="pt-24 lg:space-y-11 md:space-y-[101px] space-y-11">
+
+    @foreach ( $products as $product)
     <div class="justify-center">
       <div class="lg:flex lg:items-center lg:w-auto lg:justify-between">
         <div class="object-cover w-auto md:grid lg:grid-cols-5 xl:grid-cols-3 lg:gap-9 xl:gap-[70px]">
           <div class="xl:col-span-2 lg:col-span-3">
             <div class="grid xl:grid-cols-2 gap-2 flex-auto">
-              <div><img class="w-full min-h-[326px]" src="{{asset('files/slider_home01.aea185d6.png')}}"
+              <div><img class="w-full min-h-[326px]" src="{{ asset('files/' . App\Models\ProductImage::getImageByProductId($product->id) . '') }}"
                   alt="Product title"></div>
-              <div class="xl:block hidden"><img class="w-full min-h-[326px]"
-                  src="{{asset('files/slider_home01-2.a3f63785.png')}}" alt="Product title"></div>
+              {{-- <div class="xl:block hidden"><img class="w-full min-h-[326px]"
+                  src="{{asset('files/slider_home01-2.a3f63785.png')}}" alt="Product title"></div> --}}
             </div>
           </div>
           <div
@@ -52,8 +54,8 @@
                 <p class="text-center md:pt-0 text-[10px] f-700"> KEEP*IT*FLY ESSENTIALS </p>
               </div>
               <div class="pt-4 flex-auto justify-center">
-                <p class="text-center font-bold md:pt-0 text-[13px] f-700"> BOSSALINI FLY HOODIE </p>
-                <p class="pt-2.5 text-center antialiased font-medium text-xs"> CHF 112.00 </p>
+                <p class="text-center font-bold md:pt-0 text-[13px] f-700"> {{$product->name}} </p>
+                <p class="pt-2.5 text-center antialiased font-medium text-xs"> @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif   {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), $product->selling_price ) }} </p>
               </div>
               <div class="text-center text-[13px] pt-7"> L'inscription « Billie Eilish » en silicone est
                 imprimée sur un tissu en coton brossé et épais couleur champignon qui offre chaleur, douceur, et
@@ -81,220 +83,27 @@
                     </button></div>
                 </div>
               </div>
-              <div class="pt-4"><a href="#"
+              <div class="pt-4"><a href="{{ route('single_product', ['product_id' =>$product->id ]) }}"
                   class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
-                  ADD TO CART </a></div>
-              <div class="pt-[19px]">
+                  VIEW PRODUCT </a></div>
+              {{-- <div class="pt-[19px]">
                 <div class="py-[14px] px-[14px] bg-answer">
-                  {{-- <p class="pb-[14px] text-xs text-white">
+                  <p class="pb-[14px] text-xs text-white">
                     <span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
+                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p>
                       <a
                     href="#"
                     class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                     GO TO CART </a>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="justify-center">
-      <div class="lg:flex lg:items-center lg:w-auto lg:justify-between">
-        <div class="object-cover w-auto md:grid lg:grid-cols-5 xl:grid-cols-3 lg:gap-9 xl:gap-[70px]">
-          <div class="xl:col-span-2 lg:col-span-3">
-            <div class="grid xl:grid-cols-2 gap-2 flex-auto">
-              <div><img class="w-full min-h-[326px]" src="{{asset('files/slider_home01.aea185d6.png')}}"
-                  alt="Product title"></div>
-              <div class="xl:block hidden"><img class="w-full min-h-[326px]"
-                  src="{{asset('files/slider_home01-2.a3f63785.png')}}" alt="Product title"></div>
-            </div>
-          </div>
-          <div
-            class="xl:col-span-1 lg:col-span-2 flex flex-col justify-center items-center lg:pt-0 md:pt-[70px] pt-11">
-            <div class="md:w-[368px]">
-              <div class="flex-auto justify-evenly">
-                <p class="text-center md:pt-0 text-[10px] f-700"> KEEP*IT*FLY ESSENTIALS </p>
-              </div>
-              <div class="pt-4 flex-auto justify-center">
-                <p class="text-center font-bold md:pt-0 text-[13px] f-700"> BOSSALINI FLY HOODIE </p>
-                <p class="pt-2.5 text-center antialiased font-medium text-xs"> CHF 112.00 </p>
-              </div>
-              <div class="text-center text-[13px] pt-7"> L'inscription « Billie Eilish » en silicone est
-                imprimée sur un tissu en coton brossé et épais couleur champignon qui offre chaleur, douceur, et
-                des sensations exceptionnelles. La poche kangourou sur le devant permet de garder les mains au
-                chaud et offre un grand espace de rangement. </div>
-              <div class="md:pt-[69px] pt-11">
-                <div class="pt-4">
-                  <div class="grid grid-cols-3 gap-[19px] flex-auto"><button
-                      class="active text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>xs</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>s</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>M</p>
-                    </button><button class="text-xs focus:bg-black text-center py-3.5 w-full border">
-                      <p>L</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>XL</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>XXL</p>
-                    </button></div>
-                </div>
-              </div>
-              <div class="pt-4"><a href="#"
-                  class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
-                  ADD TO CART </a></div>
-              <div class="pt-[19px]">
-                <div class="py-[14px] px-[14px] bg-answer">
-                  {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
-                      <a
-                    href="#"
-                    class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
-                    GO TO CART </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="justify-center">
-      <div class="lg:flex lg:items-center lg:w-auto lg:justify-between">
-        <div class="object-cover w-auto md:grid lg:grid-cols-5 xl:grid-cols-3 lg:gap-9 xl:gap-[70px]">
-          <div class="xl:col-span-2 lg:col-span-3">
-            <div class="grid xl:grid-cols-2 gap-2 flex-auto">
-              <div><img class="w-full min-h-[326px]" src="{{asset('files/slider_home01.aea185d6.png')}}"
-                  alt="Product title"></div>
-              <div class="xl:block hidden"><img class="w-full min-h-[326px]"
-                  src="{{asset('files/slider_home01-2.a3f63785.png')}}" alt="Product title"></div>
-            </div>
-          </div>
-          <div
-            class="xl:col-span-1 lg:col-span-2 flex flex-col justify-center items-center lg:pt-0 md:pt-[70px] pt-11">
-            <div class="md:w-[368px]">
-              <div class="flex-auto justify-evenly">
-                <p class="text-center md:pt-0 text-[10px] f-700"> KEEP*IT*FLY ESSENTIALS </p>
-              </div>
-              <div class="pt-4 flex-auto justify-center">
-                <p class="text-center font-bold md:pt-0 text-[13px] f-700"> BOSSALINI FLY HOODIE </p>
-                <p class="pt-2.5 text-center antialiased font-medium text-xs"> CHF 112.00 </p>
-              </div>
-              <div class="text-center text-[13px] pt-7"> L'inscription « Billie Eilish » en silicone est
-                imprimée sur un tissu en coton brossé et épais couleur champignon qui offre chaleur, douceur, et
-                des sensations exceptionnelles. La poche kangourou sur le devant permet de garder les mains au
-                chaud et offre un grand espace de rangement. </div>
-              <div class="md:pt-[69px] pt-11">
-                <div class="pt-4">
-                  <div class="grid grid-cols-3 gap-[19px] flex-auto"><button
-                      class="active text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>xs</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>s</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>M</p>
-                    </button><button class="text-xs focus:bg-black text-center py-3.5 w-full border">
-                      <p>L</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>XL</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>XXL</p>
-                    </button></div>
-                </div>
-              </div>
-              <div class="pt-4"><a href="#"
-                  class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
-                  ADD TO CART </a></div>
-              <div class="pt-[19px]">
-                <div class="py-[14px] px-[14px] bg-answer">
-                  {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
-                      <a
-                    href="#"
-                    class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
-                    GO TO CART </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="justify-center">
-      <div class="lg:flex lg:items-center lg:w-auto lg:justify-between">
-        <div class="object-cover w-auto md:grid lg:grid-cols-5 xl:grid-cols-3 lg:gap-9 xl:gap-[70px]">
-          <div class="xl:col-span-2 lg:col-span-3">
-            <div class="grid xl:grid-cols-2 gap-2 flex-auto">
-              <div><img class="w-full min-h-[326px]" src="{{asset('files/slider_home01.aea185d6.png')}}"
-                  alt="Product title"></div>
-              <div class="xl:block hidden"><img class="w-full min-h-[326px]"
-                  src="{{asset('files/slider_home01-2.a3f63785.png')}}" alt="Product title"></div>
-            </div>
-          </div>
-          <div
-            class="xl:col-span-1 lg:col-span-2 flex flex-col justify-center items-center lg:pt-0 md:pt-[70px] pt-11">
-            <div class="md:w-[368px]">
-              <div class="flex-auto justify-evenly">
-                <p class="text-center md:pt-0 text-[10px] f-700"> KEEP*IT*FLY ESSENTIALS </p>
-              </div>
-              <div class="pt-4 flex-auto justify-center">
-                <p class="text-center font-bold md:pt-0 text-[13px] f-700"> BOSSALINI FLY HOODIE </p>
-                <p class="pt-2.5 text-center antialiased font-medium text-xs"> CHF 112.00 </p>
-              </div>
-              <div class="text-center text-[13px] pt-7"> L'inscription « Billie Eilish » en silicone est
-                imprimée sur un tissu en coton brossé et épais couleur champignon qui offre chaleur, douceur, et
-                des sensations exceptionnelles. La poche kangourou sur le devant permet de garder les mains au
-                chaud et offre un grand espace de rangement. </div>
-              <div class="md:pt-[69px] pt-11">
-                <div class="pt-4">
-                  <div class="grid grid-cols-3 gap-[19px] flex-auto"><button
-                      class="active text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>xs</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>s</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>M</p>
-                    </button><button class="text-xs focus:bg-black text-center py-3.5 w-full border">
-                      <p>L</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>XL</p>
-                    </button><button
-                      class="text-xs focus:text-white focus:bg-black text-center py-3.5 w-full border">
-                      <p>XXL</p>
-                    </button></div>
-                </div>
-              </div>
-              <div class="pt-4"><a href="#"
-                  class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
-                  ADD TO CART </a></div>
-              <div class="pt-[19px]">
-                <div class="py-[14px] px-[14px] bg-answer">
-                  {{-- <p class="pb-[14px] text-xs text-white"><span class="font-bold">KEEP*IT*FLY ESSENTIALS / FLY
-                      HOODIE - BLACK</span><span class="">was added to the cart!</span></p> --}}
-                      <a
-                    href="#"
-                    class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
-                    GO TO CART </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    @endforeach
+
   </section>
   <section class="lg:pt-20 pt-14">
     <div class="justify-center text-center">

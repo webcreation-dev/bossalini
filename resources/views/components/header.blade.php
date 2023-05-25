@@ -10,51 +10,67 @@
             <div class="relative top-6 pl-9 p-6 pb-7 bg-white border-b border-t border-tiret2 w-screen">
               <div class="relative z-10">
                 <div class="flex justify-start gap-56">
-                  <div>
+
+
+                    <div>
                     <ul class="">
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}"
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 1, 'slug' => slugCategory(1)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 font-semibold hover:text-indigo-600">
-                          HOODIES </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 2]) }}"
+                          NEW DROP </a></li>
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 2, 'slug' => slugCategory(2)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 font-semibold hover:text-indigo-600">
-                          PANTS </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}"
+                          KEEP*IT*FLY </a></li>
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 3, 'slug' => slugCategory(3)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 font-semibold hover:text-indigo-600">
-                          HEADWEAR </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}"
+                          SHOP INSTAGRAM </a></li>
+                      {{-- <li><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 font-semibold hover:text-indigo-600">
-                          TEE-SHIRTS </a></li>
+                          TEE-SHIRTS </a></li> --}}
                     </ul>
                   </div>
+
+
                   <div class="grid grid-cols-3 gap-[88px]">
                     <ul class="">
-                      <li><a href="{{route('shop')}}"
+                      <li><a href="#"
                           class="hover:opacity-60 font-bold text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
-                          SHOP ALL </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}"
+                          CLOTHING </a></li>
+                          <li class="pt-2"><a href="{{route('shop')}}"
+                            class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
+                            ALL </a></li>
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 4, 'slug' => slugCategory(4)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
                           T-SHIRTS </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 1]) }}"
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 3, 'slug' => slugCategory(3)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
                           HOODIES </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 2]) }}"
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 1, 'slug' => slugCategory(1)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
                           PANTS </a></li>
-                      <li class="pt-2"><a href="#"
-                          class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
-                          CLOTHING </a></li>
+
                     </ul>
                     <ul class="">
                       <li><a href="#"
                           class="hover:opacity-60 font-bold text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
-                          ACCESSORIES </a></li><a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}"
-                        class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
-                        HEADWEAR </a>
+                          ACCESSORIES </a></li>
+
+                          <li>
+                            <a href="{{ route('get_products_by_categories', ['category_id' => 2, 'slug' => slugCategory(2)]) }}"
+                                class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
+                                ALL </a>
+                          </li>
+                          <li>
+                            <a href="#"
+                                class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
+                                CAPS </a>
+                          </li>
                     </ul>
                     <ul class="">
                       <li><a href="{{route('overview')}}"
                           class="hover:opacity-60 font-bold text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
-                          COLLECTIONS </a></li><a href="#"
+                          COLLECTIONS </a></li>
+
+                          <a href="{{route('shop')}}"
                         class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800 hover:text-indigo-600">
                         KEEP*IT*FLY </a>
                     </ul>
@@ -75,19 +91,22 @@
                 <div class="flex justify-start gap-56">
                   <div>
                     <ul class="">
-                      <li><a href="#"
+                      <li><a href="{{route('shop')}}"
                           class="hover:opacity-60 font-bold text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                           KEEP*IT*FLY </a></li>
                       <li><a href="{{ route('overview') }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                           OVERVIEW </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 3]) }}"
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 4, 'slug' => slugCategory(4)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                           T-SHIRTS </a></li>
-                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 4]) }}"
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 3, 'slug' => slugCategory(3)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                           HOODIES </a></li>
-                      <li><a href="#"
+                        <li><a href="{{ route('get_products_by_categories', ['category_id' => 1, 'slug' => slugCategory(1)]) }}"
+                        class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
+                        PANTS </a></li>
+                      <li><a href="{{ route('get_products_by_categories', ['category_id' => 2, 'slug' => slugCategory(2)]) }}"
                           class="hover:opacity-60 text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                           ACCESSORIES </a></li>
                     </ul>
@@ -114,32 +133,11 @@
                         <div class="hover:opacity-70"><img class="w-[314px] h-[337px]"
                             src="{{asset('files/slider_home01.6ec5af8b.jpg')}}" alt="">
                           <div class="mt-[18px]">
-                            <p class="text-xs font-bold"> KEEP*IT*FLY FIRST DROP COLLECTION LOOKBOOK </p><a
-                              href="{{route('overview')}}" class="text-xs">VIEW NOW</a>
+                            <p class="text-xs font-bold"> KEEP*IT*FLY DROP 1 LOOKBOOK </p><a
+                              href="{{route('lookbook')}}" class="text-xs">VIEW NOW</a>
                           </div>
                         </div>
-                        <div class="hover:opacity-70">
-                          <div class="w-[314px] h-[337px]"><img class="w-full h-auto"
-                              src="{{asset('files/slider_home01-2.6afd85d3.jpg')}}" alt=""></div>
-                          <div class="mt-[18px]">
-                            <p class="text-xs font-bold"> SANTA MARTA SUMMER COLLECTION LOOKBOOK </p><a
-                              href="{{route('overview')}}" class="text-xs">VIEW NOW</a>
-                          </div>
-                        </div>
-                        <div class="hover:opacity-70"><img class="object-container w-[314px] h-[337px]"
-                            src="{{asset('files/slider_3.e8f23f91.jpg')}}" alt="">
-                          <div class="mt-[18px]">
-                            <p class="text-xs font-bold"> LIVE LARGE &amp; PROSPER LOOKBOOK </p><a
-                              href="{{route('overview')}}" class="text-xs">VIEW NOW</a>
-                          </div>
-                        </div>
-                        <div class="hover:opacity-70"><img class="w-[314px] h-[337px]"
-                            src="{{asset('files/slider_home01-3.7968701f.jpg')}}" alt="">
-                          <div class="mt-[18px]">
-                            <p class="text-xs font-bold"> WORLDWIDE AMBITION CAPSULE </p><a
-                              href="{{route('overview')}}" class="text-xs">VIEW NOW</a>
-                          </div>
-                        </div>
+
                       </div>
                     </ul>
                   </div>
@@ -163,7 +161,7 @@
                       <li><a href="{{route('about')}}"
                           class="text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                           ABOUT </a></li>
-                    <li><a href="#"
+                    <li><a href="{{route('media')}}"
                             class="text-xs text-block p-2 -mx-2 rounded-lg hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pink-50 hover:via-blue-50 transition ease-in-out duration-300 text-gray-800&gt; hover:text-indigo-600">
                             MEDIA </a></li>
                     </ul>

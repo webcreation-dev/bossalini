@@ -1,7 +1,7 @@
 
 <section class="md:pt-0 pt-[76px]">
     <div class="justify-center text-center">
-      <p class="mt-4 mb-[22px] text-sm font-bold"> KEEP*IT*FLY - ALL </p>
+      <p class="mt-4 mb-[22px] text-sm font-bold"> DISCOVER ALL PROUCTS - ALL </p>
     </div>
     <div class="flex-none lg:flex items-center justify-center lg:space-x-5 lg:space-y-0 space-y-2">
       <div class="flex w-full grid md:grid-cols-2 lg:grid-cols-4 grid-cols-2 gap-x-4 lg:gap-x-[20px] gap-y-10">
@@ -19,10 +19,11 @@
                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
                   </path>
                 </svg></button></div>
-                <a href="{{ route('single_product', ['product_id' => $product->id]) }}">
+                <a href="{{ route('single_product', ['product_id' => $product->id, 'slug' => Str::slug($product->name)]) }}">
                     <img class="w-full" src="{{ asset('files/' . App\Models\Product::getFirstImageAttribute($product->id) . '') }}"
                 alt="Product title">
                 </a>
+
           </div>
           <div class="flex-auto justify-evenly">
             <p class="text-xs font-bold">{{ $product->name }}</p>

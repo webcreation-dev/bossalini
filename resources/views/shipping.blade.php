@@ -19,7 +19,7 @@
                   <a href="{{route('shipping')}}" class="focus:underline block font-medium text-sm leading-tight hover:border-transparent hover:text-Black focus:font-bold" id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home" aria-selected="true" data-v-455c676c="">Shipping</a>
                 </li>
                 <li class="nav-item" role="presentation" data-v-455c676c="">
-                  <a href="{{route('returns')}}le" class="focus:underline block font-medium text-sm leading-tight hover:border-transparent hover:bg-gray-100 focus:font-bold" id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab" aria-controls="tabs-profile" aria-selected="false" data-v-455c676c="">Returns/Exchanges</a>
+                  <a href="{{route('returns')}}" class="focus:underline block font-medium text-sm leading-tight hover:border-transparent hover:bg-gray-100 focus:font-bold" id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab" aria-controls="tabs-profile" aria-selected="false" data-v-455c676c="">Returns/Exchanges</a>
                 </li>
               </ul>
           <div class="md:w-auto lg:w-7/12 lg:ml-20" data-v-455c676c="">

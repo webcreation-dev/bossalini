@@ -1,7 +1,9 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="lg:container lg:mx-auto lg:px-6 px-0 mx-4 pb-12 h-full">
+<div class="register_section"></div>
+
+<div class="lg:container lg:mx-auto lg:px-6 px-0 mx-4 pb-12 h-full ">
     <div>
       <p class="text-base lg:text-center text-left font-bold"> CREATE ACCOUNT </p>
     </div>

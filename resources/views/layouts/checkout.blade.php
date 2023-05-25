@@ -6,6 +6,8 @@
     <title>BOSSALINI | Find all your items here</title>
     <link rel="icon" type="image/svg+xml" href="{{asset('files/bossa.svg')}}">
     <link rel="stylesheet" href="{{asset('files/index.57cdf621.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('files/toastr.min.css')}}" >
+
 
     <link href="{{asset('files/panagora.3e1ae51f4475488adcfe.css')}}" rel="stylesheet">
     <link href="{{asset('files/select2.css')}}" rel="stylesheet" type="text/css" media="all"1>
@@ -53,6 +55,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script type="text/javascript" src="{{asset('files/toastr.min.js')}}"></script>
+
     <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
@@ -66,6 +70,12 @@
 
         var input = $('input[name="amount"]');
         input.val(totalPrice);
+
+        @if (session()->has('error_message') && session()->has('error_title'))
+            var message = "{{ session('error_message') }}";
+            var title = "{{ session('error_title') }}";
+            toastr.error(message, title, {escapeHtml:true})
+        @endif
 
 
     });

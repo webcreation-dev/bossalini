@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Newsletter;
+use App\Models\Notification;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +55,36 @@ class CurrencyController extends Controller
         $cart_items = session()->get('cart_items');
 
         return redirect()->route('checkout');
+    }
+
+    public function saveNotification(Request $request) {
+
+        Notification::create([
+            'user_id' => (Auth::check()) ? Auth::user()->id : null,
+            'email' => $request->email,
+        ]);
+
+        return redirect()->back()
+                        ->with('message', 'Notification saved successfully!')
+                        ->with('title', 'Notification');
+    }
+
+    public function subscribeNewsletter(Request $request) {
+
+        Newsletter::create([
+            'user_id' => (Auth::check()) ? Auth::user()->id : null,
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+        return redirect()->back()
+                        ->with('message', 'Thanks for subscribing to our newsletter!')
+                        ->with('title', 'Newsletter');
+    }
+
+    public function getOverview() {
+
+        $products = Product::all();
+        return view('overview', compact('products'));
     }
 
 }

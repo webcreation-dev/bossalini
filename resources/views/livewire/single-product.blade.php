@@ -146,14 +146,16 @@
                                             @endif
                                         @else
                                             @if (getButtonAddCart($product->id) == false )
+
                                                 <div class="pt-[19px]">
                                                     <div class="py-[14px] px-[14px] bg-answer">
                                                         <a
                                                         href="{{route('add_cart')}}"
-                                                        class="w-auto text-xs border border-1 hover:bg-black f-700 flex hover:text-white py-3.5 text-center justify-center items-center">
+                                                        class="w-auto text-xs border border-1 hover:text-answer hover:bg-white f-700 flex text-white py-3.5 text-center justify-center items-center">
                                                         GO TO CART </a>
                                                     </div>
                                                 </div>
+
                                             @endif
                                         @endif
                                     @else
@@ -171,13 +173,14 @@
                                         </a>
                                     </div>
 
-                                    <form method="POST" action="" class="hide form_notify">
+                                    <form method="POST" action="{{route('save.notification')}}" class="hide form_notify">
+                                        @csrf
                                             <div syle="border-color:#D8D8D8 " class="flex items-center border-b pb-3.5">
-                                                <input
+                                                <input name="email"
                                                     class="antialiased text-sm appearance-none bg-transparent border-none w-full text-black placeholder-black leading-tight focus:outline-none"
-                                                    type="text" placeholder="Email" aria-label="Full name">
+                                                    type="email" placeholder="Email" aria-label="Full name">
                                             </div>
-                                            <div class="pt-5"><button
+                                            <div class="pt-5"><button type="submit"
                                                     class="antialiased w-full close_form_notify text-xs border-black border-solid border hover:bg-black hover:text-white py-4 px-11 lg:text-black">
                                                     NOTIFY ME </button></div>
                                     </form>
@@ -454,6 +457,16 @@
 
 <script>
     window.addEventListener("mobile_menu", event=>{
+        if ($(window).width() > 767.98) {
+            $(".nav_menu_mobile").css("margin-bottom", "0px");
+        } else {
+            $(".nav_menu_mobile").css("margin-bottom", "180px");
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
         if ($(window).width() > 767.98) {
             $(".nav_menu_mobile").css("margin-bottom", "0px");
         } else {

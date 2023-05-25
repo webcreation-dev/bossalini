@@ -16,4 +16,11 @@ class ProductImage extends Model
         'image',
     ];
 
+    public static function getImageByProductId($productId)
+    {
+        $product = self::where('product_id', $productId)->first();
+
+        return $product ? $product->image : null;
+    }
+
 }

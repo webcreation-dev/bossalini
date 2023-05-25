@@ -55,10 +55,11 @@
                                 <p class="text-left font-bold md:pt-0 text-[13px] f-700" style="margin-bottom: auto;">
                                     {{$product->name}} </p>
 
-                                <p class="pt-2.5 text-left antialiased font-medium text-xs"> M/ BLACK @if (Auth::check())
-                                    {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif
+                                <p class="pt-2.5 text-left antialiased font-medium text-xs"> M/ BLACK
+                                    @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif
+                                    <span>
                                     {{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}
-
+                                    </span>
                                 </p>
 
 
@@ -81,8 +82,8 @@
 
                             </p>
 
-                            <input type="number" value="1" min="0" max="{{checkStockCartItems($product->id)}}" name="products[{{ $product->id }}][quantity]"
-                                class="w-full input-quantity text-center text-[13px] font-bold border-black border"
+                            <input type="number" value="1" min="1" max="{{checkStockCartItems($product->id)}}" name="products[{{ $product->id }}][quantity]"
+                                class="w-full input-quantity-desktop text-center text-[13px] font-bold border-black border"
                                 style="height: 50%; width: 50%;">
 
                             <p class="text-[13px] font-bold flex justify-end">
@@ -124,14 +125,14 @@
                                     <div class="box-price">
                                         <p class="text-left font-bold md:pt-0 text-[13px] f-700 align-self-start"
                                             style="margin-bottom: auto; "> BOSSALINI FLY HOODIE - BLACK </p>
-                                        <p class="text-left col  md:pt-0 text-[13px] f-700"
+                                        <p class="text-left col  md:pt-0 text-[13px] f-700 article"
                                             style="margin-bottom: auto; align-self-center">
                                             <span>M / @if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif </span>
                                                 <span class="item_price">{{ getConvertRatePrice( Auth::check() ? getUserRateCurrency() : getRateCurrency(), getPriceProduct($product->id) ) }}</span> </p>
                                     </div>
 
-                                    <input type="number" min="0" max="{{checkStockCartItems($product->id)}}" name="products[{{ $product->id }}][quantity]"
-                                        class="w-full input-quantity hidden input-price text-center text-[13px] font-bold border-black border" :
+                                    <input type="number" min="1" max="{{checkStockCartItems($product->id)}}" name="products[{{ $product->id }}][quantity]"
+                                        class="w-full input-quantity-mobile input-price hidden text-center text-[13px] font-bold border-black border" :
                                         style="height: 25%; width: 25%;" value="1">
                                 </div>
 
@@ -140,7 +141,7 @@
 
                                     <p class="text-end col  md:pt-0 text-[13px] f-700" style="margin-bottom: auto; align-self-end">
                                         <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif</span>
-                                        <span class="total-price">112</span> </p>
+                                        <span class="total-price"></span> </p>
 
 
                                     <button type="button"
@@ -190,7 +191,7 @@
                     <p class="text-[13px] font-bold flex md:justify-end" style="font-weight : bold">SUBTOTAL</p>
                     <p class="text-xs flex  justify-end">
                         <span>@if (Auth::check()) {{getUserCurrency()}} @else {{getCodeCurrency()}} @endif</span>
-                        <span class="subtotal">45</span>
+                        <span class="subtotal"></span>
                     </p>
                 </div>
             </div>
